@@ -1,0 +1,9 @@
+
+                ['Cuzco', 'Cuál era la capital del Imperio Incaico.'],
+                ['Kuala Lumpur', 'En qué ciudad asiática se alzan las torres Petronas.'],
+                ['Sicilia', 'Cuál es la isla más grande del mar Mediterráneo.'],
+                ['Brasilia', 'Capital de Brazil.'],
+                ['Pomeya', 'Ciudad romana destruida en el año 79 por el volcan Vesubio.'],
+                ['Oslo', 'Capital de Noruega.'],
+                ['alemanes', 'Gentilicio de Alemania.'],
+                ['trirreme', 'Barco antiguo que contaba con 3 remos en ambas partes.'],
