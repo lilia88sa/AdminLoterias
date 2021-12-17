@@ -1,0 +1,186 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: es
+    supported_locales: ['en', 'es']
+    pre_register: '%env(PRE_REGISTER)%'
+    gestion_delegados: 'https://sgi.gobe.cu/'
+
+twig:
+
+    globals:
+        kernelRootDir: "%kernel.root_dir%"
+
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    # SECURITY COMPONENT SERVICES
+    App\Serializer\Security\UserContextBuilder:
+        decorates: 'api_platform.serializer.context_builder'
+        arguments: ['@App\Serializer\Security\UserContextBuilder.inner']
+
+    App\Serializer\Security\UserAttributeNormalizer:
+        arguments: ['@security.token_storage']
+        tags:
+            - { name: 'serializer.normalizer', priority: 64 }
+
+
+    security.token_confirmation:
+        class: App\Service\Security\TokenGenerator
+        arguments: ['@service_container']
+        public: true
+
+    app.mailer:
+        class: App\Service\Core\Mailer
+        public: true
+
+    security.status.update:
+        class: App\Service\Security\StatusUpdateService
+        public: true
+
+    App\Repository\Core\LocaleRepository:
+        arguments:
+            $parametersDefaultLocale: "%locale%"
+            $parametersAvailableLocales: "%supported_locales%"
+
+    App\Serializer\Security\AdminContextBuilder:
+        decorates: 'api_platform.serializer.context_builder'
+        arguments: [ '@App\Serializer\Security\AdminContextBuilder.inner' ]
+        #autoconfigure: false
+
+    api.event.jwt_created_listener:
+        class: App\EventSubscriber\Security\JWTCreatedListener
+        arguments: [ '@request_stack' ]
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
+
+    admin.security.user:
+        class: App\Admin\Security\UserAdmin
+        arguments: [~, App\Entity\Security\User, App\Controller\Admin\UserCRUDController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: app.admin.group.administration, label: menu.user, label_translator_strategy: sonata.admin.label.strategy.underscore, label_catalogue: 'sonata_messages' }
+        calls:
+            - [ setTranslationDomain, ["sonata_messages"]]
+        public: true
+
+    admin.pdf:
+        class: App\Admin\PdfAdmin
+        arguments: [~, App\Entity\Pdf, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: app.admin.group.post, label: menu.user, label_translator_strategy: sonata.admin.label.strategy.underscore, label_catalogue: 'sonata_messages' }
+        calls:
+            - [ setTranslationDomain, ["sonata_messages"]]
+        public: true
+
+    admin.section:
+        class: App\Admin\SectionAdmin
+        arguments: [~, App\Entity\Section, App\Controller\Admin\SectionCRUDController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: app.admin.group.post, label: menu.section, label_translator_strategy: sonata.admin.label.strategy.underscore, label_catalogue: 'sonata_messages' }
+        calls:
+#            - [addChild, ['@admin.category', 'section']]
+            - [ setTemplates, [{edit: 'security/section_edit.html.twig',show: 'security/show.html.twig'}]]
+            - [ setTranslationDomain, ["sonata_messages"]]
+        public: true
+
+    admin.category:
+        class: App\Admin\CategoryAdmin
+        arguments: [~, App\Entity\Category, App\Controller\Admin\CategoryCRUDController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: app.admin.group.post, label: menu.category , label_translator_strategy: sonata.admin.label.strategy.underscore, label_catalogue: 'sonata_messages' }
+        calls:
+            - [ setTemplates, [{edit: 'security/category_edit.html.twig',show: 'security/show.html.twig'}]]
+            - [ setTranslationDomain, ["sonata_messages"]]
+        public: true
+
+    admin.post:
+        class: App\Admin\PostAdmin
+        arguments: [~, App\Entity\Post, App\Controller\Admin\PostCRUDController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: app.admin.group.post, label: menu.post, label_translator_strategy: sonata.admin.label.strategy.underscore, label_catalogue: 'sonata_messages' }
+        calls:
+            - [addChild, ['@admin.pdf', 'section']]
+            - [ setTranslationDomain, ["sonata_messages"]]
+            - [ setTemplates, [{edit: 'security/post_edit.html.twig',show: 'security/post_show.html.twig'}]]
+        public: true
+
+    admin.key_words:
+        class: App\Admin\KeyWordsAdmin
+        arguments: [~, App\Entity\KeyWords, App\Controller\Admin\KeyWordsAdminController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: app.admin.group.glossary, label: menu.glossary, label_translator_strategy: sonata.admin.label.strategy.underscore, label_catalogue: 'sonata_messages' }
+        calls:
+            - [ setTranslationDomain, ["sonata_messages"]]
+            - [ setTemplates, [{edit: 'security/glossary_edit.html.twig',show: 'security/show.html.twig'}]]
+        public: true
+
+    admin.comments:
+        class: App\Admin\CommentsAdmin
+        arguments: [~, App\Entity\Comments, App\Controller\Admin\CommentsCRUDController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: app.admin.group.comments, label: menu.comments, label_translator_strategy: sonata.admin.label.strategy.underscore, label_catalogue: 'sonata_messages' }
+        calls:
+            - [ setTranslationDomain, ["sonata_messages"]]
+        public: true
+
+    admin.order_clasification:
+        class: App\Admin\OrderClasificationAdmin
+        arguments: [~, App\Entity\OrderClasification, App\Controller\Admin\OrderClasificationCRUDController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: app.admin.group.administration, label: menu.orderClasification, label_translator_strategy: sonata.admin.label.strategy.underscore, label_catalogue: 'sonata_messages'  }
+        calls:
+            - [ setTranslationDomain, ["sonata_messages"]]
+        public: true
+
+    admin.entities:
+        class: App\Admin\EntitiesAdmin
+        arguments: [~, App\Entity\Entities, App\Controller\Admin\EntitiesCRUDController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: app.admin.group.users, label: menu.entities, label_translator_strategy: sonata.admin.label.strategy.underscore, label_catalogue: 'sonata_messages'  }
+        calls:
+            - [ setTranslationDomain, ["sonata_messages"]]
+            - [ setTemplates, [{edit: 'security/entity_edit.html.twig'}]]
+        public: true
+
+    admin.cliente:
+        class: App\Admin\ClienteAdmin
+#        arguments: [~, App\Entity\Cliente, App\Controller\Admin\ClienteCRUDController]
+        arguments: [~, App\Entity\Cliente, App\Controller\Admin\ClienteCRUDController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: app.admin.group.cliente, label: menu.cliente, label_translator_strategy: sonata.admin.label.strategy.underscore, label_catalogue: 'sonata_messages'  }
+        calls:
+            - [ setTranslationDomain, ["sonata_messages"]]
+            - [ setTemplates, [{edit: 'security/cliente_edit.html.twig',show: 'security/cliente_show.html.twig'}]]
+        public: true
+
+    admin.juego:
+        class: App\Admin\JuegoAdmin
+#        arguments: [~, App\Entity\Cliente, App\Controller\Admin\ClienteCRUDController]
+        arguments: [~, App\Entity\Juego, App\Controller\Admin\JuegoCRUDController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: app.admin.group.juego, label: menu.juego, label_translator_strategy: sonata.admin.label.strategy.underscore, label_catalogue: 'sonata_messages'  }
+        calls:
+            - [ setTranslationDomain, ["sonata_messages"]]
+        public: true

@@ -1,0 +1,12 @@
+# api/config/api_platform/log.yaml
+App\Entity\Security\Logs:
+    collectionOperations:
+        get:
+            access_control: 'is_granted("ROLE_ADMIN") or is_granted("ROLE_SUPER_ADMIN")'
+            normalization_context: {groups: ["get-admin"]}
+    itemOperations:
+        get:
+            access_control: 'is_granted("ROLE_ADMIN") or is_granted("ROLE_SUPER_ADMIN")'
+            controller: 'ApiPlatform\Core\Action\NotFoundAction'
+            read: false
+            output: false
