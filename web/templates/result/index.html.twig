@@ -1,0 +1,120 @@
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block title %}Hello ResultController!{% endblock %}#}
+
+{#{% block body %}#}
+{#<style>#}
+    {#.example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }#}
+    {#.example-wrapper code { background: #F5F5F5; padding: 2px 6px; }#}
+{#</style>#}
+
+{#<div class="example-wrapper">#}
+    {#<h1>Hello {{ controller_name }}! ✅</h1>#}
+
+    {#This friendly message is coming from:#}
+    {#<ul>#}
+        {#<li>Your controller at <code><a href="{{ 'D:/xampp7.4/htdocs/loteria/web/src/Controller/ResultController.php'|file_link(0) }}">src/Controller/ResultController.php</a></code></li>#}
+        {#<li>Your template at <code><a href="{{ 'D:/xampp7.4/htdocs/loteria/web/templates/result/index.html.twig'|file_link(0) }}">templates/result/index.html.twig</a></code></li>#}
+    {#</ul>#}
+{#</div>#}
+{#{% endblock %}#}
+{% for a in results %}
+    <ul>
+        <li>{{ a.juego.id}}</li>
+        <li>{{ a.juego.name}}</li>
+        <li>{{ a.fecha|date }}</li>
+        {% if  a.estrellas is not null %}
+            <li>{{ 'combinaciones :' }}</li>
+            <ul>
+                {%  for b in (a.combinaciones | split(',')) %}
+                    <li>{{  b }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {#<li>{{ a.categoria }}</li>#}
+        {#<li>{{ a.premio }}</li>#}
+
+        {% if  a.estrellas is not null %}
+            <li>{{ 'estrellas :' }}</li>
+            <ul>
+                {%  for b in (a.estrellas | split(',')) %}
+                    <li>{{  b }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if  a.reintegros is not null %}
+            <li>{{ 'reintegros :' }}</li>
+            <ul>
+                {%  for b in (a.reintegros | split(',')) %}
+                    <li>{{  b }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if  a.complementos is not null %}
+            <li>{{ 'complementos :' }}</li>
+            <ul>
+                {%  for b in (a.complementos | split(',')) %}
+                    <li>{{  b }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if  a.clave is not null %}
+            <li>{{ 'clave :' }}</li>
+            <ul>
+                {%  for b in (a.clave | split(',')) %}
+                    <li>{{  b }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if  a.getFraccionSerie is not null %}
+            <li>{{ 'fraccion_serie :' }}</li>
+            <ul>
+                {%  for b in (a.getFraccionSerie | split(',')) %}
+                    <li>{{  b }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+
+
+        {% if a.getMillonJoker is not null %}
+            <li>{{ 'joker_millon :'~a.getMillonJoker }}</li>
+        {% endif %}
+
+        {% if a.bote is not null %}
+            <li>{{ 'bote :'~a.bote }}</li>
+        {% endif %}
+
+        {% if a.caballo is not null %}
+            <li>{{ 'caballo :'~a.caballo }}</li>
+        {% endif %}
+
+        {% if  a.getCategoria is not null and a.getPremio is not null %}
+            {% set cat=(a.getCategoria | split(',')) %}
+            {% set prem=(a.getPremio | split(';')) %}
+
+            <li>{{ 'categorias y premios :' }}</li>
+            <ul>
+                {%  for i in 0..((cat|length)-1) %}
+                    <li>{{ 'categoria: '~cat[i]~', premio: '~prem[i] }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if  a.getCategoriaJoker is not null and a.getPremioJoker is not null %}
+            {% set cat=(a.getCategoriaJoker | split(',')) %}
+            {% set prem=(a.getPremioJoker | split(';')) %}
+
+            <li>{{ 'categorias joker  y premios joker:' }}</li>
+            <ul>
+                {%  for i in 0..((cat|length)-1) %}
+                    <li>{{ 'categoria joker: '~cat[i]~', premio joker: '~prem[i] }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </ul>
+{% endfor %}

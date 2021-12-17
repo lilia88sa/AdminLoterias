@@ -1,0 +1,105 @@
+{% apply inline_css%}
+<html>
+<head>
+    <title></title>
+    <meta content="">
+    <style>
+        @font-face {
+            font-family: "futuraBQLightOblique";
+            src: url("../../../public/templates_assets/fonts/FuturaBQ-LightOblique.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "futuraBQRegular";
+            src: url("../../../public/templates_assets/fonts/FuturaBQ.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "futuraBQBold";
+            src: url("../../../public/templates_assets/fonts/FuturaBQ-Bold.ttf") format("truetype");
+        }
+        .body-background {
+            background: #1b1b63;
+            color: #fff;
+            font-family: "futuraBQRegular", sans-serif;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body class="body-background" bgcolor="#191919" style="background-color: #191919; font-family: futuraBQRegular,Helvetica,Arial,sans-serif;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#191919" style="background-color: #191919; max-width: 800px;" align="center">
+    <tbody>
+    <tr>
+        <td style="color:#000000;padding-top: 20px;padding-right:0px;padding-bottom: 20px;padding-left:0px;" align="center">
+            <img src="{{ logo }}" alt="CAP" width="30%" style="max-width:700px;height:auto;">
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#000000;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px" align="center">
+            <img src="{{ image }}" alt="Bienvenido al CAP" width="100%" style="max-width:700px;height:auto;">
+        </td>
+    </tr>
+    {% if preRegister == true %}
+        <tr>
+            <td style="color:#fff;padding-top:37px;padding-right:5%;padding-bottom:0px;padding-left:5%;font-size:15px;" align="center">
+                <p>Muchas gracias por registrarte con nosotros y unirte a nuestro fabuloso equipo.</p>
+                <p>¡Te esperamos!.</p>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td style="color:#fff;padding-top:37px;padding-right:5%;padding-bottom:0px;padding-left:5%;font-size:15px;" align="center">
+                <p>Muchas gracias por registrarte con nosotros {{ user.name }}, estás a un solo click de tener acceso a nuestros servicios</p>
+            </td>
+        </tr>
+    {% endif %}
+    <tr>
+        <td style="color:#fff;padding-top:20px;padding-right:5%;padding-bottom:0px;padding-left:5%;font-size:15px;" align="center">
+            <a class="button-confirm" href="{{ app.request.schemeAndHttpHost ~ app.request.baseUrl }}/admin/account-confirm/{{user.getConfirmationToken()}}" target="_blank">
+                <img src="{{ btn }}" alt="enlace de confirmacion de cuenta" width="50%" style="max-width:236px;height:auto;">
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#fff;padding-top:30px;padding-right:10%;padding-bottom:0px;padding-left:10%;font-size:15px;" align="center">
+            <p>Si el botón no funciona, copia y pega este enlace en tu navegador</p>
+            <p> {{ app.request.schemeAndHttpHost ~ app.request.baseUrl }}/admin/account-confirm/{{user.getConfirmationToken()}} </p>
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#fff;padding-top:37px;padding-right:5%;padding-bottom:0px;padding-left:5%;font-size:15px;" align="center">
+            <p>Ante cualquier duda pongase en contacto con nuestro equipo de desarrollo contestando el presente email. Estaremos encantados de ayudarte</p>
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#fff;padding-top:37px;padding-right:5%;padding-bottom:0px;padding-left:5%;font-size:15px;" align="center">
+            <p>Síguenos en</p>
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#fff;padding-top: 13px;padding-right:5%;padding-bottom:0px;padding-left:5%;font-size:15px;" align="center">
+            {#<a href="instagram.com" target="_blank" style="text-decoration:none !important;">#}
+                {#<img src="{{ instagram }}" alt="Instagram" width="23" style="height:auto;padding-left: 5px;">#}
+            {#</a>#}
+            {#<a href="linkedin.com" target="_blank" style="text-decoration:none !important;">#}
+                {#<img src="{{ linkedin }}" alt="Linkedin" width="23" style="height:auto;padding-left: 10px;">#}
+            {#</a>#}
+            {#<a href="youtube.com" target="_blank" style="text-decoration:none !important;">#}
+                {#<img src="{{ youtube }}" alt="Youtube" width="32" style="height:auto;padding-left: 10px;padding-right: 5px">#}
+            {#</a>#}
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#fff;padding-top:45px;padding-right:5%;padding-bottom: 15px;padding-left:5%;font-size:15px;" align="center">
+            <p style="margin-bottom: 5px">Un saludo,</p>
+            <p style="margin-top: 0">El equipo de desarrollo del Portal</p>
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#000000;padding-top: 20px;padding-right:0px;padding-bottom: 20px;padding-left:0px;" align="center">
+            <img src="{{ logo }}" alt="HorizonE Music" width="40%" style="max-width:700px;height:auto;">
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+{% endapply %}

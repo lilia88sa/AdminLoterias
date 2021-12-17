@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:hx="http://purl.org/NET/hinclude">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="include_mode" content="async" />
+        <meta name="viewport" content="width=device-width,	initial-scale=1,	shrink-to-fit= no">
+        <meta name="description" content="Administración de Loterías" />
+        <meta name="keywords" content="Loterías, Administración Loterías, Resultados, Botes, El Gordo Triana" />
+        <title>{% block title %}E Gordo Triana - Inicio{% endblock %}</title>
+        {% block stylesheets %}
+
+            <link rel="icon" href="{{ asset('templates_assets/favico.png') }}" type="image/png">
+                                                                                  <!-- Google Fonts -->
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+            <!-- Vendor CSS Files -->
+            <link href="{{ asset('templates_assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('templates_assets/vendor/icofont/icofont.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('templates_assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('templates_assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('templates_assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+            <link href="{{ asset('templates_assets/vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('templates_assets/vendor/venobox/venobox.css') }}" rel="stylesheet">
+            <link href="{{ asset('templates_assets/vendor/aos/aos.css') }}" rel="stylesheet">
+            <link href="{{ asset('templates_assets/js/sweetalert/dist/sweetalert.css') }}" rel="stylesheet">
+			
+            <!-- Template Main CSS File -->
+            <link href="{{ asset('templates_assets/css/style.css') }}" rel="stylesheet">
+            {#<link href="{{ asset('templates_assets/css/estilo.css') }}" rel="stylesheet">#}
+            <link href="{{ asset('templates_assets/css/estilo.css') }}" rel="stylesheet">
+			<!-- css datetime  -->
+			<link href="{{ asset('datetime_js_css/jquery-ui.css') }}" rel="stylesheet"> 
+		    <!--end css datetime  -->
+
+
+        {% endblock %}
+    </head>
+    <body>
+
+        {% block body %}
+
+        {% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('templates_assets/js/hinclude-1.2.0/hinclude.js') }}"></script>
+            <script src="{{ asset('datetime_js_css/jquery-1.8.3.min.js') }}"></script>
+           {#<script src="{{ asset('templates_assets/vendor/jquery/jquery.min.js') }}"></script>#}
+            <script src="{{ asset('templates_assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+            <script src="{{ asset('templates_assets/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
+            <script src="{{ asset('templates_assets/vendor/php-email-form/validate.js') }}"></script>
+            <script src="{{ asset('templates_assets/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
+            <script src="{{ asset('templates_assets/vendor/venobox/venobox.min.js') }}"></script>
+            <script src="{{ asset('templates_assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+            <script src="{{ asset('templates_assets/vendor/aos/aos.js') }}"></script>
+            <script src="{{ asset('templates_assets/js/sweetalert/dist/sweetalert.min.js') }}"></script>
+			
+			 <!-- js datetime  -->
+			 {#<script src="{{ asset('datetime_js_css/jquery-1.8.3.min.js') }}"></script>#}
+			 {#<script src="{{ asset('datetime_js_css/jquery-3.6.0.js') }}"></script>#}
+			 <script src="{{ asset('datetime_js_css/jquery-ui.js') }}"></script>
+			<!--end js datetime  -->
+
+
+            <!-- Template Main JS File -->
+            <script src="{{ asset('templates_assets/js/main.js') }}"></script>
+            {#<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>#}
+            {#<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v9.0&appId=296900310856625&autoLogAppEvents=1" nonce="BRT21sJ7"></script>#}
+
+        {% endblock %}
+    </body>
+</html>

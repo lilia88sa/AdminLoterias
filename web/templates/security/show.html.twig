@@ -1,0 +1,9 @@
+{% extends '@SonataAdmin/CRUD/base_show.html.twig' %}
+
+
+{% block show_groups %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('templates_assets/js/ckeditor_4.15.0_standard/contents.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('templates_assets/js/ckeditor_4.15.0_standard/widgetstyles.css') }}">
+
+{% endblock %}

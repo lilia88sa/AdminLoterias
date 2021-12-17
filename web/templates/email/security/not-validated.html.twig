@@ -1,0 +1,69 @@
+{% apply inline_css%}
+<html>
+<head>
+    <title></title>
+    <meta content="">
+    <style>
+        @font-face {
+            font-family: "futuraBQLightOblique";
+            src: url("../../../public/templates_assets/fonts/FuturaBQ-LightOblique.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "futuraBQRegular";
+            src: url("../../../public/templates_assets/fonts/FuturaBQ.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "futuraBQBold";
+            src: url("../../../public/templates_assets/fonts/FuturaBQ-Bold.ttf") format("truetype");
+        }
+        .body-background {
+            color: #fff;
+            font-family: "futuraBQRegular", sans-serif;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body class="body-background" style="font-family: futuraBQRegular,Helvetica,Arial,sans-serif;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#191919" style="background-color: #191919; max-width: 800px;" align="center">
+    <tbody>
+    <tr>
+        <td style="color:#000000;padding-top: 20px;padding-right:0px;padding-bottom: 20px;padding-left:0px;" align="center">
+            <img src="{{ logo }}" alt="Habana Mia" width="30%" style="max-width:700px;height:auto;">
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#000000;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px" align="center">
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#fff;padding-top:37px;padding-right:5%;padding-bottom:0px;padding-left:5%;font-size:15px;" align="center">
+            <p>
+                Hemos revisado tu perfil {{ name }} y necesitamos que accedas y complementes información.
+            </p>
+            <p>
+                {{ textMessage }}
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#fff;padding-top:37px;padding-right:5%;padding-bottom:0px;padding-left:5%;font-size:15px;" align="center">
+            <p>Si tienes cualquier pregunta no dudes en ponerte en contacto con nosotros respondiendo a: <a href="mailto:info@goblh.gob.cu">info@goblh.gob.cu</a>. Estaremos encantados de ayudarte.</p>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="color:#fff;padding-top:45px;padding-right:5%;padding-bottom: 15px;padding-left:5%;font-size:15px;" align="center">
+            <p style="margin-bottom: 5px">Un saludo,</p>
+            <p style="margin-top: 0">El equipo del Portal</p>
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#000000;padding-top: 20px;padding-right:0px;padding-bottom: 20px;padding-left:0px;" align="center">
+            <img src="{{ logo }}" alt="HorizonE Music" width="40%" style="max-width:700px;height:auto;">
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+{% endapply %}

@@ -1,0 +1,120 @@
+{% extends '@SonataAdmin/CRUD/edit.html.twig' %}
+
+{% block title %}
+    {# NEXT_MAJOR: remove default filter #}
+    {% if objectId|default(admin.id(object)) is not null %}
+        Aprobar {{  admin.toString(object)|u.truncate(15) }}
+    {% endif %}
+{% endblock %}
+
+{% block navbar_title %}
+    {% if objectId|default(admin.id(object)) is not null %}
+        Aprobar {{  admin.toString(object)|u.truncate(15) }}
+    {% endif %}
+{% endblock %}
+
+ {% block sonata_post_fieldsets %}
+    {{ parent() }}
+     {% if object.organizer is not null or object.agency is not null %}
+    <div class="row">
+     <div class="col-md-12">
+         <div class="box">
+             <div class="box-header">
+                 <h4 class="box-title">
+                     {% if object.organizer is not null %}
+                         Salas
+                     {% elseif object.agency is not null %}
+                         Artistas
+                     {% endif %}
+                 </h4>
+             </div>
+             <div class="box-body">
+                 <div class="sonata-ba-collapsed-fields">
+                     {% if object.organizer is not null %}
+                         {% for room in object.organizer.rooms %}
+                             <div class="row">
+                                 <div class="col-md-3">
+                                     {{ room.name }}
+                                 </div>
+                                 <div class="col-md-6">
+                                     {% if room.status == 'APPROVED' %}
+                                         <a class="btn btn-success"> Aprobado</a>
+                                     {% elseif room.status == 'PENDING_FOR_APPROVAL' %}
+                                         <a class="btn btn-warning"> Pendiente de Aprobación</a>
+                                     {% elseif  room.status == 'REJECTED' %}
+                                         <a class="btn btn-danger"> Rechazado</a>
+                                     {% endif %}
+                                 </div>
+                                 <div class="col-md-3">
+                                     <a href="{{ path('admin_security_user_room_aproval_show',{'_sonata_admin':'admin.security.useraproval.room','_sonata_name':'admin_security_user_room_aproval_show', 'id' : room.id}) }}"
+                                        class="btn btn-default"><i class="fa fa-eye" aria-hidden="true"></i> Ver</a>
+                                 </div>
+                             </div><br>
+                         {% endfor %}
+                     {% elseif object.agency is not null %}
+                         {% for artist in object.agency.artists %}
+                             <div class="row">
+                                 <div class="col-md-3">
+                                     {{ artist.name }}
+                                 </div>
+                                 <div class="col-md-6">
+                                     {% if artist.status == 'APPROVED' %}
+                                         <a class="btn btn-success"> Aprobado</a>
+                                     {% elseif artist.status == 'PENDING_FOR_APPROVAL' %}
+                                         <a class="btn btn-warning"> Pendiente de Aprobación</a>
+                                     {% elseif  artist.status == 'REJECTED' %}
+                                         <a class="btn btn-danger"> Rechazado</a>
+                                     {% endif %}
+                                 </div>
+                                 <div class="col-md-3">
+                                     <a href="{{ path('admin_security_user_artist_aproval_show',{'_sonata_admin':'admin.security.useraproval.artist','_sonata_name':'admin_security_user_artist_aproval_show', 'id' : artist.id}) }}"
+                                        class="btn btn-default"><i class="fa fa-eye" aria-hidden="true"></i> Ver</a>
+                                 </div>
+                             </div><br>
+                         {% endfor %}
+                     {% endif %}
+                 </div>
+             </div>
+         </div>
+     </div>
+    </div>
+     {% endif %}
+ {% endblock %}
+
+ {% block formactions %}
+    <div class="sonata-ba-form-actions well well-small form-actions">
+        {% block sonata_form_actions %}
+            {% if app.request.isxmlhttprequest %}
+                {# NEXT_MAJOR: remove default filter #}
+                {% if objectId|default(admin.id(object)) is not null %}
+                    <button type="submit" class="btn btn-success" name="btn_update"><i class="fa fa-save" aria-hidden="true"></i> {{ 'btn_update'|trans({}, 'SonataAdminBundle') }}</button>
+                    {% if admin.hasRoute('delete') and admin.hasAccess('delete', object) %}
+                        {{ 'delete_or'|trans({}, 'SonataAdminBundle') }}
+                        <a class="btn btn-danger" href="{{ admin.generateObjectUrl('delete', object) }}">
+                            <i class="fa fa-minus-circle" aria-hidden="true"></i> {{ 'link_delete'|trans({}, 'SonataAdminBundle') }}
+                        </a>
+                    {% endif %}
+                {% else %}
+                    <button type="submit" class="btn btn-success" name="btn_create"><i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'btn_create'|trans({}, 'SonataAdminBundle') }}</button>
+                {% endif %}
+            {% else %}
+                {% if admin.supportsPreviewMode %}
+                    <button class="btn btn-info persist-preview" name="btn_preview" type="submit">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                        {{ 'btn_preview'|trans({}, 'SonataAdminBundle') }}
+                    </button>
+                {% endif %}
+                {# NEXT_MAJOR: remove default filter #}
+                {% if objectId|default(admin.id(object)) is not null %}
+                    <a href="{{ admin.generateObjectUrl('userAproval', object) }}" class="btn btn-success" name="btn_update_and_edit"><i class="fa fa-save" aria-hidden="true"></i> Aprobar</a>
+                    <a href="{{ admin.generateObjectUrl('userRejected', object) }}" class="btn btn-danger" name="btn_update_and_edit"><i class="fa fa-remove" aria-hidden="true"></i> Rechazar</a>
+                    <a href="{{  path('admin_app_security_user_edit',{'_sonata_admin':'admin.security.user','_sonata_name':'admin_app_security_user_edit', 'id' : object.id}) }}" class="btn btn-default" name="btn_update_and_edit"><i class="fa fa-edit" aria-hidden="true"></i> Editar</a>
+                    {% if admin.hasRoute('list') and admin.hasAccess('list') %}
+                        <a href="{{ admin.generateUrl('list') }}" class="btn btn-success" name="btn_update_and_list"> <i class="fa fa-list" aria-hidden="true"></i> Volver al listado</a>
+                    {% endif %}
+
+                {% endif %}
+            {% endif %}
+        {% endblock %}
+    </div>
+ {% endblock formactions %}

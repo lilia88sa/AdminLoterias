@@ -1,0 +1,119 @@
+<link rel="stylesheet" href="{{ asset('templates_assets/css/jquery.fancybox.min.css') }}" />
+<script src="{{ asset('templates_assets/js/jquery.fancybox.min.js') }}"></script>
+{% if object.getPostFiles is defined %}
+{% if object.getPostFiles is not empty %}
+    <td>
+    {% for media in object.getPostFiles %}
+        {#<th>{% block name %}{{ media.description | upper}}{% endblock %}</th>#}
+
+            {% set route = object.id~'-'~object.getSlug() %}
+            <a data-fancybox="gallery"
+               href="{{ asset('upload/files/'~route~'/' ~ media.filename)    }}">
+                <img src="{{ asset('upload/files/'~route~'/'~ media.filename)    }}"
+                     style="width: 175px;
+         height: 175px;
+         -webkit-border-radius: 100%;
+         -moz-border-radius: 100%;
+         border-radius: 100%;
+         padding:0px;"
+                     title="{{ media.description }}">
+            </a>
+            {#{% block field %}{{ media.description|nl2br }}{% endblock %}#}
+
+    {% endfor %}
+    </td>
+{% endif %}
+    {% elseif object.getEntitiesFiles is defined %}
+        {% if object.getEntitiesFiles is not empty %}
+            <td>
+                {% for media in object.getEntitiesFiles %}
+                    {#<th>{% block name %}{{ media.description | upper}}{% endblock %}</th>#}
+
+                    {% set route = object.id %}
+                    <a data-fancybox="gallery"
+                       href="{{ asset('upload/files/'~route~'/' ~ media.filename)    }}">
+                        <img src="{{ asset('upload/files/'~route~'/'~ media.filename)    }}"
+                             style="width: 175px;
+         height: 175px;
+         -webkit-border-radius: 100%;
+         -moz-border-radius: 100%;
+         border-radius: 100%;
+         padding:0px;"
+                             title="{{ media.description }}">
+                    </a>
+                    {#{% block field %}{{ media.description|nl2br }}{% endblock %}#}
+
+                {% endfor %}
+            </td>
+        {% endif %}
+    {% elseif object.keyWordsFiles is defined %}
+        {% if object.keyWordsFiles is not empty %}
+            <td>
+                {% for media in object.keyWordsFiles %}
+                    {#<th>{% block name %}{{ media.description | upper}}{% endblock %}</th>#}
+
+                    {% set route = object.id~'-'~object.getSlug() %}
+                    <a data-fancybox="gallery"
+                       href="{{ asset('upload/files/'~route~'/' ~ media.filename)    }}">
+                        <img src="{{ asset('upload/files/'~route~'/'~ media.filename)    }}"
+                             style="width: 175px;
+         height: 175px;
+         -webkit-border-radius: 100%;
+         -moz-border-radius: 100%;
+         border-radius: 100%;
+         padding:0px;"
+                             title="{{ media.description }}">
+                    </a>
+                    {#{% block field %}{{ media.description|nl2br }}{% endblock %}#}
+
+                {% endfor %}
+            </td>
+        {% endif %}
+    {% elseif object.getSectionFiles is defined %}
+        {% if object.getSectionFiles is not empty %}
+            <td>
+                {% for media in object.getSectionFiles %}
+                    {#<th>{% block name %}{{ media.description | upper}}{% endblock %}</th>#}
+
+                    {% set route = object.id~'-'~object.getSlug() %}
+                    <a data-fancybox="gallery"
+                       href="{{ asset('upload/files/'~route~'/' ~ media.filename)    }}">
+                        <img src="{{ asset('upload/files/'~route~'/'~ media.filename)    }}"
+                             style="width: 175px;
+         height: 175px;
+         -webkit-border-radius: 100%;
+         -moz-border-radius: 100%;
+         border-radius: 100%;
+         padding:0px;"
+                             title="{{ media.description }}">
+                    </a>
+                    {#{% block field %}{{ media.description|nl2br }}{% endblock %}#}
+
+                {% endfor %}
+            </td>
+        {% endif %}
+    {% elseif object.getImageFiles is defined %}
+        {% if object.getImageFiles is not empty %}
+            <td>
+                {% for media in object.getImageFiles %}
+                    {#<th>{% block name %}{{ media.description | upper}}{% endblock %}</th>#}
+
+                    {% set route = object.id~'-'~object.getSlug() %}
+                    <a data-fancybox="gallery"
+                       href="{{ asset('upload/files/'~route~'/' ~ media.filename)    }}">
+                        <img src="{{ asset('upload/files/'~route~'/'~ media.filename)    }}"
+                             style="width: 175px;
+         height: 175px;
+         -webkit-border-radius: 100%;
+         -moz-border-radius: 100%;
+         border-radius: 100%;
+         padding:0px;"
+                             title="{{ media.description }}">
+                    </a>
+                    {#{% block field %}{{ media.description|nl2br }}{% endblock %}#}
+
+                {% endfor %}
+            </td>
+        {% endif %}
+
+{% endif %}

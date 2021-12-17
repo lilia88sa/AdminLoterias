@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello JuegoCRUDController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'D:/xampp7.4/htdocs/loteria/web/src/Controller/JuegoCRUDController.php'|file_link(0) }}">src/Controller/JuegoCRUDController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'D:/xampp7.4/htdocs/loteria/web/templates/juego_crud/index.html.twig'|file_link(0) }}">templates/juego_crud/index.html.twig</a></code></li>
+        {#<li>{{ quin }}</li>#}
+    </ul>
+    {% for a in result %}
+    <ul>
+        <li>{{ a.juego.id}}</li>
+        <li>{{ a.juego.name}}</li>
+        <li>{{ a.fecha|date }}</li>
+        <li>{{ a.combinaciones }}</li>
+        <li>{{ a.categoria }}</li>
+        <li>{{ a.premio }}</li>
+    </ul>
+    {% endfor %}
+    {#{% for a in gordo %}#}
+    {#{% for aa in a %}#}
+    {#<ul>#}
+        {#<li>{{ a|length}}#}
+            {#{% for aa in a %}#}
+            {#<ul>#}
+                {#<li>{{ aa|length}}</li>#}
+                {#<li>{{ a.clave }}</li>#}
+                {#<li>{{ a.premio }}</li>#}
+            {#</ul>#}
+            {#{% endfor %}#}
+        {#</li>#}
+
+        {#<li>{{ a.clave }}</li>#}
+        {#<li>{{ a.premio }}</li>#}
+    {#</ul>#}
+    {#{% endfor %}#}
+    {#{% endfor %}#}
+</div>
+{% endblock %}

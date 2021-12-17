@@ -1,0 +1,116 @@
+{# templates/security/login.html.twig #}
+
+{% extends '@SonataAdmin/standard_layout.html.twig' %}
+
+{% block sonata_nav %}
+{% endblock sonata_nav %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="{{ asset('templates_assets/favicon.ico') }}">
+    <style>
+        .login-page, .register-page {
+            background: #6abade;
+        }
+    </style>
+{% endblock %}
+
+{% block logo %}
+    {% apply spaceless %}
+    <a class="logo" href="#"> {# ruta a frontend #}
+        <img align="middle" src="{{ asset('templates_assets/img/habana_mia_logo.png') }}" alt="Logo" height="100" width="400"/>
+        <span>Inicio</span>
+    </a>
+    {% endapply %}
+{% endblock logo %}
+
+{% block sonata_left_side %}
+{% endblock sonata_left_side %}
+
+{% block body_attributes %}class="sonata-bc login-page"{% endblock %}
+
+{% block sonata_wrapper %}
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="{{ path('sonata_admin_dashboard') }}">
+                {% if action_type == 'register' %}
+                <span>Registro</span>
+                {% elseif action_type == 'recover_password_email' %}
+                    <span>Recuperar contraseña</span>
+                {% elseif action_type == 'recover_password_password' %}
+                    <span>Nueva contraseña</span>
+                {% endif %}
+            </a>
+        </div>
+        <div class="login-box-body">
+            {% block sonata_user_login_form %}
+                {% for label, flashes in app.session.flashbag.all %}
+                    {% for flash in flashes %}
+                        <div class="alert alert-{{ label }}">
+                            {{ flash }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                <p class="login-box-msg">
+                    {% if action_type == 'register' %}
+                        {{ 'Registro'|trans }}
+                    {% elseif action_type == 'recover_password_email' %}
+                        {{ 'Recuperar contraseña'|trans }}
+                    {% elseif action_type == 'recover_password_password' %}
+                        {{ 'Nueva contraseña'|trans }}
+                    {% endif %}
+
+                </p>
+            {{ form_start(form) }}
+                {#<form action="{{ path("admin_registro") }}" method="post" role="form">#}
+                    {{ form_row(form._token) }}
+                {% if action_type == 'register' %}
+                    <div class="form-group has-feedback">
+                        {{ form_widget(form.name) }}
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        {{ form_widget(form.username) }}
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        {{ form_widget(form.email) }}
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        {{ form_widget(form.password) }}
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                {% elseif action_type == 'recover_password_email' %}
+                    <div class="form-group has-feedback">
+                        {{ form_widget(form.email) }}
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+                {% elseif action_type == 'recover_password_password' %}
+                    <div class="form-group has-feedback">
+                        {{ form_widget(form.password) }}
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        <input hidden="hidden" name="id" id="id" value="{{ user_id }}">
+                    </div>
+                {% endif %}
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">
+                                {% if action_type == 'register' %}
+                                    Registrar
+                                {% elseif action_type == 'recover_password_email' %}
+                                    Recuperar
+                                {% elseif action_type == 'recover_password_password' %}
+                                    Cambiar
+                                {% endif %}
+                            </button>
+                        </div>
+                        <div class="col-xs-4">
+                            <a  href="{{ path('admin_login') }}" class="btn btn-primary  btn-flat">Volver</a>
+                        </div>
+                    </div>
+                {{ form_end(form) }}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock sonata_wrapper %}

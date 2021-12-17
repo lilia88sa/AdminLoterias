@@ -1,0 +1,97 @@
+{% apply inline_css%}
+<html>
+  <head>
+    <title></title>
+    <meta content="">
+    <style>
+      @font-face {
+        font-family: "futuraBQLightOblique";
+        src: url("../../../public/templates_assets/fonts/FuturaBQ-LightOblique.ttf") format("truetype");
+      }
+      @font-face {
+        font-family: "futuraBQRegular";
+        src: url("../../../public/templates_assets/fonts/FuturaBQ.ttf") format("truetype");
+      }
+      @font-face {
+        font-family: "futuraBQBold";
+        src: url("../../../public/templates_assets/fonts/FuturaBQ-Bold.ttf") format("truetype");
+      }
+      .body-background {
+        background: #1b1b63;
+        color: #fff;
+        font-family: "futuraBQRegular", sans-serif;
+        font-size: 18px;
+      }
+      .container {
+        padding: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1800px;
+        text-align: center;
+      }
+      .image-head img {
+          max-width: 200px;
+      }
+      .space {
+          height: 5%;
+      }
+      .img-welcome img {
+         max-width: 700px;
+      }
+      .text-thanks {
+          text-align: center;
+          padding: 0 25%;
+      }
+      .text-thanks span {
+          font-size: 17px;
+          color: #507bf4;
+      }
+      .button-confirm {
+          cursor: pointer;
+          font-family: "futuraBQBold", sans-serif;
+      }
+      .input-token {
+          background: transparent;
+          color: #507bf4;
+          border: 1px solid #fff;
+          border-radius: 0;
+          width: 50%;
+          padding: 10px;
+          font-size: 15px;
+      }
+      .image-footer img {
+          max-width: 280px;
+      }
+    </style>
+  </head>
+  <body class="body-background" style="background-color: #191919;">
+     <div class="container">
+           <div class="image-head">
+               <img src="{{ logo }}" alt="logo"/>
+           </div>
+           <div class="space"></div>
+           <div class="img-welcome">
+              <img src="{{ image }}" alt="logo"/>
+           </div>
+           <div class="space"></div>
+           <div class="text-thanks">
+              <p>Sobre Solicitud de Entidad</p>
+           </div>
+           <div class="text-thanks">
+               <p>{{ description }}</p>
+           </div>
+           <div class="space"></div>
+           <div class="text-thanks">
+               <p>Si tienes cualquier pregunta no dudes en ponerte en contacto con nosotros respondiendo a info@goblh.gob.cu. Estaremos encantados de ayudarte</p>
+           </div>
+           <div class="space"></div>
+           <div class="text-thanks">
+              <p>Un saludo<br>El equipo de desarrollo</p>
+           </div>
+         <div class="image-footer">
+           <img src="{{ logo }}" alt="logo"/>
+         </div>
+     </div>
+  </body>
+</html>
+{% endapply %}
