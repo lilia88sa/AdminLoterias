@@ -1,0 +1,586 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!-- ======= Top Bar ======= -->
+
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center">
+
+            {#<h1 class="logo mr-auto"><a href="#header" class="scrollto">Lotería</a></h1>#}
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <a id="logo2" href="{{ path('homepage') }}#header" class="mr-auto scrollto logo-hidden"><img
+                        src="{{ asset('templates_assets/img/logob.png') }}" alt="" class="img-fluid"></a>
+
+            <nav id="nav" class="nav-menu d-none d-lg-block">
+                <ul>
+                    <li class="active"><a href="#header">Inicio</a></li>
+                    <li><a href="#cta">Nosotros</a></li>
+                    <li><a href="#faq">Resultados</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#contact">Contactos</a></li>
+
+                </ul>
+            </nav><!-- .nav-menu -->
+
+        </div>
+    </header><!-- End Header -->
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex justify-cntent-center align-items-center">
+        <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
+
+            {#<!-- Slide 1 -->#}
+            {#<div class="carousel-item active">#}
+            {#<div class="carousel-container">#}
+            {#<h2 class="animate__animated animate__fadeInDown">Administración de <span>Loterías</span></h2>#}
+            {#<p class="animate__animated animate__fadeInUp"> Administración de loterías</p>#}
+            {#<a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>#}
+            {#</div>#}
+            {#</div>#}
+
+            {#<!-- Slide 2 -->#}
+            {#<div class="carousel-item">#}
+            {#<div class="carousel-container">#}
+            {#<h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>#}
+            {#<p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>#}
+            {#<a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>#}
+            {#</div>#}
+            {#</div>#}
+
+            {#<!-- Slide 3 -->#}
+            {#<div class="carousel-item">#}
+            {#<div class="carousel-container">#}
+            {#<h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>#}
+            {#<p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>#}
+            {#<a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>#}
+            {#</div>#}
+            {#</div>#}
+
+            {#<a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">#}
+            {#<span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>#}
+            {#<span class="sr-only">Previous</span>#}
+            {#</a>#}
+
+            {#<a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">#}
+            {#<span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>#}
+            {#<span class="sr-only">Next</span>#}
+            {#</a>#}
+
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main">
+
+        <!-- ======= Icon Boxes Section ======= -->
+        <section id="services" class="services">
+            <div class="container" data-aos="fade-up">
+
+                {% set p='templates_assets/img/logos/' %}
+
+                <div class="row">
+                    {#{% for ele in arr_juegos %}#}
+                    {% for ele in juegos %}
+                        {#{{ dump(ele)}}#}
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="50">
+                            <a href="{{ ele.getUrlJuego }}" target="_blank">
+                                <div class="icon-box text-center">
+
+                                    <i class="pr-1"> <img src="{{ asset(p~ele.getJuegoFile().first().filename) }}"
+                                                          width="70px"/></i>
+                                    <p class="mb-2">{{ ele.getName }}</p>
+
+                                    <div class="pricing">{% if  ele.getBote!=null %}<h2><sup>€</sup>{{ ele.getBote }}
+                                            <span class="fecha"> {{ ele.getFechaBote!=null?(ele.getFechaBote| date('d/m/y')):'' }}</span>
+                                            </h2>{% else %}<h2 class="text-white">mdfsdf <span class="fecha text-white">26/7/90 </span>
+                                        </h2>{% endif %}
+                                    </div>
+                                    <a class="text-center btn btn-outline-success" href="{{ ele.getUrlJuego }}"
+                                       target="_blank"> Jugar</a>
+                                </div>
+                            </a>
+                        </div>
+
+
+                        {#<div class="col-md-4 col-lg-4  align-items-stretch mb-5 mb-lg-0 mt-3 text-center" data-aos="fade-up">#}
+
+                        {#<div class="icon-box">#}
+                        {#<div class="icon"><img src="{{ asset(logos[ele.id]) }}" width="40px"/></div>#}
+                        {#<h4 class="title"><a href="{{ path('juego_detalles', {'id':ele.id, 'slug':ele.slug}) }}">{{ ele.getName }}</a></h4>#}
+
+
+                        {#{% if 'millones' in ele.getBote %}#}
+                        {#{% set arr= (ele.getBote|split(' ')) %}#}
+                        {#<div class="pricing"><h4><sup>€</sup>{{ arr[0] }}</h4><h7 class="pricing">{{ arr[1] }}</h7></div>#}
+                        {#{% else %}#}
+                        {#<div class="pricing"><h4>{% if  ele.getBote!=null %}<sup>€</sup>{{ ele.getBote }}</h4>{% endif  %}</div>#}
+                        {#{% endif %}#}
+                        {#<p class="description">{{ ele.getFechaBote!=null?(ele.getFechaBote| date('d/m/Y')):'' }}</p>#}
+                        {#</div>#}
+                        {#</div>#}
+                    {% endfor %}
+
+                </div>
+
+            </div>
+        </section><!-- End Icon Boxes Section -->
+
+
+        {#</section><!-- End Clients Section -->#}
+        <!-- ======= Cta Section ======= -->
+        <section id="cta" class="cta">
+            <div class="container">
+
+                <div class="row" data-aos="zoom-in">
+
+                    <div class="col-lg-6">
+                        <h3>Sobre nosotros</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore
+                            magna aliqua.
+                        </p>
+                        <ul class="text-white">
+                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat
+                            </li>
+                            <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate
+                                velit
+                            </li>
+                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 pt-6 pt-lg-0">
+                        <p>
+                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                            reprehenderit in voluptate
+                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in
+                            culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <a href="#" class="btn-learn-more">Learn More</a>
+                    </div>
+
+                    {#<div class="col-lg-9 text-center text-lg-left">#}
+                    {#<h3>Sobre Nosotros</h3>#}
+                    {#<p> {{ client.getAboutUs }} </p>#}
+                    {#</div>#}
+                    {#<div class="col-lg-3 cta-btn-container text-center">#}
+                    {#<a class="cta-btn align-middle" href="#">Call To Action</a>#}
+                    {#</div>#}
+                </div>
+
+            </div>
+        </section><!-- End Cta Section -->
+
+
+        <!-- ======= Frequently Asked Questions Section ======= -->
+        <section id="faq" class="faq section-bg">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Últimos resultados</h2>
+                </div>
+                <div class="faq-list">
+                    {% set p='templates_assets/img/logos/' %}
+                    <ul>
+                        {% set c=0 %}
+                        {% for a in results %}
+                            {% set c=c+1 %}
+
+                            <li data-aos="fade-up" data-aos="fade-up" data-aos-delay="{{ 100*c }}">
+                                <div class="row p-0">
+                                    <div class="col-md-2 p-0  text-center">
+                                        <span class="tituloresult">{{ a.juego.name }}</span><br>
+                                        <i><img src="{{ asset(p~a.getJuego().getJuegoFile().first().filename) }}"
+                                                width='40px'/></i>
+
+                                    </div>
+                                    <div class="col-md-1 text-center">
+                                        {% if a.juego.name in ['La Quiniela','El Quinigol'] %}
+                                            <span class="textoverde">{{ a.fecha|date_modify("-1 day")| date('d/m/y') }}</span>
+                                        {% else %}
+                                            <span class="textoverde">{{ a.fecha | date('d/m/y') }}</span>
+                                        {% endif %}
+                                    </div>
+
+                                    {% if  a.combinaciones is not null and a.juego.name not in ['Lotería Nacional','La Quiniela','El Quinigol'] %}
+                                        <div class="col-md-3 text-center">
+                                            <span class="textoverde">{{ 'Combinaciones' }}</span><br>
+                                            <span class="combinaciones">{{ a.combinaciones | replace({',':' '}) }}</span>
+                                        </div>
+                                    {% endif %}
+                                    {% if  a.combinaciones is not null and a.juego.name=='El Quinigol' %}
+                                        <div class="col-md-6 text-center">
+                                            <span class="textoverde"> {{ 'Combinaciones' }}</span><br>
+                                            <span class="combinaciones mr-1">{{ a.combinaciones | replace({',':' '}) }}</span>
+                                        </div>
+                                    {% endif %}
+
+
+                                    {% if  a.combinaciones is not null and a.juego.name=='Lotería Nacional' %}
+
+                                        {% set num_pre=['1er','2do','3er'] %}
+                                        {% set i=-1 %}
+                                        {% for b in (a.combinaciones | split(',')) %}
+                                            {% set i=i+1 %}
+                                            <div class="col-md-1 text-center">
+                                                <span class="textoverde">{{ num_pre[i] }}</span><br>
+                                                <span class="combinaciones">{{ b }}</span>
+                                            </div>
+                                        {% endfor %}
+
+                                    {% endif %}
+
+                                    {% if  a.combinaciones is not null and a.juego.name=='La Quiniela' %}
+                                        <div class="col-md-6 text-center">
+                                            <span class="textoverde">{{ 'Combinaciones' }}</span><br>
+                                            {% set s = a.combinaciones | split(',') %}
+                                            <span class="combinaciones mr-1">{{ (s|slice(0,(s|length)-1))|join(' ') }}</span>
+
+                                            <span class="ml-3 combinaciones">
+                                {{ s[(s|length)-1] }}
+                                      </span>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if  a.estrellas is not null %}
+                                        <div class="col-md-2 text-center">
+                                            <span class="textoverde">{{ 'Estrellas' }}</span><br>
+                                            {% set star=a.estrellas | split(',') %}
+                                            <span class="estrella">{{ star[0] }}</span>
+                                            <span class="estrella">{{ star[1] }}</span>
+
+                                        </div>
+                                    {% endif %}
+
+
+                                    {% if  a.reintegros is not null %}
+                                        <div class="col-md-1 text-center">
+                                            <span class="textoverde">{{ (',' in a.reintegros )?'Reintegros':'Reintegro' }}</span><br>
+                                            <span class="combinaciones">{{ a.reintegros | replace({',':' '}) }}</span>
+                                        </div>
+                                    {% endif %}
+
+
+                                    {% if  a.complementos is not null %}
+                                        <div class="col-md-1 text-center">
+                                            <span class="textoverde">{{ 'Complemento' }}</span><br>
+                                            <span class="text-white">444</span>
+                                            <span class="combinaciones">{{ a.complementos | replace({',':' '}) }}</span>
+                                        </div>
+                                    {% endif %}
+
+
+                                    {% if  a.clave is not null %}
+                                        <div class="col-md-1 text-center">
+                                            <span class="textoverde">{{ 'No.Clave' }}</span><br>
+                                            <span class="combinaciones">{{ a.clave | replace({',':' '}) }}</span>
+                                        </div>
+                                    {% endif %}
+
+
+                                    {% if  a.getFraccionSerie is not null %}
+                                        <div class="col-md-1 text-center">
+                                            {#{{ 'fraccion_serie :' }}#}
+                                            {#{{ a.getFraccionSerie | replace({',':' '}) }}#}
+                                            {% set fs=a.getFraccionSerie | split(',') %}
+                                            <span class="textoverde">{{ 'F y S' }}</span><br>
+                                            <span class="combinaciones">{{ fs[0] }},
+                                                {{ fs[1] }}</span>
+                                        </div>
+                                    {% endif %}
+
+
+
+                                    {% if a.getMillonJoker is not null %}
+                                        <div class="col-md-2 text-center">
+                                            <span class="textoverde">{{ (a.juego.name=='Euromillones'?'El millón':'Joker') }}</span><br>
+                                            <span class="combinaciones">{{ a.juego.name=='Euromillones'?a.getMillonJoker:(a.getMillonJoker|slice(2,7)) }}</span>
+                                        </div>
+                                    {% endif %}
+
+
+                                    {% if a.bote is not null %}
+                                        <div class="col-auto">
+                                        {{ 'bote :'~a.bote }}
+                                        </div>
+                                    {% endif %}
+                                    {% if a.caballo is not null %}
+                                        <div class="col-md-1 text-center"><span class="textoverde">{{ 'Caballo' }}</span><br>
+                                        <span class="combinaciones"> {{ a.caballo }}</span>
+                                        </div>{% endif %}
+
+                                    <div class="col">
+                                        <table class="float-right">
+                                            <tr>
+                                                <td>
+                                                    <a class="btn btn-sm-outline-primary boton  text-center" href="{{ path('juego_detalles', {'id':a.juego.id, 'slug':a.juego.slug}) }}">Premios</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a data-toggle="collapse" class="collapse text-center btn btn-sm-outline-success boton" href="#faq-list-{{ c }}">Premios
+                                                        <i class="fa fa-angle-down"></i>
+                                                        {# <i class="bx bx-chevron-down icon-show"></i> <i#}
+                                                        {#class="bx bx-chevron-up icon-close"></i>  #}
+                                                    </a>
+                                                </td>
+
+                                            </tr>
+
+                                        </table>
+
+
+
+
+                                    </div>
+                                </div>
+
+
+                                    <div id="faq-list-{{ c }}" class="collapse" data-parent=".faq-list">
+
+                                        <div class="row mt-4">
+                                            <div class="col-md-12">
+                                                {% if  a.getCategoria is not null and a.getPremio is not null %}
+                                                {% set cat=(a.getCategoria | split(',')) %}
+                                                {% set prem=(a.getPremio | split(';')) %}
+                                                <table class="table table-bordered">
+
+                                                    <tr class="text-center textoverde">
+                                                        <td>Categorias</td>
+                                                        <td>Premios</td>
+                                                    </tr>
+                                                    {% for i in 0..((cat|length)-1) %}
+                                                   <tr class="text-center">
+
+                                                       <td class="combinaciones">
+                                                        {{ cat[i] }}
+                                                       </td>
+                                                       <td class="combinaciones">
+                                                          {{ prem[i] }} €
+                                                       </td>
+
+                                                   </tr>
+
+                                                    {% endfor %}
+
+                                                </table>
+                                                {% endif %}
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                {% if  a.getCategoriaJoker is not null and a.getPremioJoker is not null %}
+                                                    {% set cat=(a.getCategoriaJoker | split(',')) %}
+                                                    {% set prem=(a.getPremioJoker | split(';')) %}
+                                                    <table class="table table-bordered">
+
+                                                        <tr class="text-center textoverde">
+                                                            <td>Categorias Joker</td>
+                                                            <td>Premios Joker</td>
+                                                        </tr>
+                                                        {% for i in 0..((cat|length)-1) %}
+                                                            <tr class="text-center">
+
+                                                                <td class="combinaciones">
+                                                                    {{ cat[i]| replace ({ '&uacute;':'ú'}) }}
+                                                                </td>
+                                                                <td class="combinaciones">
+                                                                    {{ prem[i] }} €
+                                                                </td>
+
+                                                            </tr>
+
+                                                        {% endfor %}
+
+                                                    </table>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                            </li>
+                        {% endfor %}
+
+
+
+                    </ul>
+
+                </div>
+
+
+            </div>
+        </section><!-- End Frequently Asked Questions Section -->
+
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Contáctenos</h2>
+                </div>
+
+                <div class="row mt-1 d-flex justify-content-end" data-aos="fade-right" data-aos-delay="100">
+
+                    <div class="col-lg-3">
+                        <div class="info">
+                            <div class="address">
+                                <i class="icofont-google-map"></i>
+                                <h4>Ubicación:</h4>
+                                <p>Estrada de Bueu, 110, 36946 Aldán (Pontevedra)</p>
+                            </div>
+
+                            <div class="email">
+                                <i class="icofont-envelope"></i>
+                                <h4>Email:</h4>
+                                <p>rozabaleslibreria@gmail.com</p>
+                            </div>
+
+                            <div class="phone">
+                                <i class="icofont-phone"></i>
+                                <h4>Teléfonos:</h4>
+                                <p>986 328 181</p>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-5 mt-3">
+                        {{ form_start(form) }}
+                        {#<form action="forms/contact.php" method="post" role="form" class="php-email-form">#}
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                {{ form_widget(form.name) }}
+                            </div>
+                            <div class="col-md-6 form-group">
+                                {{ form_widget(form.email) }}<br>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {#<textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>#}
+                            {#<div class="validate"></div>#}
+                            {{ form_widget(form.description) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_widget(form.captcha) }}
+                            {{ form_errors(form.captcha) }}
+                            {#<div class="loading">Loading</div>#}
+                            {#<div class="error-message"></div>#}
+                            {#<div class="sent-message">Your message has been sent. Thank you!</div>#}
+                        </div>
+                        <div class="text-center  php-email-form">
+                            <button type="submit">Enviar</button>
+                        </div>
+                        {#</form>#}
+                        {{ form_end(form) }}
+                    </div>
+                    <div class="col-lg-4 mt-3">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d188845.8329312044!2d-8.759631!3d42.305922!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2f6114d2e856a1%3A0xe2a06003f5735b36!2sR%C3%BAa%20Estrada%20de%20Bueu%2C%20110%2C%2036945%20Ald%C3%A1n%2C%20Pontevedra%2C%20Spain!5e0!3m2!1sen!2sus!4v1629500573416!5m2!1sen!2sus"
+                                width="100%" height="90%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+
+            </div>
+
+            </div>
+        </section><!-- End Contact Section -->
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+
+                        <ul>
+                            {% for i in 0..4 %}
+                                <li><i><img src="{{ asset(p~juegos[i].getJuegoFile().first().filename) }}"
+                                            width='40px'/></i><h4> <a href="{{ path('juego_detalles', {'id':juegos[i].id, 'slug':juegos[i].slug}) }}">{{ juegos[i].name }}</a></h4></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+
+                        <ul>
+                            {% for i in 5..8 %}
+                                <li><i><img src="{{ asset(p~juegos[i].getJuegoFile().first().filename) }}"
+                                            width='40px'/></i> <h4><a href="{{ path('juego_detalles', {'id':juegos[i].id, 'slug':juegos[i].slug}) }}">{{ juegos[i].name }}</a></h4></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h4>Contactos</h4>
+
+                        <div class="address">
+                            {#<i class="icofont-google-map"></i>#}
+                            {#<h4>Ubicación:</h4>#}
+                            <p>Estrada de Bueu, 110, 36946 Aldán (Pontevedra)</p>
+                        </div>
+                        <div class="email">
+                            {##}
+                            {#<h4>Email:</h4>#}
+                            <p><i class="icofont-envelope"></i> rozabaleslibreria@gmail.com</p>
+                        </div>
+
+                        <div class="phone">
+                            {##}
+                            {#<h4>Teléfonos:</h4>#}
+                            <p><i class="icofont-phone"></i> 986 328 181</p>
+                        </div>
+
+
+                        <img  src="{{ asset('templates_assets/img/club.png') }}">
+
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-info">
+                        <h4>Sobre Nosotros</h4>
+                        <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita
+                            valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+                        <div class="social-links mt-3">
+                            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Rozabales</span></strong>. Todos los Derechos Reservados
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/anyar-free-multipurpose-one-page-bootstrap-theme/ -->
+                {#Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>#}
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+    <div id="preloader"></div>
+
+{% endblock %}
+

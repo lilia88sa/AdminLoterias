@@ -1,0 +1,64 @@
+
+            {% for c in categorias %}
+            <div class="col-12 col-md-6 col-lg-3 py-4 py-md-5 px-5 px-md-3">
+                <p class="prefooter__head mayuscula">   {{ app.request.locale == "es"?c.title:c.titleEs }} </p>
+                <div class="d-none d-md-block munscroll">
+                    <ul class="ml-0 pl-0">
+                    {% for p in c.getPost %}
+                        {% if p.publish == 1 %}
+
+                        <li><a href="{{ p.sumary }}" target="_blank"> {{ p.title }} </a></li>
+
+                        {% endif %}
+                  {% endfor %}
+                    </ul>
+                </div>
+
+                <select class="d-md-none form-control">
+                    {% for p in c.getPost  %}
+                        {% if p.publish == 1 %}
+                    <option>{{ p.title }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+
+            </div>
+            {% endfor %}
+
+            {% macro hora(f) %}
+                {{ f | date("g:i a") }}
+            {% endmacro %}
+
+            {% macro fecha(f) %}
+                {% set ff=  f | date ('r') %}
+
+
+                {% set n_d_m= {' 01 ':' 1 ',' 02 ':' 2 ',' 03 ':' 3 ',' 04 ':' 4 ',' 05 ':' 5 ',' 06 ':' 6 ',' 07 ':' 7 ',' 08 ':' 8 ',' 09 ':' 9 ','Mon,':'Lunes,','Tue,':'Martes,','Wed,':'Miercoles,','Thu,':'Jueves,','Fri,':'Viernes,','Sat,':'Sábado,','Sun,':'Domingo,','Jan':'de Enero del','Feb':'de Febrero del','Mar':'de Marzo del','Apr':'de Abril del','May':'de Mayo del','Jun':'de Junio del','Jul':'de Julio del','Aug':'de Agosto del','Sep':'de Septiembre del','Oct':'de Octubre del','Nov':'de Noviembre del','Dec':'de Diciembre del'}%}
+                {% set n= {' 01 ':' 1 ',' 02 ':' 2 ',' 03 ':' 3 ',' 04 ':' 4 ',' 05 ':' 5 ',' 06 ':' 6 ',' 07 ':' 7 ',' 08 ':' 8 ',' 09 ':' 9 '}%}
+                {% if  app.request.locale == "es" %}
+                    {% set ff=  ff | replace (n_d_m) %}
+                    {% set arr=  ff | split (' ') %}
+                    {% set ff=  [arr[0],arr[1],arr[2],arr[3],arr[4],arr[5]]|join(' ') %}
+                {% else   %}
+                    {% set ff=  ff | replace (n) %}
+                    {% set arr=  ff | split (' ') %}
+                    {% set ff=  [arr[0],arr[1],arr[2],arr[3]]|join(' ') %}
+                {% endif   %}
+
+
+
+
+                {{ ff }}
+
+             {% endmacro %}
+            <div class="col-12 col-md-6 col-lg-3 estadistica py-4 py-md-5 px-5 px-md-3">
+                <p class="prefooter__head">{{ app.request.locale == "es"?  'ESTADISTICAS':  'STATISTICS' }} </p>
+                <p><strong>{{ app.request.locale == "es"?  'Total visitas: ':  'Visits totals' }}</strong></p>
+                <p class="text-center h5">{{ total }}</p>
+                <hr>
+                <p><strong>{{ app.request.locale == "es"?  'Actualización más reciente: ':  'Latest update' }}</strong></p>
+                <p></p>
+                {#<p class="text-center h5"> {{ actualizacion.updatedAt | date ('r') }}<br> {{ actualizacion.updatedAt | date("g:i a") }}</p>#}
+                <p class="text-center"> {{ _self.fecha(actualizacion.updatedAt) }}<br> {{ _self.hora(actualizacion.updatedAt) }}</p>
+                {#<p class="text-center h5"> {{ actualizacion.updatedAt |   localizedate('long','none',app.request.locale == "es"?'es':'en') }}<br> {{ actualizacion.updatedAt | date("g:i a") }}</p>#}
+            </div>

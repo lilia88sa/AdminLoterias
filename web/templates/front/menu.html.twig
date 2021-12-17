@@ -1,0 +1,207 @@
+<header>
+    <nav class="navbar navbar--nopaddingY navbar-expand-lg fixed-top">
+        <div class="container containerHead">
+
+            <a class="navbar-brand containerHead__brand" href="{{ path('homepage') }}">
+                <img class="containerHead__logo" src="{{ asset('templates_assets/frontend/img/habana1.svg') }}" alt="La Habana, real y maravillosa">
+                <img class="containerHead__logo logo-azul containerHead__logo--fade" src="{{ asset('templates_assets/frontend/img/habana2.svg') }}" alt="La Habana, real y maravillosa"></a>
+            <button class="navbar-toggler containerHead__navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars containerHead__menu"></i>
+            </button>
+
+            {#<a class="navbar-brand containerHead__brand" href="{{ path('homepage') }}"><img class="containerHead__logo" src="{{ asset('templates_assets/frontend/img/habana.svg') }}" alt="La Habana, real y maravillosa"></a>
+            <button class="navbar-toggler containerHead__navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars containerHead__menu"></i>
+            </button>#}
+
+            <div class="collapse navbar-collapse containerHead__menuPrincipal text-center text-lg-left" id="navbarSupportedContent">
+                <div class="d-lg-none input-group my-4">
+                    <input type="text" class="form-control rounded-0" placeholder="Buscar" aria-label="Buscar" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary rounded-0" type="button">{{ app.request.locale == "es"?'Buscar':'Search' }}</button>
+                    </div>
+                </div>
+                <ul class="navbar-nav">
+                    {% for s in secciones %}
+
+
+                    <li class="nav-item dropdown ml-2">
+
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="navbarDropdownMenuLink">
+
+                            {{ app.request.locale == "es"?s.title:s.titleEs }}
+                        </a>
+
+                        <ul class="dropdown-menu border-top-0" aria-labelledby="navbarDropdown">
+                            {% for sec in s.getOrderClasification()  %}
+                                {% if sec.name == "actualidad" %}
+
+                                    {% for a in actualidad %}
+                                        <li>
+                                            {% if 'artel' in a.title %}
+                                             <a class="dropdown-item" href="{{ path('cartelera_listado') }}"> {{ app.request.locale == "es"?a.title:a.titleEs }}</a>
+                                            {% else %}
+                                            <a class="dropdown-item" href="{{ path('category_detalles', {'id':a.id, 'slug':a.slug}) }}">{{ app.request.locale == "es"?a.title:a.titleEs }}</a>
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
+                                {% endif %}
+                                {% if sec.name == "blog" %}
+
+                                    {% for b in blog %}
+                                        <li>
+                                            {% if b.title == "Del Gobernador" %}
+                                            <a class="dropdown-item" href="{{ path('post_detalles', {'id':10544, 'slug':'portal-del-ciudadano-una-plataforma-por-y-para-los-habaneros'}) }}">{{ app.request.locale == "es"?b.title:b.titleEs }}</a>
+                                            {% else %}
+                                            <a class="dropdown-item" href="{{ path('post_detalles', {'id':10541, 'slug':'quienes-somos'}) }}">{{ app.request.locale == "es"?b.title:b.titleEs }}</a>
+                                            {#<a class="dropdown-item" href="{{ path('category_detalles', {'id':b.id, 'slug':b.slug}) }}">{{ app.request.locale == "es"?b.title:b.titleEs }}</a>#}
+                                             {% endif %}
+                                        </li>
+                                    {% endfor %}
+                                {% endif %}
+
+                                {% if sec.name == "tramites y servicios" %}
+
+                                    {% for t in tramites %}
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('category_detalles', {'id':t.id, 'slug':t.slug}) }}">{{ app.request.locale == "es"?t.title:t.titleEs }}</a>
+                                        </li>
+                                    {% endfor %}
+                                {% endif %}
+                                {% if sec.name == "galeria" %}
+                                    <li>
+                                        <a class="dropdown-toggle dropdown-item" href="#" role="button" id="identidad1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Audio <i class="fa fa-angle-right"></i>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            {% for a in audio %}
+                                                <li>
+                                                    <a class="dropdown-item" href="{{ path('category_detalles', {'id':a.id, 'slug':a.slug}) }}">{{ app.request.locale == "es"?a.title:a.titleEs }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    {% for g in galeria %}
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('category_detalles', {'id':g.id, 'slug':g.slug}) }}">{{ app.request.locale == "es"?g.title:g.titleEs }}</a>
+                                        </li>
+                                    {% endfor %}
+                                    {% for gl in glosario %}
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('glossary')}}">{{ app.request.locale == "es"?gl.title:gl.titleEs }}</a>
+                                        </li>
+                                    {% endfor %}
+                                    <li>
+                                        <a class="dropdown-toggle dropdown-item" href="#" role="button" id="identidad1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{ app.request.locale == "es"?'Entretenimiento':'Entertainment' }}  <i class="fa fa-angle-right"></i>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            {% for e in entretenimiento %}
+                                                <li>
+                                                    <a class="dropdown-item" href="{{ path('category_detalles', {'id':e.id, 'slug':e.slug}) }}">{{ app.request.locale == "es"?e.title:e.titleEs }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                            {% if sec.name == "mihabana" %}
+                                <li>
+                                    <a class="dropdown-item" href="http://www.onei.gob.cu/mapa/provincia/habana" target="_blank">{{ app.request.locale == "es"?'Datos generales':'General data' }}</a>
+                                </li>
+                            <li>
+                                <a class="dropdown-toggle dropdown-item" href="#" role="button" id="identidad1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ app.request.locale == "es"?'Identidad':'Identity' }}  <i class="fa fa-angle-right"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% for i in identidad %}
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('category_detalles', {'id':i.id, 'slug':i.slug}) }}">{{ app.request.locale == "es"?i.title:i.titleEs }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-toggle dropdown-item" href="#" role="button" id="identidad1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ app.request.locale == "es"?'En la memoria':'In the memory' }} <i class="fa fa-angle-right"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% for m in enlamemoria %}
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('category_detalles', {'id':m.id, 'slug':m.slug}) }}">{{ app.request.locale == "es"?m.title:m.titleEs }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-toggle dropdown-item" href="#" role="button" id="identidad1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ app.request.locale == "es"?'Personalidades':'Personalities' }} <i class="fa fa-angle-right"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% for p in personalidades %}
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('category_detalles', {'id':p.id, 'slug':p.slug}) }}">{{ app.request.locale == "es"?p.title:p.titleEs }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                              {% endif %}
+                            {% if sec.name == "gobierno" %}
+
+                                {% for g in gobierno %}
+                                    <li>
+                                        <a class="dropdown-item" href="{{ path('category_detalles', {'id':g.id, 'slug':g.slug}) }}">{{ app.request.locale == "es"?g.title:g.titleEs }}</a>
+                                    </li>
+                                {% endfor %}
+
+                                <li>
+                                    <a class="dropdown-toggle dropdown-item" href="#" role="button" id="identidad1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{ app.request.locale == "es"?'Estructura Administrativa':'Administrative structure' }} <i class="fa fa-angle-right"></i>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        {% for c in composicion %}
+                                            <li>
+                                                <a class="dropdown-item" href="{{ path('category_detalles', {'id':c.id, 'slug':c.slug}) }}">{{ app.request.locale == "es"?c.title:c.titleEs }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="dropdown-toggle dropdown-item" href="#" role="button" id="identidad1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{ app.request.locale == "es"?'Programas':'Programs' }} <i class="fa fa-angle-right"></i>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        {% for p in programas %}
+                                            <li>
+                                                <a class="dropdown-item" href="{{ path('category_detalles', {'id':p.id, 'slug':p.slug}) }}">{{ app.request.locale == "es"?p.title:p.titleEs }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+
+                                {% endif %}
+
+                            {% endfor %}
+                        </ul>
+
+                    </li>
+               {% endfor %}
+                    <li class="nav-item dropdown ml-2">
+                        <a class="nav-link" href="{{ path('listado_entidades') }}" role="button"  aria-haspopup="true" aria-expanded="false" >
+                            {{ app.request.locale == "es"?'Directorio':'Directory' }}
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item dropdown ml-2 d-none d-lg-block">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-search"></i>
+                        </a>
+                        <div class="dropdown-menu border-0 border-md border-md-top-0 dropdown-menu-right buscar" aria-labelledby="navbarDropdown">
+                            <form action="{{ path('search_homepage') }}" method="get" class="form-inline my-0 my-lg-0 ">
+                                <input class="form-control mr-2" name="key_search" id="key_search" type="search" placeholder="Buscar" aria-label="Buscar">
+                                <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                    </li>
+                </ul>

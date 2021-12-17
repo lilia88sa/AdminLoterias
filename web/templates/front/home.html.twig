@@ -1,0 +1,1100 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!-- ======= Top Bar ======= -->
+    <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top " xmlns="http://www.w3.org/1999/html">
+
+        <div class="container d-flex align-items-center">
+            <div class="contact-info mr-auto">
+                <ul>
+                    {#<li><i class="icofont-google-map"></i><a href="mailto:contact@example.com">contact@example.com</a></li>#}
+                    <li><i class="icofont-envelope"></i>C/Constantino, 12, 35002 Las Palmas de G.C.</li>
+                    <li><i class="icofont-phone"></i> 928 367 976</li>
+                    <li><i class="icofont-clock-time icofont-flip-horizontal"></i> Lun-Vie 9:00 a 20:00 / Sab 9:00 a 13:00</li>
+                </ul>
+            </div>
+            <div class="cta">
+                <a href="#header" class="scrollto">Comenzar</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top ">
+
+        <div class="container d-flex align-items-center">
+            <a href="#header" class="mr-auto scrollto"><img src="{{ asset('templates_assets/img/logotriana.png') }}" alt="" class="img-fluid" width="100px"></a>
+            {#<h1 class="logo mr-auto"><a href="#header" class="scrollto">El Gordo <br>de Triana</a></h1>#}
+            <!-- Uncomment below if you prefer to use an image logo -->
+
+
+            <nav class="nav-menu d-none d-lg-block">
+                <ul>
+                    <li class="active"><a href="{{ path('homepage') }}#header">Inicio</a></li>
+                    <li><a href="{{ path('homepage') }}#team">Botes</a></li>
+                    <li><a href="{{ path('homepage') }}#why-us">Sobre Nosotros</a></li>
+                    <li><a href="{{ path('homepage') }}#pricing">Resultados</a></li>
+                    <li><a href="{{ path('blog') }}">Blog</a></li>
+                    <li><a href="{{ path('homepage') }}#contact">Contactos</a></li>
+                </ul>
+            </nav><!-- .nav-menu -->
+
+        </div>
+    </header><!-- End Header -->
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex justify-cntent-center align-items-center">
+
+        <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
+
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+                <div class="carousel-container">
+                    <p></p>
+                    <h2 class="animate__animated animate__fadeInDown">El Gordo de Triana</h2>
+                    <h3 class="animate__animated animate__fadeInDown text-white">Admón de Loterías No.9</h3>
+                    {#<p class="animate__animated animate__fadeInUp">  </p>#}
+                    {#<a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>#}
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <div class="carousel-container">
+                    <h2 class="animate__animated animate__fadeInDown">Nuestro premio eres tú</h2>
+                    {#<p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>#}
+                    {#<a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>#}
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+                <div class="carousel-container">
+                    <h2 class="animate__animated animate__fadeInDown">Tu suerte esta aquí, <br> juega y gana</h2>
+                    {#<p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>#}
+                    {#<a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>#}
+                </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+
+            <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main">
+
+        <!-- ======= Icon Boxes Section ======= -->
+        <section id="team" class="team section-bg">
+            <div class="container">
+
+                <div class="row">
+
+                    {% set p='templates_assets/img/logos/' %}
+                    {% for ele in juegos %}
+                        {% set estilotext={'Euromillones':"euromillones-text",'Lotería Nacional':"nacional-text",'La primitiva':"primitiva-text",
+                            'Bonoloto':"bonoloto-text",'El Gordo':"gordo-text",'La Quiniela':"quiniela-text",'Lototurf':"lototurf-text",
+                            'Quintuple Plus':"quintuple-text",'El Quinigol':"quinigol-text"}%}
+
+                    <div class="col-lg-4 mb-3" data-aos="fade-up" data-aos-delay="100">
+                        <a href="{{ ele.getUrlJuego }}" target="_blank">
+                        <div class="member d-flex align-items-start">
+                            <div class="pic"><img src="{{ asset(p~ele.getJuegoFile().first().filename) }}"  width="70px" alt="">
+                               <br> {{ ele.getFechaBote!=null?(ele.getFechaBote| date('d/m/y')):'' }}
+                            </div>
+                            <div class="member-info pl-3">
+                                <h4 class="bonoloto-text"><div class="{{ estilotext[ele.name] }}">{{ ele.getName }}</div></h4>
+
+                               <div class="{{ estilotext[ele.name] }}">{% if  ele.getBote!=null %}{% if  'M' in ele.getBote %}{% set bote=(ele.getBote|split(' ')) %} <span>{{ bote[0] }}</span> <b>MILLONES</b>  {% else %} <span>{{ ele.getBote  }} €</span>  {% endif %}{% else %}<div class="text-white">nmbmnb</div><br><br> {% endif %}</div>
+
+                                <a href="{{ ele.getUrlJuego }}" target="_blank" class="btn btn-primary btn-sm">JUGAR</a>
+
+                                {#<div class="social">#}
+                                    {#<a href=""><i class="ri-twitter-fill"></i></a>#}
+                                    {#<a href=""><i class="ri-facebook-fill"></i></a>#}
+                                    {#<a href=""><i class="ri-instagram-fill"></i></a>#}
+                                    {#<a href=""> <i class="ri-linkedin-box-fill"></i> </a>#}
+                                {#</div>#}
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+
+                    {% endfor %}
+
+
+                                        {#<div class="col-md-6 col-lg-4 mb-5 mb-lg-0 pb-4" data-aos="fade-up">#}
+                        {#<a href="{{ ele.getUrlJuego }}" target="_blank">#}
+                        {#<div class="icon-box">#}
+                            {#<div class="icon"><i><img src="{{ asset(p~ele.getJuegoFile().first().filename) }}"#}
+                                                                              {#width="70px"/></i></div>#}
+                            {#<h4 class="title"><a href="">{{ ele.getName }}</a></h4>#}
+                            {#<p class="pricing">{% if  ele.getBote!=null %}<h2><sup>€</sup>{{ ele.getBote }}{% endif %}</p>#}
+                        {#</div>#}
+                        {##}
+                    {#</div>#}
+                    {#{% endfor %}#}
+
+                </div>
+
+            </div>
+        </section><!-- End Icon Boxes Section -->
+
+        {#<section id="video" class="">#}
+            {#<video autoplay="autoplay" loop="loop" id="video_background" preload="auto" volume="0"/>#}
+
+            {#<source src="{{ asset('templates_assets/img/conv1.mp4') }}"  type="video/mp4" />#}
+
+            {#</video/>#}
+        {#</section>#}
+
+        <!-- ======= Portfolio Details Section ======= -->
+        <section id="portfolio-details" class="portfolio-details">
+            <div class="container">
+
+                <div class="portfolio-details-container">
+
+                    <div class="owl-carousel portfolio-details-carousel">
+                        <img src="{{ asset('templates_assets/img/portfolio/portfolio-details-1.jpg') }}" class="img-fluid" alt="">
+                        <img src="{{ asset('templates_assets/img/portfolio/portfolio-details-2.jpg') }}" class="img-fluid" alt="">
+                        <img src="{{ asset('templates_assets/img/portfolio/portfolio-details-3.jpg') }}" class="img-fluid" alt="">
+                    </div>
+
+                 </div>
+
+               </div>
+        </section><!-- End Portfolio Details Section -->
+               <!-- ======= Why Us Section ======= -->
+        <section id="why-us" class="why-us">
+            <div class="container-fluid">
+
+
+                <div class="row">
+
+                    <div class="col-lg-5 align-items-stretch video-box" id="video" data-aos="fade-right">
+                        <a href="https://www.youtube.com/watch?v=HfL_1T7p7hM" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+                    </div>
+
+                    <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch" data-aos="fade-left">
+
+                        <div class="content">
+                            <h3>Eum ipsam laborum deleniti <strong>velit pariatur architecto aut nihil</strong></h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                            </p>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Why Us Section -->
+
+
+        <!-- ======= Pricing Section ======= -->
+        <section id="pricing" class="pricing">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Resultados</h2>
+                  </div>
+
+                <div class="row">
+
+                    {% set p='templates_assets/img/logos/logoblanco/' %}
+                    {% set c=0 %}
+                    {% for a in results %}
+                    {% set c=c+1 %}
+ {% set estilo={'Euromillones':"euromillones-bg",'Lotería Nacional':"nacional-bg",'La primitiva':"primitiva-bg",
+ 'Bonoloto':"bonoloto-bg",'El Gordo':"gordo-bg",'La Quiniela':"quiniela-bg",'Lototurf':"lototurf-bg",
+ 'Quintuple Plus':"quintuple-bg",'El Quinigol':"quinigol-bg"} %}
+
+                        {% set reintegroc={'Euromillones':"",'Lotería Nacional':"nacional-cr",'La primitiva':"primitiva-cr",
+ 'Bonoloto':"bonoloto-cr",'El Gordo':"gordo-cr",'La Quiniela':"",'Lototurf':"lototurf-cr",
+ 'Quintuple Plus':"",'El Quinigol':""} %}
+
+                        {#{% set reintegroc={'La primitiva':"primitiva-cr",'Bonoloto':"bonoloto-cr",'El Gordo':"gordo-cr",'Lototurf':"lototurf-cr" } %}#}
+
+                        {% set estilotext={'Euromillones':"euromillones-text",'Lotería Nacional':"nacional-text",'La primitiva':"primitiva-text",
+                            'Bonoloto':"bonoloto-text",'El Gordo':"gordo-text",'La Quiniela':"quiniela-text",'Lototurf':"lototurf-text",
+                            'Quintuple Plus':"quintuple-text",'El Quinigol':"quinigol-text"}%}
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="box">
+                            <h3>
+                                <div class="{{ estilo[a.juego.name] }} p-2">
+
+                                    <div class="row">
+                                           <div class="col-1 text-left"> <img src="{{ asset(p~a.getJuego().getJuegoFile().first().filename) }}"  width="30px" alt=""></div>
+                                           <div class="col text-left pt-2 pl-3">  {{ a.juego.name }}</div>
+                                        <div class="col-5">
+										<input type="text" class="form-control" id="datepicker_{{ a.getJuego().getId() }}" placeholder="Fecha"/>
+                                            {#<select class="form-control-sm" name="list" id="selext{{ a.getJuego().getId() }}">
+                                                <option>Seleccionar</option>#}
+                                                {#</select>#}
+                                                {#<select name="list" id="select">
+                                                {% set dw={'Monday':'Lunes','Tuesday':'Martes','Wednesday':'Miercoles','Thursday':'Jueves','Friday':'Viernes','Saturday':'Sábado','Sunday':'Domingo'} %}
+                                                {#{{ dump(lastrxg) }}
+                                                {% set c=0 %}
+                                                {% for b in lastrxg[a.getJuego().getId()] %}
+                                                    {% set c=c+1 %}
+                                                    <option value="{{ a.getJuego().getId()~'_'~c }}">{{ (b.fecha|date('d/m/y')) }}</option>
+                                                {% endfor %}
+                                            </select>#}
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </h3>
+
+                            {% if  a.combinaciones is not null and a.juego.name not in ['Lotería Nacional','La Quiniela', 'El Quinigol','Quintuple Plus'] %}
+
+                                <table id="comb_{{ a.juego.id }}">
+                                    <tr class="text-center">
+                                        {{ (a.juego.id==1)?'<td><div class="text-white"><b>jjjjjjj</b></div></td>':''  }}
+                                        {{ (a.juego.id==5)?'<td><div class="text-white"><b>jjjjjjj</b></div></td>':''  }}
+
+                                        {% for b in (a.combinaciones | split(',')) %}
+
+                                            <td class="pr-1 pr-sm-1 pr-md-2 pr-lg-2 pl-0">
+                                                <p class="combinaciones {{estilo[a.juego.name] }} {{ (b|length)==1?'pl-3 pr-3':'' }}" >{{ b }}</p>
+                                            </td>
+                                        {% endfor %}
+
+                                    </tr>
+                                </table>
+
+                            {% endif %}
+                            {% if  a.combinaciones is not null and a.juego.name=='Quintuple Plus' %}
+
+                                <table id="comb_{{ a.juego.id }}">
+                                    <tr class="text-center">
+
+                                        {% for b in (a.combinaciones | split(';')) %}
+                                        {% set v =(b | split(','))[1] %}
+
+                                            <td class="pr-1 pr-sm-1 pr-md-2 pr-lg-2 pl-0">
+                                                <p class="combinaciones {{estilo[a.juego.name] }} {{ (v|length)==1?'pl-3 pr-3':'' }}" >{{ v }}</p>
+                                            </td>
+                                        {% endfor %}
+
+                                    </tr>
+                                </table>
+
+                            {% endif %}
+
+
+                            {% if  a.combinaciones is not null and a.juego.name=='Lotería Nacional' %}
+
+                                {% set num_pre=['1er','2do','3er'] %}
+                                {% set i=-1 %}
+                                <table class="table-condensed" id="comb_t_{{ a.juego.id }}">
+                                    <tr class="text-center">
+                                        {% set arr= (a.combinaciones | split(',')) %}
+                                        {{ ((arr|length)==2)?'<td><div class="text-white"><b>jjjjjjjjj</b></div></td>':''  }}
+                                        {#{{ (a.juego.id==8)?'<td><div class="text-white"><b>jjjjjjjjjjjjjjjj</b></div></td>':''  }}#}
+
+                                        {% for b in arr %}
+                                            {% set i=i+1 %}
+                                            <td class="pl-4 pr-4 text-center">
+                                                <div class="{{ estilotext[a.juego.name] }}"><b>{{ num_pre[i] }}</b></div>
+                                                <p class="combinaciones-nac {{ estilotext[a.juego.name] }}">{{ b }}</p>
+                                            </td>
+                                        {% endfor %}
+                                    </tr>
+                                </table>
+
+                            {% endif %}
+                            {% if  a.combinaciones is not null and a.juego.name=='La Quiniela' %}
+                                <table class="table-condensed" id="comb_t_{{ a.juego.id }}">
+                                    {% set i=0 %}
+                                    {% set array=(a.combinaciones | split(';')) %}
+                                    {% set array_=(array | slice(0,(array|length)-1)) %}
+                                    {% set last=((array[(array|length)-1])|split(','))[1] %}
+                                    <tr>
+                                        {% set i=0 %}
+                                        {% set array_=(a.combinaciones | split(';')) %}
+                                        {% for  arr in array_ %}
+                                            {% set i = i +1  %}
+                                            {% set value = (arr| split(','))  %}
+
+                                            <td class="pr-1">
+                                                {#<p class="combinaciones {{ estilo[a.juego.name] }}">{{ (s|slice(0,(s|length)-1))}}</p>#}
+                                                <p class="combinaciones-quin {{ estilo[a.juego.name] }} pr-1 pl-1">{{ value[1] }}</p>
+                                                {#<br/>#}
+                                                {#<p class="combinaciones {{ estilo[a.juego.name] }}"> {{ s[(s|length)-1] }}</p>#}
+                                            </td>
+
+                                        {% endfor %}
+
+                                    </tr>
+                                    <tr>
+                                    <td class="pr-2" colspan="14">
+                                        {#<p class="combinaciones {{ estilo[a.juego.name] }}">{{ (s|slice(0,(s|length)-1))}}</p>#}
+                                        {#<p class="combinaciones {{ estilo[a.juego.name] }} pr-3 pl-3">{{ s[(s|length)-1] }}</p>#}
+                                        <p class="combinaciones {{ estilo[a.juego.name] }} pr-2 pl-2">last</p>
+                                        {#<br/>#}
+                                        {#<p class="combinaciones {{ estilo[a.juego.name] }}"> {{ s[(s|length)-1] }}</p>#}
+                                    </td>
+                                    </tr>
+                                </table>
+
+                            {% endif %}
+
+                            {% if  a.combinaciones is not null and a.juego.name=='El Quinigol' %}
+                                <table class="table-condensed" id="comb_q{{ a.juego.id }}">
+
+                                    <tr>
+
+                                        {% set i=0 %}
+                                        {% set array_=(a.combinaciones | split(';')) %}
+                                        {% for  arr in array_ %}
+                                            {% set i = i +1  %}
+                                            {% set value = (arr| split(','))  %}
+
+                                            <td class="pr-0 pr-sm-1 pr-md-0 pr-lg-0 pl-2" colspan="5">
+                                                <p class="combinaciones combinaciones-gol {{ estilo[a.juego.name] }} pr-2 pl-2">{{ value[1] }}</p>
+                                            </td>
+
+                                        {% endfor %}
+
+                                    </tr>
+
+                                </table>
+
+                            {% endif %}
+
+                            {#<a href="#" target="_blank" class="btn btn-primary btn-sm">Jugar</a>#}
+
+                            {#<div class="social">#}
+                            {#<a href=""><i class="ri-twitter-fill"></i></a>#}
+                            {#<a href=""><i class="ri-facebook-fill"></i></a>#}
+                            {#<a href=""><i class="ri-instagram-fill"></i></a>#}
+                            {#<a href=""> <i class="ri-linkedin-box-fill"></i> </a>#}
+                            {#</div>#}
+                            <table>
+                                <tr>
+
+                                    {% if  a.estrellas is not null %}
+                                        <td><div class="text-white"><b>jjjjj</b></div></td>
+
+                                        {% set star=a.estrellas | split(',') %}
+                                        <td>
+                                            <p class="estrella" id="Est_1_{{ a.juego.id }}">{{ star[0] }}</p>
+                                        </td>
+                                        <td class="pr-1">
+                                            <p class="estrella" id="Est_2_{{ a.juego.id }}">{{ star[1] }}</p>
+                                        </td>
+
+
+                                    {% endif %}
+
+                                    {% if  a.reintegros is not null %}
+
+                                    {{ (a.juego.id==6 or a.juego.id==7)?'<td><div class="text-white"><b>jjjjjjjjjjjjjjjjjjj</b></div></td>':''  }}
+                                    {{ (a.juego.id==2)?'<td><div class="text-white"><b>jjjjjjjjjjjjj</b></div></td>':''  }}
+
+                                        <td class="pr-3" id="R_{{ a.juego.id }}">
+                                        {% set c=0 %}
+                                        {% for b in (a.reintegros | split(',')) %}
+                                            {% set c=c+1 %}
+
+                                            <td class="pr-1 pr-sm-1 pr-md-2 pr-lg-2 pl-0" >
+                                                <div class="{{ estilotext[a.juego.name] }}"><b>R</b> </div>  <p class="combinaciones {{reintegroc[a.juego.name] }} {{ (b|length)==1?'pl-3 pr-3':'' }}" id="R_{{ a.juego.id }}_{{ c }}">{{ b }}</p>
+                                            </td>
+                                        {% endfor %}
+                                            {#<p class="combinaciones {{ estilotext[a.juego.name] }}" id="R_{{ a.juego.id }}">#}
+                                                {#R: {{ a.reintegros | replace({',':' '}) }}#}
+                                            {#</p>#}
+                                        </td>
+                                    {% endif %}
+                                    {% if  a.complementos is not null %}
+                                      <td class="pr-3">
+                                            <div class="{{ estilotext[a.juego.name] }}"><b>C</b></div> <p class="combinaciones {{ reintegroc[a.juego.name] }}" id="C_{{ a.juego.id }}">
+                                            {{ a.complementos | replace({',':' '}) }}
+                                            </p>
+                                        </td>
+                                    {% endif %}
+
+                                    {% if  a.clave is not null %}
+
+                                        <td>
+                                            <div class="text-white"><b>jjjjjjjjjjjjjjjjjjjjjjjjjjj</b></div>
+
+                                        </td>
+                                        <td>
+                                            <div class="{{ estilotext[a.juego.name] }}"><b>No. Clave</b></div> <p class="combinaciones {{ reintegroc[a.juego.name] }} pr-3 pl-3" id="num_cla_{{ a.juego.id }}">
+                                                 {{ a.clave | replace({',':' '}) }}
+                                            </p>
+                                        </td>
+                                    {% endif %}
+                                    {% if  a.getFraccionSerie is not null %}
+                                        <td class="pr-3">
+                                            <p class="combinaciones {{ estilotext[a.juego.name] }}">
+                                                {#{{ 'fraccion_serie :' }}#}
+                                                {#{{ a.getFraccionSerie | replace({',':' '}) }}#}
+                                                {% set fs=a.getFraccionSerie | split(',') %}
+                                                F y S:  {{ fs[0] }},
+                                                {{ fs[1] }}
+                                            </p>
+                                        </td>
+                                    {% endif %}
+                                    {% if a.getMillonJoker is not null %}
+                                        <td>
+                                            <p bgcolor="#f0f8ff">
+                                                <img src="{{ asset('templates_assets/img/logos/'~(a.juego.name=='Euromillones'?'millon':'jocker')~'.svg') }}" height="30px">
+                                            </p>
+                                        </td>
+                                        <td>
+                                            {{ a.juego.name=='Euromillones'?'':'<br/>' }}
+                                            <p class="{{ estilotext[a.juego.name] }}" id="M_J_{{ a.juego.id }}">
+                                             <b>{{ a.juego.name=='Euromillones'?a.getMillonJoker:(a.getMillonJoker|slice(2,7)) }}</b>
+                                            </p>
+
+                                        </td>
+                                    {% endif %}
+                                    {% if a.caballo is not null %}
+                                        <td>
+                                          <div class="{{ estilotext[a.juego.name] }}"><b>Cab</b></div>  <p class="combinaciones {{ reintegroc[a.juego.name] }} pr-3 pl-3" id="Cab_{{ a.juego.id }}">
+                                                {{ a.caballo }}
+                                            </p>
+                                        </td>
+                                    {% endif %}
+                                </tr>
+                            </table>
+
+                            {#<h4><sup>$</sup>0<span> / month</span></h4>#}
+                            {#<ul>#}
+                                {#<li>Aida dere</li>#}
+                                {#<li>Nec feugiat nisl</li>#}
+                                {#<li>Nulla at volutpat dola</li>#}
+                                {#<li class="na">Pharetra massa</li>#}
+                                {#<li class="na">Massa ultricies mi</li>#}
+                            {#</ul>#}
+                            <div class="btn-wrap">
+                                <a href="#" class="btn-buy" data-toggle="modal" data-target="#Modal_{{ a.juego.id }}">
+                                    PREMIOS
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+              {% endfor %}
+
+                </div>
+
+            </div>
+        </section><!-- End Pricing Section -->
+        {% set c=0 %}
+        {% for a in results %}
+            {% set c=c+1 %}
+            <!-- Modal  -->
+            <div class="modal fade" id="Modal_{{ a.juego.id }}" tabindex="-1" role="dialog" aria-labelledby="equipoModalTitulo" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle"> Premios de {{ a.juego.name }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row mt-4">
+                                <div class="col-md-12">
+                                    {% set estilotext={'Euromillones':"euromillones-text",'Lotería Nacional':"nacional-text",'La primitiva':"primitiva-text",
+                                        'Bonoloto':"bonoloto-text",'El Gordo':"gordo-text",'La Quiniela':"quiniela-text",'Lototurf':"lototurf-text",
+                                        'Quintuple Plus':"quintuple-text",'El Quinigol':"quinigol-text"}%}
+                                    {% if  a.getCategoria is not null and a.getPremio is not null %}
+                                        {% set cat=(a.getCategoria | split(',')) %}
+                                        {% set prem=(a.getPremio | split(';')) %}
+                                        <table class="table table-bordered">
+
+                                            <tr class="text-center textoverde">
+                                                <td class="{{ estilotext[a.juego.name] }}"><b>Categorias</b></td>
+                                                <td class="{{ estilotext[a.juego.name] }}"><b>Premios</b></td>
+                                            </tr>
+                                            {% for i in 0..((cat|length)-1) %}
+                                                <tr class="text-center">
+
+                                                    <td class="{{ estilotext[a.juego.name] }}">
+                                                        {{ cat[i] }}
+                                                    </td>
+                                                    <td class="{{ estilotext[a.juego.name] }}">
+                                                        {{ prem[i] }} €
+                                                    </td>
+
+                                                </tr>
+
+                                            {% endfor %}
+
+                                        </table>
+                                    {% endif %}
+                                </div>
+
+                                <div class="col-md-12">
+                                    {% if  a.getCategoriaJoker is not null and a.getPremioJoker is not null %}
+                                        {% set cat=(a.getCategoriaJoker | split(',')) %}
+                                        {% set prem=(a.getPremioJoker | split(';')) %}
+                                        <table class="table table-bordered">
+
+                                            <tr class="text-center textoverde">
+                                                <td class="{{ estilotext[a.juego.name] }}"><b>Categorias Joker</b></td>
+                                                <td class="{{ estilotext[a.juego.name] }}"><b>Premios Joker</b></td>
+                                            </tr>
+                                            {% for i in 0..((cat|length)-1) %}
+                                                <tr class="text-center">
+
+                                                    <td class="{{ estilotext[a.juego.name] }}">
+                                                        {{ cat[i]| replace ({ '&uacute;':'ú'}) }}
+                                                    </td>
+                                                    <td class="{{ estilotext[a.juego.name] }}">
+                                                        {{ prem[i] }} €
+                                                    </td>
+
+                                                </tr>
+
+                                            {% endfor %}
+
+                                        </table>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        <!-- ======= Cta Section ======= -->
+        <section id="cta" class="cta">
+            <div class="container">
+
+                <div class="row" data-aos="zoom-in">
+                    <div class="col-lg-1 text-center"><img src="{{ asset('templates_assets/img/logo-baner.png') }}" alt="" class="img-fluid" width="100px"></div>
+                    <div class="col-lg-7 text-center text-lg-left">
+                        <h3>BUSCAR PREMIO</h3>
+                        <h4 class="text-white"> Verifique si su número resultó premiado en el sorteo de Lotería Nacional.</h4>
+                    </div>
+
+                    <div class="col-lg-4  cta-btn-container text-center">
+
+                        <table>
+                            <tr><td class="pl-5 pt-2">
+                                    <select class="form-control" name="list" id="select">
+                                        {#<option>Seleccionar</option>#}
+                                        {#</select>#}
+                                        {#<select name="list" id="select">#}
+                                        {#{% set dw={'Monday':'Lunes','Tuesday':'Martes','Wednesday':'Miercoles','Thursday':'Jueves','Friday':'Viernes','Saturday':'Sábado','Sunday':'Domingo'} %}#}
+                                        {#{%   for a in (nums|reverse) %}#}
+                                            {#<option value="{{ a['id'] }}">{{ dw[(a['fecha']|date('l'))]~' '~(a['fecha']|date('d/m/y')) }}</option>#}
+                                        {#{% endfor %}#}
+                                    </select>
+                                    <br/>
+                                </td></tr>
+                            <tr><td class="pl-5">
+                                    <input type="text" id="num" class="form-control" placeholder="Insertar Número">
+                                    <a t id="cl" class="cta-btn align-middle">Buscar</a>
+
+                                </td></tr>
+
+                        </table>
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </section><!-- End Cta Section -->
+
+
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Contáctenos</h2>
+                </div>
+
+                <div class="row mt-1 d-flex justify-content-end" data-aos="fade-right" data-aos-delay="100">
+
+                    <div class="col-lg-5">
+                        <div class="info">
+                            <div class="address">
+                                <i class="icofont-google-map"></i>
+                                <h4>Ubicación:</h4>
+                                <p>C/Constantino, 12, 35002 Las Palmas de G.C.</p>
+                            </div>
+
+                            <div class="phone">
+                                <i class="icofont-phone"></i>
+                                <h4>Teléfono:</h4>
+                                <p>928 367 976</p>
+                            </div>
+
+                            <div class="email">
+                                <i class="icofont-clock-time"></i>
+                                <h4>Horarios:</h4>
+                                <p>Lun-Vie 9:00 a 20:00</p>
+                                <p>Sab 9:00 a 13:00</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="100">
+                        {{ form_start(form) }}
+                        {#<form action="forms/contact.php" method="post" role="form" class="php-email-form">#}
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                {{ form_widget(form.name) }}
+                            </div>
+                            <div class="col-md-6 form-group">
+                                {{ form_widget(form.email) }}<br>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {#<textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>#}
+                            {#<div class="validate"></div>#}
+                            {{ form_widget(form.description) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_widget(form.captcha) }}
+                            {{ form_errors(form.captcha) }}
+                            {#<div class="loading">Loading</div>#}
+                            {#<div class="error-message"></div>#}
+                            {#<div class="sent-message">Your message has been sent. Thank you!</div>#}
+                        </div>
+                        <div class="text-center  php-email-form">
+                            <button type="submit">Enviar</button>
+                        </div>
+                        {#</form>#}
+                        {{ form_end(form) }}
+
+                        {#<form action="forms/contact.php" method="post" role="form" class="php-email-form">#}
+                            {#<div class="form-row">#}
+                                {#<div class="col-md-6 form-group">#}
+                                    {#<input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />#}
+                                    {#<div class="validate"></div>#}
+                                {#</div>#}
+                                {#<div class="col-md-6 form-group">#}
+                                    {#<input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />#}
+                                    {#<div class="validate"></div>#}
+                                {#</div>#}
+                            {#</div>#}
+                            {#<div class="form-group">#}
+                                {#<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />#}
+                                {#<div class="validate"></div>#}
+                            {#</div>#}
+                            {#<div class="form-group">#}
+                                {#<textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>#}
+                                {#<div class="validate"></div>#}
+                            {#</div>#}
+                            {#<div class="mb-3">#}
+                                {#<div class="loading">Loading</div>#}
+                                {#<div class="error-message"></div>#}
+                                {#<div class="sent-message">Your message has been sent. Thank you!</div>#}
+                            {#</div>#}
+                            {#<div class="text-center"><button type="submit">Send Message</button></div>#}
+                        {#</form>#}
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Contact Section -->
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        {% set b='templates_assets/img/logos/logoblanco/' %}
+
+                        <ul>
+                            {% for i in 0..4 %}
+                                <li><i><img src="{{ asset(b~juegos[i].getJuegoFile().first().filename) }}"
+                                            width='40px'/></i><h4> <a href="{{ path('juego_detalles', {'id':juegos[i].id, 'slug':juegos[i].slug}) }}">{{ juegos[i].name }}</a></h4></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+
+                        <ul>
+                            {% for i in 5..8 %}
+                                <li><i><img src="{{ asset(b~juegos[i].getJuegoFile().first().filename) }}"
+                                            width='40px'/></i> <h4><a href="{{ path('juego_detalles', {'id':juegos[i].id, 'slug':juegos[i].slug}) }}">{{ juegos[i].name }}</a></h4></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h4>Contactos</h4>
+
+                        <div class="address">
+                            {#<i class="icofont-google-map"></i>#}
+                            {#<h4>Ubicación:</h4>#}
+                            <p>C/Constantino, 12, 35002 Las Palmas de G.C.</p>
+                        </div>
+                        {#<div class="email">#}
+                            {##}
+                            {#<h4>Email:</h4>#}
+                            {#<p><i class="icofont-envelope"></i> rozabaleslibreria@gmail.com</p>#}
+                        {#</div>#}
+
+                        <div class="phone">
+                            {##}
+                            {#<h4>Teléfonos:</h4>#}
+                            <p><i class="icofont-phone"></i> 928 367 976</p>
+                        </div>
+
+
+                        <img  src="{{ asset('templates_assets/img/conmigo.png') }}" height="80px">
+
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-info">
+                        <h4>Sobre Nosotros</h4>
+                        <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita
+                            valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+                        <div class="social-links mt-3">
+                            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>El Gordo de Triana</span></strong>. Todos los Derechos Reservados
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/anyar-free-multipurpose-one-page-bootstrap-theme/ -->
+                {#Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>#}
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+    <div id="preloader"></div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+	<script>
+      function select_result(result){      
+	  var str='<tbody><tr class="text-center">'+((result.juego_id==1||result.juego_id==5)?'<td><div class="text-white"><b>jjjjjjj</b></div></td>':'');
+                var comb=result.combinaciones.split(',');
+                var arr={1:'gordo',5:'euromillones',6:'bonoloto',7:'lototurf',9:'primitiva'};
+                for(var i in result.combinaciones.split(','))
+                    str+='<td class="pr-1 pr-sm-1 pr-md-2 pr-lg-2 pl-0"><p class="combinaciones '+arr[result.juego_id]+'-bg '+(comb[i].length==1?'pl-3 pr-3':'')+'">'
+                        +comb[i]+'</p></td>';
+                str+='</tr></tbody>';
+                $('#comb_'+result.juego_id).html(str);
+                $('#num_cla_'+result.juego_id).html(result.num)
+                $('#num_cla_'+result.juego_id).html(result.juego_id==1?(result.clave):'');
+                $('#Est_1_'+result.juego_id).html(result.juego_id==5?result.estrellas.split(',')[0]:'');
+                $('#Est_2_'+result.juego_id).html(result.juego_id==5?result.estrellas.split(',')[1]:'');
+                $('#Cab_'+result.juego_id).text(result.juego_id==7?(result.caballo):'');
+                $('#C_'+result.juego_id).html((result.juego_id==6 || result.juego_id ==9)?(result.complementos):'');
+                $('#M_J_'+result.juego_id).html(result.juego_id==5?['<b>',result.millon_joker,'</b>'].join(''):( result.juego_id ==9?['<b>',result.millon_joker.slice(2,2+7),'</b>'].join(''):''));
+                 /*if(result.juego_id!=2)
+                     $('#R_'+result.juego_id+'_1').html(result.reintegros);
+                 else{*/
+                     var rs=result.reintegros.split(',');
+                     var pos=[1,2,3];
+                     for(var i in rs){$('#R_'+result.juego_id+'_'+pos[i]).html(rs[i]);}
+                     if(result.juego_id==2){
+                         var pos=[1,2,3];
+                         var num=['1er','2do','3er'];
+                         var comb=result.combinaciones.split(',');
+                         var tds=comb.length==2?'<td><div class="text-white"><b>jjjjjjjjj</b></div></td>':'';
+                         for(var i in comb){
+                             //$('#COMB_'+result.juego_id+'_'+pos[i]).html(comb[i]);
+                             tds+='<td class="pl-4 pr-4 text-center">\n' +
+                             '<div class="nacional-text"><b>'+num[i]+'</b></div>\n' +
+                             '<p class="combinaciones-nac nacional-text">'+comb[i]+'</p>\n' +
+                             '</td>\n';
+                         }
+                         var t='<tbody><tr class="text-center">\n' +
+                             tds
+                             '</tr>\n' +
+                             '</tbody>';
+                         $('#comb_t_'+result.juego_id).html(t);
+                     }
+                // alert($('#comb_q'+result.juego_id).html());
+                if(result.juego_id==3){
+                         //alert(JSON.stringify(result.combinaciones));
+                    var comb=result.combinaciones.split(';');
+                   // var comb=result.combinaciones.split(';');
+                    var str='';
+                    for(var i in comb)
+                        str+='<td class="pr-0 pr-sm-1 pr-md-0 pr-lg-0 pl-2" colspan="5">\n'+
+                            '<p class="combinaciones combinaciones-gol quinigol-bg pr-2 pl-2">'+comb[i].split(',')[1]+'</p>\n' +
+                            '</td>\n';
+
+                    var t='<tbody><tr>\n' +
+                        str+
+                        '</tr></tbody>';
+                    $('#comb_q'+result.juego_id).html(t.trim());
+                } if(result.juego_id==8){
+                         //alert(JSON.stringify(result.combinaciones));
+                    var comb=result.combinaciones.split(';');
+                   // var comb=result.combinaciones.split(';');
+                    var str='';
+                    for(var i in comb)
+                        str+='<td class="pr-1 pr-sm-1 pr-md-2 pr-lg-2 pl-0"><p class="combinaciones quintuple-bg '+(comb[i].length==1?'pl-3 pr-3':'')+'">'
+                            +comb[i].split(',')[1]+'</p></td>';
+                       /* str+='<td class="pr-0 pr-sm-1 pr-md-0 pr-lg-0 pl-2" colspan="5">\n'+
+                            '<p class="combinaciones combinaciones-gol quinigol-bg pr-2 pl-2">'+comb[i].split(',')[1]+'</p>\n' +
+                            '</td>\n';*/
+
+                    var t='<tbody><tr>\n' +
+                        str+
+                        '</tr></tbody>';
+                    $('#comb_'+result.juego_id).html(t.trim());
+                }
+                if(result.juego_id==4){
+                    var comb=result.combinaciones.split(';');
+                    var str='';
+                    var comb1=comb.slice(0,comb.length-1);
+                    for(var i in comb1)
+                        str+='<td class="pr-1">\n'+
+                            '<p class="combinaciones-quin quiniela-bg pr-1 pl-1">'+comb1[i].split(',')[1]+'</p>\n' +
+                            '</td>\n';
+
+                    var t='<tbody><tr>\n' +
+                        str+
+                        '<tr>'+
+                        '<td class="pr-2" colspan="14">'+
+                        '<p class="combinaciones quiniela-bg pr-2 pl-2">'+comb[comb.length-1].split(',')[1]+'</p>'+
+                        '</td>'+
+                        '</tr>'+
+                        '</tr></tbody>';
+                    $('#comb_t_'+result.juego_id).html(t.trim());
+                }
+                ////////////////////////////////////////////////////////////////
+                ////////////////////MODAL////////////////////////////
+                ////////////////////////////////////////////////////////////////
+                var estilotext={'Euromillones':"euromillones-text",'Lotería Nacional':"nacional-text",'La primitiva':"primitiva-text",
+                    'Bonoloto':"bonoloto-text",'El Gordo':"gordo-text",'La Quiniela':"quiniela-text",'Lototurf':"lototurf-text",
+                    'Quintuple Plus':"quintuple-text",'El Quinigol':"quinigol-text"};
+                var cat=result.categoria.split(',');
+                var prem=result.premio.split(';');
+                var x='';
+                for(var ii in cat){
+                    x+='<tr class="text-center"><td class="'+estilotext[result.juego_name]+'">'+cat[ii]+'</td><td class="'+estilotext[result.juego_name]+'">'+prem[ii]+' €</td></tr>';
+                }
+                var catJ=result.categoria_joker.split(',');
+                var premJ=result.premio_joker.split(';');
+                var x1='';
+                for(var ii in catJ){
+                    x1+=('<tr class="text-center"><td class="'+estilotext[result.juego_name]+'">'+catJ[ii]+'</td><td class="'+estilotext[result.juego_name]+'">'+premJ[ii]+' €</td></tr>');
+                }
+                var xs=[x,x1];
+                var str_=[];
+                //alert(x1.length);
+                for(var jj in xs)
+                    str_[jj]=(xs[jj].length>95)?('<div class="col-md-12"><table class="table table-bordered">\n' +
+                        '<tbody><tr class="text-center textoverde">\n' +
+                        '<td class="'+estilotext[result.juego_name]+'"><b>Categorias'+(jj==0?'':' Joker')+'</b></td>\n' +
+                        '<td class="'+estilotext[result.juego_name]+'"><b>Premios'+(jj==0?'':' Joker')+'</b></td>\n' +
+                        '</tr>\n' +
+                        xs[jj] +
+                        '</tbody></table></div>\n'):'';
+                //alert(x);
+                var str='<div class="modal fade show" id="Modal_'+result.juego_id+'" tabindex="-1" role="dialog" aria-labelledby="equipoModalTitulo" aria-modal="true" style="padding-right: 9px; display: block;">\n' +
+                    '<div class="modal-dialog" role="document">\n' +
+                    '<div class="modal-content"><div class="modal-header">\n' +
+                    '<h5 class="modal-title" id="exampleModalLongTitle"> Premios de '+result.juego_name+'</h5>\n' +
+                    '<button type="button" class="close" data-dismiss="modal" aria-label="Close">\n' +
+                    '<span aria-hidden="true">×</span></button></div>\n' +
+                    '<div class="modal-body"><div class="row mt-4">\n' +
+                    (str_.join('')).split('&amp;uacute;').join('ú') +
+                    '</div></div>\n' +
+                    '<div class="modal-footer">\n' +
+                    '<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>\n' +
+                    '</div></div></div></div>';
+                $('#Modal_'+result.juego_id).html(str);/**/
+                ////////////////////////////////////////////////////////////////
+                ////////////////////END MODAL////////////////////////////
+                ////////////////////////////////////////////////////////////////
+
+
+   }
+	
+ var selectResults={};
+	 '{% for array in lastrxg %}'
+	 '{% for b in array %}'
+    
+    selectResults['ID{{ b.juego.id }}_D{{b.fecha|date("d_m_Y")}}']={id:'{{ b.id }}',
+         juego_id:'{{ b.juego.id }}',
+         juego_name:'{{ b.juego.name }}',
+        combinaciones:'{{ b.combinaciones }}',
+        estrellas:'{{ b.estrellas }}',
+        reintegros:'{{ b.reintegros }}',
+        complementos:'{{ b.complementos }}',
+        clave:'{{ b.clave }}',
+        fraccion_serie:'{{ b.getFraccionSerie }}',
+        caballo:'{{ b.caballo }}',
+        millon_joker:'{{ b.MillonJoker }}',
+        categoria:'{{ b.categoria }}',
+        premio:'{{ b.premio }}',
+        categoria_joker:'{{ b.CategoriaJoker }}',
+        premio_joker:'{{ b.PremioJoker }}',
+        bote:'{{ b.bote }}',
+        fecha:'{{ b.fecha|date("d/m/y") }}',
+        url_lectura:'{{ b.urlLectura }}',
+        pos_year:'{{ b.posYear }}'};
+    
+    '{% endfor %}'
+		
+	 
+	 '{% endfor %}'
+	 //alert(JSON.stringify(Object.keys(selectResults).length));
+	
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+
+'{% for a in results %}'
+$('#datepicker_{{ a.getJuego().getId() }}').val('{{ (a.fecha|date("m/d/Y")) }}');
+var dates_{{ a.getJuego().getId() }}=[];
+  '{% set i=-1 %}'
+   ' {% for b in lastrxg[a.getJuego().getId()] %}'
+		'{% set i=i+1 %}'
+		dates_{{ a.getJuego().getId() }}['{{i}}']="{{ (b.fecha|date('d-m-Y')) }}";
+   '{% endfor %}'
+	 
+  $( function() {
+  $('#datepicker_{{ a.getJuego().getId() }}').datepicker({
+				
+	beforeShowDay: function(date){
+		var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
+		return [ dates_{{ a.getJuego().getId() }}.indexOf(string) != -1 ];
+	}
+  }); 
+ 
+  });
+  
+  
+  '{% endfor %}'
+  
+  
+  
+var t=['','','','','','','','',''];		
+var d='';
+var ar=[];	
+		 setInterval(function(){
+		 '{% for a in results %}'
+		 ' {% for b in lastrxg[a.getJuego().getId()] %}'
+   if(t[parseInt('{{a.getJuego().getId()}}')-1]!=$('#datepicker_{{ a.getJuego().getId() }}').val()){
+   t[parseInt('{{a.getJuego().getId()}}')-1]=$('#datepicker_{{ a.getJuego().getId() }}').val();
+   ar=t[parseInt('{{a.getJuego().getId()}}')-1].split('/');
+   d='D'+ar[1]+'_'+ar[0]+'_'+ar[2];
+   //alert(d);
+   //alert(JSON.stringify(selectResults['ID{{ a.juego.id }}_'+d]));
+   select_result(selectResults['ID{{ a.juego.id }}_'+d]);
+   }
+   '{% endfor %}'
+   '{% endfor %}'
+  },50);
+	
+  
+  
+  //alert(dates_2[0]);
+</script>
+
+
+  
+
+    {#<script>#}
+        {#var id='{{ (nums|reverse)[0]["id"] }}';#}
+        {#var arr={};#}
+        {#'{%   for a in (nums|reverse) %}'#}
+        {#var aux{{a["id"]}}={};#}
+        {#'{% for b in a["array"] %}'#}
+        {#aux{{a["id"]}}['{{ b[0] }}']='{{ b[1] }}';#}
+        {#'{% endfor %}'#}
+        {#arr['{{a["id"]}}']={'fecha':'{{ a["fecha"]|date('d/m/y')}}','array':aux{{a["id"]}}};#}
+
+        {#'{% endfor %}'#}
+
+        {#$(document).ready(function () {#}
+            {#$('#select').change(function () {#}
+                {#id=$('#select').val();#}
+                {#//  alert(id);#}
+            {#});#}
+            {#$('#cl').click(function () {#}
+                {#var txt_num=$('#num').val();#}
+                {#var arg=arr[id]['array'];#}
+                {#var win=false;#}
+                {#var txt='';#}
+                {#for(var i=0;i<txt_num.length;i++)#}
+                    {#if(txt_num.substr(i,txt_num.length) in arg){#}
+                        {#//alert(arg[txt_num.substr(i,txt_num.length)]);#}
+                        {#txt=txt_num.substr(i,txt_num.length);#}
+                        {#win=true;#}
+                        {#break;#}
+                    {#}#}
+                {#if(win && txt.length==5)#}
+                    {#swal(["¡Felicidades!\nEl No. ",txt_num,"\nGanó: ",arg[txt]," €"].join(""), "", "success");#}
+                {#else if(win && txt.length<5)#}
+                    {#swal(["¡Felicidades!\nGanó: ",arg[txt]," €\nEl No. ",txt_num].join(""), ["Para la terminación No. ",txt].join(""), "warning");#}
+                {#else#}
+                    {#swal(["Lo sentimos!\nEl No.",txt_num,"\nno recibió premio"].join(""), "", "error");#}
+                {#// swal("Good job!", "You clicked the button!", "warning");#}
+                {#//swal("Good job!", "You clicked the button!", "success");#}
+                {#// swal("Good job!", "You clicked the button!", "error");#}
+            {#});#}
+        {#});#}
+
+
+
+    {#</script>#}
+
+{% endblock %}
+
+
