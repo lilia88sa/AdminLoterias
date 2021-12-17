@@ -1,0 +1,76 @@
+{% extends 'front/paginas_internas.html.twig' %}
+{% block idiomas %}
+    <a class="selectorIdioma__link {{app.request.locale == "es"? 'selectorIdioma__link--actual':''}}" href="{{ path( app.request.attributes.get('_route'), {'_locale':'es'}) }}">ESP</a>
+    <a class="selectorIdioma__link {{app.request.locale == "es"? '':'selectorIdioma__link--actual'}}" href="{{ path( app.request.attributes.get('_route'), {'_locale':'en'}) }}">ENG</a>
+{% endblock %}
+
+{% block content %}
+
+    <section class="comun-body mi-habana-body">
+        <div class="container">
+            <div class="row">
+                <div class="deTop">
+                    <img src="{{ asset('templates_assets/frontend/img/pagina-mi-habana/top.jpg') }}" alt="">
+                    <h1>Buscar</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container bg-white px-4">
+            <div class="camino pt-3 pb-3">
+                <a href="{{ path('homepage') }}">{{app.request.locale == "es"? 'Inicio':'Home'}}</a><span class="separador mx-3"></span><a href="#" class="actual">Buscar</a>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="listaResultado">
+                        <div class="count">
+                           {{app.request.locale == "es"? 'Cantidad de elementos encontrados:':'Number of items found:'}} {{ pagination.getTotalItemCount }}
+                        </div>
+                        {% for article in pagination %}
+
+                        <div class="itemResultado">
+                            <div class="itemResultado__titulo">
+                                <a href="{{ path('entity_detalles', {'id':article.id, 'slug':article.slug}) }}">{{ article.name }}</a>
+
+                            </div>
+                            <div class="itemResultado__fechaCategoria">
+                                <a href="#">
+                                   {#{% if article.getOptionalDate is not null %}{{ article.getOptionalDate | date('d/m/Y') }}{% endif %}#}
+                                </a>
+                                {#{{ article.category.section.title }},#}
+                                <a href="#">
+                                    {#{{ article.category.title }}#}
+                                </a>
+                            </div>
+                            {#<div class="itemResultado__intro">
+                                El próximo 24 de febrero se cumplirán 7 años de la reapertura del Teatro Martí. A propósito de este festejo, esa institución cultural de la Oficina del Historiador de la Ciudad de La Habana (OHCH) convoca a sus seguidores en Facebook.
+                            </div>#}
+                        </div>
+
+                       {% endfor %}
+
+                        <div class="navigation">
+                            {{ knp_pagination_render(pagination) }}
+                        </div>
+                    </div>
+                </div>
+
+                {{ render_ssi(controller('App\\Controller\\Front\\FrontController::sidebar', {})) }}
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+    {% for mensaje in app.session.flashbag().get('info') %}
+        <script>
+            swal(" ", '{{ mensaje }}', "success");
+        </script>
+    {% endfor %}
+    {% for mensaje in app.session.flashbag().get('danger') %}
+        <script>
+            swal(" ", '{{ mensaje }}', "warning");
+        </script>
+    {% endfor %}
+{% endblock %}
