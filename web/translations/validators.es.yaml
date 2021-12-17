@@ -1,0 +1,13 @@
+user.password.complex: La contraseña debe ser compleja.
+user.repeatPassword.mo_match: Las contraseñas no coinciden.
+user.newPassword.complex: La contraseña debe tener al menos 7 caracteres y contener al menos un dígito, una mayúscula y una minúscula.
+user.recoverPassword.success: La contraseña se restableció satisfactoriamente.
+user.email.unique: El correo ya esta en uso por otro usuario.
+user.username.unique: El nombre de usuario ya esta en uso por otro usuario.
+Expired JWT Token: Token expirado.
+user.error.tokenconfirmation: Usuario de confirmacion de token no existe.
+user.login.confirmation: Por favor confirme su cuenta!.
+user.login.recoverconfirmation: Acceda para recuperar su password!.
+user.login.validation: El perfil ha sido validado.
+user.login.invalidation: El perfil ha sido invalidado.
+notification.email: Tiene una nueva notificación.

@@ -1,0 +1,201 @@
+menu:
+    admin: Administración
+    section_articules: Secciones
+    user: Usuarios
+    section: Sección
+    post: Artículos
+    category: Categoría
+    glossary: Glosario/Palabras Claves
+    comments: Comentarios
+    orderClasification: Clasificación Frontend
+    users: Datos Usuario
+    entities: Entidad/Negocio
+    cliente: Clientes
+    juego: Juegos
+breadcrumb:
+    link_section_list: Lista de Secciones
+    link_section_create: Crear Sección
+    link_user_list: Lista de Usuarios
+    link_user_create: Crear Usuario
+    link_post_list: Lista de Artículos
+    link_post_create: Crear Artículo
+    link_category_list: Lista de Categorías
+    link_category_create: Crear Categoría
+    link_key_words_list: Glosario/Palabras Claves
+    link_key_words_create: Crear Palabra Clave
+    link_comments_list: Lista de Comentarios
+    link_order_clasification_list: Lista Clasificación Frontend
+    link_order_clasification_create: Crear Clasificación Frontend
+    link_entities_list: Lista Entidad/Negocio
+    link_entities_create: Crear Entidad/Negocio
+    link_client_list: Lista de Clientes
+
+
+list:
+    label_id: ID
+    label_name: Nombre
+    label_nombre: Nombre
+    label_email: Correo
+    label_enabled: Habilitado
+    label_status: Estado
+    label__action: Acciones
+    label_title: Título
+    label_description: Descripción
+    label_created_at: Creado
+    label_updated_at:  Actualizado
+    label_created_by: Creado Por
+    label_updated_by: Actualizado Por
+    label_clasification: Clasificación
+    label_section_title: Sección
+    label_author: Autor
+    label_publish: Publicar
+    label_category: Categoría
+    label_is_glossary: Es de Glosario
+    label_from: Origen
+    label_order_element: Orden
+    label_comercial_name: Nombre Comercial
+    label_phone: Telefonos
+    label_website: Website
+    label_schedule: Horarios
+    label_user: Usuario
+    label_entity_type: Tipo Entidad
+    label_bote: Bote
+    label_fecha_bote: Fecha Bote
+    label_bote_destacado: Bote destacado
+    label_contact: Contacto
+    label_cliente: Cliente
+
+
+filter:
+    label_id: ID
+    label_name: Nombre
+    label_nombre: Nombre
+    label_email: Correo
+    label_enabled: Habilitado
+    label_status: Estado
+    label_title: Título
+    label_description: Descripción
+    label_clasification: Clasificación
+    label_publish: Publicar
+    label_category: Categoría
+    label_created_at: Creado en
+    label_updated_at: Actualizado en
+    label_created_by: Creado por
+    label_updated_by: Actualizado por
+    label_entity_type: Tipo Entidad
+    label_cliente: Cliente
+show:
+    label_id: ID
+    label_name: Nombre
+    label_email: Correo
+    label_enabled: Habilitado
+    label_status: Estado
+    label_roles: Roles
+    label_title: Título
+    label_title_es: Título Ingles
+    label_title_e_s: Título Ingles
+    label_sumary: Sumario
+    label_sumary_es: Sumario Ingles
+    label_description: Descripción
+    label_description_es: Descripción Ingles
+    label_description_e_s: Descripción Ingles
+    label_created_at: Creado
+    label_updated_at:  Actualizado
+    label_created_by: Creado Por
+    label_updated_by: Actualizado Por
+    label_clasification: Clasificación
+    label_publish: Publicar
+    label_is_glossary: Es de Glosario
+    label_order_element: Orden
+    label_audio: Audio
+    label_video: Video
+    label_author: Autor
+    label_entity_type: Tipo Entidad
+    label_comercial_name: Nombre Comercial
+    label_code: Código
+    label_social_reason: Razón Social
+    label_schedule: Horarios
+    label_schedule_public: Horario Atención Público
+    label_postal_code: Código Postal
+    label_phone: Telefonos
+    label_website: Sitio Web
+    label_service_description: Servicios Prestados
+    label_user: Usuario Asociado
+    label_nombre: Nombre del Cliente
+    label_about_us: Sobre Nosotros
+    label_address: Dirección
+    label_cliente: Cliente
+
+
+
+form:
+    label_id: ID
+    label_address: Dirección
+    label_name: Nombre
+    label_nombre: Nombre
+    label_username: Nombre de Usuario
+    label_password: Contraseña
+    label_email: Correo
+    label_enabled: Habilitado
+    label_status: Estado
+    label_roles: Roles
+    label_title: Título
+    label_title_es: Título
+    label_title_e_s: Título Ingles
+    label_sumary: Sumario
+    label_sumary_es: Sumario
+    label_description: Descripción
+    label_description_es: Descripción
+    label_description_e_s: Descripción Ingles
+    label_clasification: Clasificación
+    label_audio: Audio
+    label_video: Video
+    label_author: Autor
+    label_category: Categoría
+    label_publish: Publicar
+    label_files: PDF o Word
+    label_is_glossary: Es de Glosario
+    label_order_element: Orden
+    label_order_clasification: Clasificación Frontend
+    label_optional_date: Fecha Opcional
+    label_comercial_name: Nombre Comercial
+    label_code: Código
+    label_social_reason: Razón Social
+    label_schedule: Horarios
+    label_schedule_public: Horario Atención Público
+    label_postal_code: Código Postal
+    label_phone: Telefonos
+    label_website: Sitio Web
+    label_service_description: Servicios Prestados
+    label_user: Usuario Asociado
+    label_entity_type: Tipo Entidad
+    label_client: Cliente
+    label_about_us: Sobre Nosotros
+    label_bote: Bote
+    label_fecha_bote: Fecha Bote
+    label_bote_destacado: Bote destacado
+    label_cliente: Cliente
+
+Ver Sección: Ver Sección
+Editar Sección: Editar Sección
+Gestionar Artículos: Gestionar Artículos
+APPROVED: Aprobado
+REJECTED: Rechazado
+CLOSED: Cerrado
+PENDING_FOR_APPROVAL: Pendiente de aprobación
+ROLE_ADMIN: Admin
+ROLE_USER: Usuario
+ROLE_SUPER_ADMIN: Super Admin
+ROLE_EDITOR: Editor
+ROLE_WRITER: Redactor
+Add: Adicionar
+link_list: Listado
+link_edit: Editar
+link_delete: Eliminar
+Authentication: Autenticación
+Esta es la Home: Pagina de Inicio
+Español: Español
+Ingles: Ingles
+Datos Opcionales: Datos Opcionales
+Otros Datos: Otros Datos
+Media items: PDF/TXT/WORD
