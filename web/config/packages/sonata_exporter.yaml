@@ -1,0 +1,8 @@
+# config/packages/sonata_exporter.yaml
+sonata_exporter:
+    exporter:
+        default_writers:
+            - csv
+            - json
+            - xls
+            - xml

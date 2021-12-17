@@ -1,0 +1,16 @@
+sonata_admin:
+    assets:
+        extra_stylesheets:
+            - bundles/sonatatranslation/css/sonata-translation.css
+
+sonata_block:
+    blocks:
+        sonata_translation.block.locale_switcher: null
+
+sonata_translation:
+    locales: ['en','es']
+    locale_switcher: false
+    default_locale: "%locale%"
+    default_filter_mode: gedmo
+    gedmo:
+        enabled: true
