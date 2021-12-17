@@ -1,0 +1,136 @@
+{% extends 'front/paginas_internas.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {#<link rel="stylesheet" type="text/css" href="{{ asset('templates_assets/js/ckeditor_4.15.0_standard/contents.css') }}">#}
+    {#<link rel="stylesheet" type="text/css" href="{{ asset('templates_assets/js/ckeditor_4.15.0_standard/widgetstyles.css') }}">#}
+
+{% endblock %}
+ {% block idiomas %}
+     <a class="selectorIdioma__link selectorIdioma__link--actual" href="{{ path( app.request.attributes.get('_route'), {'_locale':'es'}) }}">{{ app.request.locale=='es'?'ESP':'ENG'}}</a>
+     <a class="selectorIdioma__link" href="{{ path( app.request.attributes.get('_route'), {'_locale':'en'}) }}">{{ app.request.locale=='es'?'ENG':'ESP'}}</a>
+ {% endblock %}
+{% block content %}
+    <section class="comun-body mi-habana-body">
+        <div class="container">
+            <div class="row">
+                <div class="deTop">
+                    {% if directorio.getSectionFiles is defined %}
+                        {% if directorio.getSectionFiles is not empty %}
+                            {% set img = directorio.getSectionFiles.first() %}
+                            {% set ruta = directorio.id~'-'~directorio.getSlug() %}
+                            <img src="{{ asset('upload/files/'~ruta~'/'~ img.filename) }}" alt="{{ app.request.locale=='es'?directorio.title:directorio.titleEs }}" >
+                        {% endif %}
+                    {% endif %}
+                    {% if  directorio != false %}<h1>{{app.request.locale=='es'?directorio.title:directorio.titleEs }}</h1>{% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="container bg-white px-4">
+            <div class="camino pt-3 pb-3">
+                <a href="{{ path('homepage') }}">Inicio</a><span class="separador mx-3"></span><a href="#" class="actual">{% if  directorio != false %}{{ app.request.locale=='es'?directorio.title:directorio.titleEs }} {% endif %}</a>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+
+                    <div class="principal_pagina_tramites w-100 mb-5">
+                        {% if directorio.getSectionFiles is empty and seccion.description is null %}
+                            <h1>{{ app.request.locale=='es'?directorio.title:directorio.titleEs }}</h1>
+                        {% else %}
+                            <div class="principal_pagina_tramites__flex">
+                                {#{% if seccion.getSectionFiles is defined %}#}
+                                {#{% if seccion.getSectionFiles is not empty %}#}
+                                {#{% set img = seccion.getSectionFiles.first() %}#}
+                                {#{% set ruta = seccion.id~'-'~seccion.getSlug() %}#}
+                                {#<div class="principal_pagina_tramites__flex-item">#}
+
+                                {#<img src="{{ asset('upload/files/'~ruta~'/'~ img.filename) }}" alt="{{ seccion.title }}" class="principal_pagina_tramites__img">#}
+
+                                {#</div>#}
+                                {#{% endif %}#}
+                                {#{% endif %}#}
+
+                                    <div class="principal_pagina_tramites__flex-item principal_pagina_tramites__flex-item--icon-texto bg-light text-dark border">
+                                        <div class="p-4">
+                                            <div class="d-flex justify-content-center align-items-center mb-2">
+                                                {#<h4 class="principal_pagina_tramites__header">{{ categoria.title }} </h4>#}
+                                            </div>
+                                            {% if directorio.description is not null %}
+                                            <p class="principal_pagina_tramites__desc text-dark">{{ app.request.locale=='es'?directorio.description | raw:directorio.descriptionEs | raw }}</p>
+                                            {% endif %}
+                                            <p class="text-center"><a class="btn btn-lg btn-primary" href="{{ path('entity_new') }}">{{ app.request.locale=='es'?'Insertar Entidad':'Insert Entity'}}</a></p>
+                                        </div>
+                                    </div>
+
+                            </div>
+                        {% endif %}
+                    </div>
+
+
+                    <div class="listaCategoria">
+
+
+                            {% for p in paginator %}
+
+                                    <div class="itemCategoria">
+                                        {% if p.getEntitiesFiles is defined %}
+                                            {% if p.getEntitiesFiles is not empty %}
+                                                <div class="itemCategoria__img">
+
+                                                    {% set img = p.getEntitiesFiles().first() %}
+
+                                                    <img src="{{ asset('upload/files/'~p.id~'/'~ img.filename) }}" alt="{{ p.comercialName }}"/>
+
+
+                                                </div>
+                                                {% else %}
+                                        <div class="itemCategoria__img">
+                                                    <img src="{{ asset('templates_assets/frontend/img/img-empty.jpg') }}" alt="p.name"/>
+                                        </div>
+                                            {% endif %}
+                                        {% endif %}
+                                        <div class="itemCategoria__redesFecha">
+                                            {# <div class="itemCategoria__redes">
+                                                 <a href="#" class="facebook-color"><i class="fa fa-facebook"></i></a>
+                                                 <a href="#" class="twitter-color"><i class="fa fa-twitter"></i></a>
+                                                 <a href="#" class="telegram-color"><i class="fa fa-telegram"></i></a>
+                                             </div>#}
+                                            {#{% if p.getOptionalDate is not null %}#}
+                                            {#<div class="itemCategoria__fecha">#}
+                                            {#<a href="#">#}
+                                            {#{{ p.getOptionalDate | date('d/m/Y') }}#}
+                                            {#</a>#}
+                                            {#</div>#}
+                                            {#{% endif %}#}
+                                        </div>
+                                        <div class="itemCategoria__titulo">
+                                            <a href="{{ path('entity_detalles', {'id':p.id, 'slug':p.slug}) }}">
+                                                {{ p.name }}
+                                            </a>
+                                        </div>
+                                        <div class="itemCategoria__intro">
+                                            {#{{ p.description | raw }}#}
+                                        </div>
+                                        <div class="itemCategoria__mas">
+                                            <a class="text-dark" href="{{ path('entity_detalles', {'id':p.id, 'slug':p.slug}) }}">
+
+                                                {{ app.request.locale=='es'?'Ver Detalles':'See Details' }}
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+                            {% endfor %}
+
+
+                    </div>
+
+                    <div class="navigation">
+                        {{ knp_pagination_render(paginator) }}
+                    </div>
+
+                </div>
+                {{ render_ssi(controller('App\\Controller\\Front\\FrontController::sidebar', {})) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

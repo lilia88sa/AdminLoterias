@@ -1,0 +1,145 @@
+{% extends 'front/paginas_internas.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {#<link rel="stylesheet" type="text/css" href="{{ asset('templates_assets/js/ckeditor_4.15.0_standard/contents.css') }}">#}
+    {#<link rel="stylesheet" type="text/css" href="{{ asset('templates_assets/js/ckeditor_4.15.0_standard/widgetstyles.css') }}">#}
+
+{% endblock %}
+ {% block idiomas %}
+     <a class="selectorIdioma__link {{app.request.locale == "es"? 'selectorIdioma__link--actual':''}}" href="{{ path( app.request.attributes.get('_route'), {'_locale':'es','id':directorio.id,'slug': directorio.slug }) }}">ESP</a>
+     <a class="selectorIdioma__link {{app.request.locale == "es"? '':'selectorIdioma__link--actual'}}" href="{{ path( app.request.attributes.get('_route'), {'_locale':'en','id':directorio.id,'slug': directorio.slug }) }}">ENG</a>
+ {% endblock %}
+{% block content %}
+    <section class="comun-body mi-habana-body">
+        <div class="container">
+            <div class="row">
+                <div class="deTop">
+                    {% if directorio.getSectionFiles is defined %}
+                        {% if directorio.getSectionFiles is not empty %}
+                            {% set img = directorio.getSectionFiles.first() %}
+                            {% set ruta = directorio.id~'-'~directorio.getSlug() %}
+                            <img src="{{ asset('upload/files/'~ruta~'/'~ img.filename) }}" alt="{{_self.traductor(directorio.title,directorio.titleEs)  }}" >
+                        {% endif %}
+                    {% endif %}
+                    {% if  directorio != false %}<h1>{{ _self.traductor(directorio.title,directorio.titleEs) }}</h1>{% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="container bg-white px-4">
+            <div class="camino pt-3 pb-3">
+                <a href="{{ path('homepage') }}">{{_self.traductor('Inicio','Home')  }}</a><span class="separador mx-3"></span><a href="{{ path('listado_entidades') }}">{{_self.traductor('Entidades','Entities')  }}</a><span class="separador mx-3"></span><a href="#" class="actual">{{_self.traductor('Detalles de entidad','Details of entity')  }} {{ entity.comercialName }}</a>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="detallesEntidad">
+
+                        {% if entity.getEntitiesFiles() is defined %}
+                            {% if entity.getEntitiesFiles() is not empty %}
+                                {% set img = entity.getEntitiesFiles().first() %}
+
+                                <img class="detallesEntidad__img"  src="{{ asset('upload/files/'~entity.id~'/'~ img.filename) }}" alt="{{ entity.comercialName }}"/>
+                            {% else  %}
+
+                            {% endif %}
+
+                        {% endif %}
+
+                        <h3 class="detallesEntidad__comercial">{{ entity.comercialName }}</h3>
+                        <div class="d-flex">
+                            <div class="detallesEntidad__codigo">Codigo: {{ entity.code }}</div>
+                            <div class="detallesEntidad__separador"></div>
+                            <div class="detallesEntidad__nombre">{{ entity.name }}</div>
+                            <div class="detallesEntidad__separador"></div>
+                            <div class="detallesEntidad__tipo">{{ entity.entityType }}</div>
+                        </div>
+                        <div class="detallesEntidad__razon">
+                            <div class="detallesEntidad__label">
+                                {{app.request.locale=='es'?'Razón social':"Social Rason" }}
+                            </div>
+                            <p>
+                                {{app.request.locale=='es'? entity.socialReason | raw :entity.socialReason | raw }}
+                            </p>
+                        </div>
+                        <div class="detallesEntidad__horas">
+                            <div class="detallesEntidad__horarios">
+                                <div class="detallesEntidad__label">
+                                    {{app.request.locale=='es'?'Horarios':"Horaries" }}
+                                </div>
+                                <i class="fa fa-clock-o "></i>
+                                {{ entity.schedule }}
+                            </div>
+                            <div class="detallesEntidad__horariosPublicos">
+                                <div class="detallesEntidad__label">
+                                 {{app.request.locale=='es'?'Horarios al público':"Populations'horaries" }}
+                                </div>
+                                <i class="fa fa-calendar "></i>
+                                {{ entity.schedulePublic }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="detallesEntidad__contactos">
+                            <a href="#" class="detallesEntidad__codigoPostal">
+                                <i class="fa fa-map-marker fa-2x"></i>
+                                <div class="">
+                                    <div class="detallesEntidad__label">
+                                        {{app.request.locale=='es'?'Código postal':'Postal Code'}}
+                                    </div>
+                                    {{ entity.postalCode }}
+                                </div>
+                            </a>
+                            <a href="#" class="detallesEntidad__telefonos">
+                                <i class="fa fa-phone fa-2x"></i>
+                                <div class="">
+                                    <div class="detallesEntidad__label">
+                                        {{app.request.locale=='es'?'Teléfono':'Phone'}}
+                                    </div>
+                                   {{ entity.phone }}
+                                </div>
+                            </a>
+                            <a href="#" class="detallesEntidad__correos">
+                                <i class="fa fa-envelope fa-2x"></i>
+                                <div class="">
+                                    <div class="detallesEntidad__label">
+                                        {{app.request.locale=='es'?'Correo Electrónico':'E-Mail'}}
+                                    </div>
+                                    {{ entity.email }}
+                                </div>
+                            </a>
+                            <a href="#" class="detallesEntidad__web">
+                                <i class="fa fa-link fa-2x"></i>
+                                <div class="">
+                                    <div class="detallesEntidad__label">
+                                        {{app.request.locale=='es'?'Sitio Web':'Web Site'}}
+                                    </div>
+                                    <div class="detallesEntidad__weblong">
+                                        {{ entity.website }}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="detallesEntidad__descripcion">
+                            <div class="detallesEntidad__label detallesEntidad__label--line">
+                                {{app.request.locale=='es'?'Descripción de la entidad o negocio':'Descripction of the entity or bussiness'}}
+                            </div>
+                            <p>
+                                {{app.request.locale=='es'? entity.description | raw :entity.description | raw }}
+                            </p>
+
+                        </div>
+                        </p>
+                        <div class="detallesEntidad__servicios">
+                            <div class="detallesEntidad__label detallesEntidad__label--line">
+                            {{app.request.locale=='es'?'Servicios':'Services'}}
+                            </div>
+                            <p>
+                                {{app.request.locale=='es'?  entity.serviceDescription | raw :entity.serviceDescription | raw }}
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+                {{ render_ssi(controller('App\\Controller\\Front\\FrontController::sidebar', {})) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

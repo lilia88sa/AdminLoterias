@@ -1,0 +1,94 @@
+# api/config/api_platform/user.yaml
+App\Entity\Security\User:
+    collectionOperations:
+        post:
+            access_control: 'is_granted("ROLE_ADMIN") or is_granted("ROLE_SUPER_ADMIN")'
+            denormalization_context: {groups: ["post"]}
+            normalization_context: {groups: ["user:register"]}
+            openapi_context: 
+                summary: Register User,
+                description: Register a new User,
+                parameters:
+                    -
+                        name: name,
+                        in: body,
+                        required: true,
+                        type: string,
+                        description: 'Name of new user'
+                    -
+                        name: username,
+                        in: body,
+                        required: true,
+                        type: string,
+                        description: 'Username of new user'
+                    -
+                        name: password,
+                        in: body,
+                        required: true,
+                        type: string,
+                        description: "User's Password"
+                    -
+                        name: repeatPassword,
+                        in: body,
+                        required: true,
+                        type: string,
+                        description: 'Password confirmation'
+                    -
+                        name: email,
+                        in: body,
+                        required: true,
+                        type: string,
+                        description: "User's email"
+                    -
+                        name: privacy,
+                        in: body,
+                        required: true,
+                        type: boolean,
+                        description: "Accept Privacy"
+    itemOperations:
+        get:
+            access_control: '(is_granted("IS_AUTHENTICATED_FULLY"))'
+            normalization_context: {groups: ["get"]}
+        
+        put:
+            method: put
+            controller: 'App\Controller\Security\ChangeUserAction'
+            access_control: '(is_granted("ROLE_USER") and object == user) or is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_AGENCY") or is_granted("ROLE_AGENT")'
+            denormalization_context: {groups: ['patch-update-profile']}
+            normalization_context: {groups: ["get"]}
+            openapi_context: 
+                summary: Update User Profile,
+                description: Update User Profile,
+                parameters:
+                    -
+                        name: id,
+                        in: path,
+                        required: true,
+                        type: integer 
+
+        change_password:
+            method: put
+            path: '/user/{id}/change-password'
+            controller: 'App\Controller\Security\ChangePasswordAction'
+            access_control: '(is_granted("ROLE_USER") and object == user) or is_granted("ROLE_SUPER_ADMIN")'
+            normalization_context: {groups: ["user:read"]}
+            denormalization_context:  {groups: ["user:write"]}
+            requirements:
+                id: '\d+'
+            openapi_context: 
+                summary: Change User password,
+                description: Change User password,
+                parameters:
+                    -
+                        name: id,
+                        in: path,
+                        required: true,
+                        type: integer
+        
+        reset_password:
+            access_control: 'is_granted("IS_AUTHENTICATED_FULLY") and object == user'
+            method: put
+            path: '/users/{id}/reset-password'
+            controller: 'App\Controller\Security\ResetPasswordAction'
+            denormalization_context: {groups: ["put-reset-password"]}
+            validation_groups: "put-reset-password"

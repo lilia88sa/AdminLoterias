@@ -1,0 +1,13 @@
+# api/config/api_platform/notifications.yaml
+App\Entity\Core\Notifications:
+    collectionOperations:
+        get:
+            access_control: 'is_granted("ROLE_ADMIN") or is_granted("ROLE_SUPER_ADMIN")'
+            normalization_context: {groups: ["notification-read"]}
+    itemOperations:
+        get:
+            access_control: 'is_granted("ROLE_ADMIN") or is_granted("ROLE_SUPER_ADMIN")'
+            normalization_context: {groups: ["notification-read"]}
+            controller: 'ApiPlatform\Core\Action\NotFoundAction'
+            read: false
+            output: false

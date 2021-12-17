@@ -1,0 +1,14 @@
+# api/config/api_platform/locale.yaml
+App\Entity\Core\Locale:
+    collectionOperations:
+        get:
+            method: get
+        post:
+            access_control: '(is_granted("IS_AUTHENTICATED_FULLY") and is_granted("ROLE_ADMIN"))'
+    itemOperations:
+        get:
+            method: get
+        put:
+            access_control: 'is_granted("ROLE_ADMIN")'
+        delete:
+            access_control: 'is_granted("ROLE_ADMIN")'

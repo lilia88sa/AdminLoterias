@@ -1,0 +1,68 @@
+{% apply inline_css%}
+<html>
+<head>
+    <title></title>
+    <meta content="">
+    <style>
+        @font-face {
+            font-family: "futuraBQLightOblique";
+            src: url("../../../public/templates_assets/fonts/FuturaBQ-LightOblique.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "futuraBQRegular";
+            src: url("../../../public/templates_assets/fonts/FuturaBQ.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "futuraBQBold";
+            src: url("../../../public/templates_assets/fonts/FuturaBQ-Bold.ttf") format("truetype");
+        }
+        .body-background {
+            color: #fff;
+            font-family: "futuraBQRegular", sans-serif;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body class="body-background" style="font-family: futuraBQRegular,Helvetica,Arial,sans-serif;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#191919" style="background-color: #191919; max-width: 800px;" align="left">
+    <tbody>
+    <tr rowspan="4">
+        <td style="color:#fff;font-size:15px;" align="center">
+            <p>Datos de traducción de artículos desde comienzo del mes hasta {{ "now" | date("d/m/Y") }}</p>
+        </td>
+    </tr>
+    <tr>
+        <th style="color:#fff;padding-top:37px;padding-right:5%;padding-bottom:0px;padding-left:5%;font-size:15px;" align="left">
+            <p>Usuario</p>
+        </th>
+        <th style="color:#fff;padding-top:37px;padding-right:5%;padding-bottom:0px;padding-left:5%;font-size:15px;" align="left">
+            <p>Cantidad de Artículos</p>
+        </th>
+        <th style="color:#fff;padding-top:37px;padding-right:5%;padding-bottom:0px;padding-left:5%;font-size:15px;" align="left">
+            <p>Ultima Actualización</p>
+        </th>
+    </tr>
+    {% for stats in stadistics %}
+    <tr>
+        <td style="color:#fff;padding-top:37px;padding-right:5%;padding-bottom:0px;padding-left:5%;font-size:15px;" align="left">
+            <p>{{ stats["user"] }}</p>
+        </td>
+        <td style="color:#fff;padding-top:37px;padding-right:5%;padding-bottom:0px;padding-left:5%;font-size:15px;" align="left">
+            <p>{{ stats["ammount"] }}</p>
+        </td>
+        <td style="color:#fff;padding-top:37px;padding-right:5%;padding-bottom:0px;padding-left:5%;font-size:15px;" align="left">
+            <p>{{ stats["date"] | date("d/m/Y H:i") }}</p>
+        </td>
+    </tr>
+    {% endfor %}
+    <tr rowspan="4">
+        <td style="color:#fff;font-size:15px;" align="center">
+            <p style="margin-bottom: 5px">Un saludo,</p>
+            <p style="margin-top: 0">El equipo del Portal</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+{% endapply %}

@@ -1,0 +1,100 @@
+sonata_admin:
+    title: 'Administración'
+    title_logo: 'templates_assets/img/habana_mia_logo.png'
+    security:
+        handler: sonata.admin.security.handler.role
+
+        role_admin: ROLE_USER
+        role_super_admin: ROLE_SUPER_ADMIN
+
+        # acl security information
+        information:
+            GUEST:    [VIEW, LIST]
+            STAFF:    [EDIT, LIST, CREATE]
+            EDITOR:   [OPERATOR, EXPORT]
+            ADMIN:    [MASTER]
+
+    dashboard:
+        blocks:
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [app.admin.group.administration]
+
+            -
+                position: right
+                type: sonata.block.service.text
+                settings:
+                    content: >
+                        <h2>Bienvenido a la Administracion de Loterías</h2>
+                        <p>Mediante las diferentes secciones usted podrá modificar, agregar y eliminar
+                         la información relacionada con las pantallas táctiles, TV y su sitio web.
+                         <br/> Entre otras opciones  podrá validar usuarios, crear juegos,
+                         para su uso en la aplicación.</p> <br/> Ante cualquier inconveniente
+                        consulte con nuestro equipo de desarrollo.
+        groups:
+            app.admin.group.administration:
+                label: menu.admin
+               # label_catalogue: 'sonata_messages' # <--- this is not the bundle name, but the "translation domain" / filename of the translation file
+                items:
+                    - admin.security.user
+                    - admin.order_clasification
+                roles: [ROLE_SUPER_ADMIN, ROLE_ADMIN]
+
+            app.admin.group.post:
+                label: menu.section_articules
+               # label_catalogue: 'sonata_messages' # <--- this is not the bundle name, but the "translation domain" / filename of the translation file
+                items:
+                    - admin.section
+#                    - admin.post
+                roles: [ROLE_SUPER_ADMIN, ROLE_ADMIN, ROLE_WRITER, ROLE_EDITOR]
+
+#            app.admin.group.glossary:
+#                label: menu.glossary
+#               # label_catalogue: 'sonata_messages' # <--- this is not the bundle name, but the "translation domain" / filename of the translation file
+#                items:
+#                    - admin.key_words
+#                roles: [ROLE_SUPER_ADMIN, ROLE_ADMIN, ROLE_WRITER, ROLE_EDITOR]
+
+#            app.admin.group.comments:
+#                label: menu.comments
+#               # label_catalogue: 'sonata_messages' # <--- this is not the bundle name, but the "translation domain" / filename of the translation file
+#                items:
+#                    - admin.comments
+#                roles: [ROLE_SUPER_ADMIN, ROLE_ADMIN, ROLE_EDITOR]
+
+#            app.admin.group.users:
+#                            label: menu.users
+#                           # label_catalogue: 'sonata_messages' # <--- this is not the bundle name, but the "translation domain" / filename of the translation file
+#                            items:
+#                                - admin.entities
+#                            roles: [ROLE_USER, ROLE_SUPER_ADMIN, ROLE_ADMIN, ROLE_EDITOR]
+            app.admin.group.cliente:
+                            label: menu.cliente
+                           # label_catalogue: 'sonata_messages' # <--- this is not the bundle name, but the "translation domain" / filename of the translation file
+                            items:
+                                - admin.cliente
+                            roles: [ROLE_USER, ROLE_SUPER_ADMIN, ROLE_ADMIN, ROLE_EDITOR]
+            app.admin.group.juego:
+                            label: menu.juego
+                           # label_catalogue: 'sonata_messages' # <--- this is not the bundle name, but the "translation domain" / filename of the translation file
+                            items:
+                                - admin.juego
+                            roles: [ROLE_USER, ROLE_SUPER_ADMIN, ROLE_ADMIN, ROLE_EDITOR]
+
+    options:
+        legacy_twig_text_extension: false
+        lock_protection: true
+
+    templates:
+#        layout: '@SonataTranslation/standard_layout.html.twig'
+        user_block: 'security/user_block.html.twig'
+        layout:     'security/custom_standard_layout.html.twig'
+
+sonata_block:
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+
+

@@ -1,0 +1,27 @@
+# api/config/api_platform/user_status.yaml
+App\Entity\Security\UserStatus:
+    collectionOperations:
+        update_status:
+            method: post
+            path: '/user/update-status'
+            access_control: 'is_granted("ROLE_ADMIN") or is_granted("ROLE_SUPER_ADMIN")'
+            openapi_context:
+                summary: Update User Status
+                description: Update User Status
+                consumes:
+                    - application/json
+                parameters:
+                    - in: body
+                      name: User
+                      description: Update User Status.
+                      schema:
+                        type: object
+                        required:
+                          - user
+                          - status
+                        properties:
+                            user:
+                                type: integer
+                            status:
+                                type: string
+    itemOperations: []

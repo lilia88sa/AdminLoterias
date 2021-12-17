@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="jquery-3.6.0.js"></script>
+  <script src="jquery-ui.js"></script>
+  <script>
+  $( function() {
+    //$( "#datepicker" ).datepicker();
+	var array = ["01-10-2021","02-10-2021","03-10-2021","15-10-2021","25-10-2021"]
+    $('#datepicker').datepicker({
+        
+		beforeShowDay: function(date){
+            var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
+            return [ array.indexOf(string) != -1 ]
+        }
+    });
+  } );
+  </script>
+</head>
+<body>
+ 
+<p>Date: <input type="text" id="datepicker"></p>
+ 
+ 
+</body>
+</html>

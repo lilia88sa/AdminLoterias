@@ -1,0 +1,13 @@
+<div class="col-12 col-md-6 col-lg-3 estadistica py-4 py-md-5 px-5 px-md-3">
+    <p class="prefooter__head">{{ app.request.locale == "es"?  'ESTADISTICAS':  'STATISTICS' }} </p>
+    <p>{{ app.request.locale == "es"?  'Total visitas: ':  'Visits totals' }}</p>
+    <p class="text-center h5">{{ total }}</p>
+    <hr>
+    <p>{{ app.request.locale == "es"?  'Actualización más reciente: ':  'Latest update' }}</p>
+    <p></p>
+    <p class="text-center h5">10:30 a.m.<br>28 Mayo 2021</p>
+</div>
+
+
+
+

@@ -1,0 +1,175 @@
+{% extends 'base.html.twig' %}
+    {% block idioma %}
+        <li><a href="{{ path( app.request.attributes.get('_route'), {'_locale':'es', 'id':post.id}) }}"><img src="{{asset('templates_assets/img/spain.svg') }}"  width="20px" alt="Spanish"> ES</a></li>
+        <li><a href="{{ path( app.request.attributes.get('_route'), {'_locale':'en', 'id':post.id}) }}"><img src="{{asset('templates_assets/img/united-kingdom.svg') }}"  width="20px" alt="Inglés"> EN</a></li>
+    {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('templates_assets/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('templates_assets/css/rating.css') }}">
+{% if puzzle %}
+    {#PUZZLE#}
+    <link rel="stylesheet" href="{{ asset('templates_assets/js/puzzle/puzzle.css') }}">
+    {#END PUZZLE#}
+{% endif %}
+{% endblock %}
+{% block body %}
+    {#SHARE TELEGRAM#}
+    <script async src="https://telegram.org/js/telegram-widget.js?14" data-telegram-share-url="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}" data-comment="Compartir" data-text="notext">
+    </script>
+    {#SHARE TWITTER#}
+    <a class="twitter-share-button"
+       data-hashtags="cap,habana"
+       data-via="presidenciacuba"
+       data-related="presidenciacuba"
+       data-size="small"
+       data-text="Compartir"
+       href="https://twitter.com/intent/tweet">
+        Tweet</a>
+    {#SHARE FACEBOOK#}
+    <div class="fb-share-button" data-href="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}" data-layout="button_count" data-size="small"><a target="_blank"  class="fb-xfbml-parse-ignore">Compartir</a></div>
+    {#RATING#}
+    <div class="alert alert-success" style="display: none;"> {{ app.request.locale=='es'?'Rating recibido:':'Incomed Rating'}} <span id="rate"></span></div>
+        <div class="star_content">
+            {% if rating %}
+                <input name="rate" value="1" type="radio" class="star" {% if rating.average == 1 %}checked="checked" {% endif %}/>
+                <input name="rate" value="2" type="radio" class="star" {% if rating.average == 2 %}checked="checked" {% endif %}/>
+                <input name="rate" value="3" type="radio" class="star" {% if rating.average == 3 %}checked="checked" {% endif %}/>
+                <input name="rate" value="4" type="radio" class="star" {% if rating.average == 4 %}checked="checked" {% endif %}/>
+                <input name="rate" value="5" type="radio" class="star" {% if rating.average == 5 %}checked="checked" {% endif %}/>
+            {% else %}
+            <input name="rate" value="1" type="radio" class="star"/>
+            <input name="rate" value="2" type="radio" class="star"/>
+            <input name="rate" value="3" type="radio" class="star"/>
+            <input name="rate" value="4" type="radio" class="star" checked="checked"/>
+            <input name="rate" value="5" type="radio" class="star"/>
+            {% endif %}
+        </div>
+       {% if rating %}
+           <p>
+               Rating {{ rating.average }} - Votos ({{ rating.votes }})
+           </p>
+       {% endif %}
+    <h3>
+    {% if app.request.locale == "es" %} {{ post.title }} {% else %} {{ post.titleEs }} {% endif %}
+    </h3>
+    Rest of the post data...
+    The number of views of this article : {{ post.views }}
+    <br>
+    Comment Lis
+    <br>
+    <div class="row">
+        {% for comment in post.comments  %}
+            {% if comment.publish %}
+             <div class="col-md-12">
+                {{ comment.description }}
+             </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    Comment
+    <br>
+    {{ form_start(form) }}
+     <div class="row">
+         <div class="col-md-12">
+             {{ form_widget(form.name) }}
+         </div>
+         <div class="col-md-12">
+             {{ form_widget(form.email) }}
+         </div>
+         <div class="col-md-12">
+             {{ form_widget(form.description) }}
+         </div>
+         <div class="col-md-12">
+             {{ form_widget(form.captcha) }}
+             {{ form_errors(form.captcha) }}
+         </div>
+         <button type="submit" class="btn btn-primary">  {{ app.request.locale=='es'?'Enviar':'Send'}} </button>
+     </div>
+    {{ form_end(form) }}
+{% if puzzle %}
+    {#PUZZLE#}
+    <div id="root" class="root"></div>
+    <div id="lists" class="lists">
+        <table>
+            <tr>
+                <td width="50%" id="left-list" valign="top" class="list-text">
+                    <center>
+                        <h3>Horizontal</h3>
+                    </center>
+                </td>
+                <td width="50%" id="right-list" valign="top" class="list-text">
+                    <center>
+                        <h3>Vertical</h3>
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="answer-form">
+        <div class="short-margin">
+            <p id="position-and-clue"></p>
+            <p>Respuesta : <input id="solution-answer" type="text" size="40"></p>
+            <p id="answer-results" class="hidden"></p>
+            <p><input type="button" id="cancel-button" value="Cancelar"> <input type="button" id="answer-button" value="Respuesta"> <input type="button" id="reveal-answer-button" value="Revelar Respuesta"></p>
+        </div>
+    </div>
+    {#END PUZZLE#}
+{% endif %}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('templates_assets/js/jquery-2.2.4.min.js') }}"></script>
+  {% if puzzle %}
+    <script src="{{ asset('templates_assets/js/puzzle/puzzle.js') }}"></script>
+    <script  type="text/javascript">
+        $(document).ready(function(event) {
+            var puzzlewords = [
+                {{ puzzle | raw }}
+
+            ];
+            crosswordPuzzle(puzzlewords);
+        });
+    </script>
+  {% endif %}
+    <script>
+        window.twttr = (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function(f) {
+                t._e.push(f);
+            };
+
+            return t;
+        }(document, "script", "twitter-wjs"));
+    </script>
+    <script src="{{ asset('templates_assets/js/jquery.rating.pack.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $('input.star').rating();
+            $('.star').on('click', function () {
+                $.ajax({
+                    type: "POST",
+                    async: true,
+                    url: '{{ path('rating_post',{'post' : post.id}) }}',
+                    dataType: 'JSON',
+                    data: {rate: $('input[name="rate"]').val()},
+                    success: function(response) {
+                        $('.alert-success').fadeIn(2000);
+                        $('#rate').text(response.rate);
+                    }
+                });
+                return false;
+            })
+        });
+    </script>
+{% endblock %}
+

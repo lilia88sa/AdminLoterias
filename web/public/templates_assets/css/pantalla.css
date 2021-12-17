@@ -1,0 +1,2352 @@
+@font-face
+{
+    font-family:"Monserrat Semibold";
+    src:url("../fonts/Montserrat-SemiBold.ttf")
+}
+
+@font-face
+{
+    font-family:"Helvatica Bold Condensed";
+    src:url("../fonts/HelveticaLTStd-BoldCond.otf")
+}
+
+@font-face
+{
+    font-family:"Monserrat Medium";
+    src:url("../fonts/Montserrat-Medium.ttf")
+}
+
+@font-face
+{
+    font-family:"Monserrat Bold";
+    src:url("../fonts/Montserrat-Bold.otf")
+}
+
+#inicio{
+    background: url("../img/pantallas/bg-1.png") repeat-y center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    max-height: 100%;
+    min-height: 100%;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 45px;
+    padding: 0;
+    z-index: 500;
+    }
+
+.botes-texto{
+    color: #B81515;
+    font-family: "Monserrat Semibold";
+    font-size: 18pt;
+    font-weight: 700;
+}
+
+.tag-bote{
+    background-color: #B81515;
+    color: #fff;
+    position:absolute;
+    right: 5%;
+    z-index: 1000;
+    padding: 0;
+    font-weight: bold;
+    font-size: 12pt;
+    }
+
+.tablaborde{
+
+    border-left: 3px solid #E4E4E4;
+    border-right: 3px solid #E4E4E4;
+    }
+
+.tablaborde1{
+
+    border-top: 3px solid #E4E4E4;
+    border-bottom: 3px solid #E4E4E4;
+}
+
+.fecha-bote{
+    color: #565656;
+    font-family: "Monserrat Semibold";
+    font-size: 16pt;
+    font-weight: bold;
+}
+.fecha-bote1{
+    color: #565656;
+    font-family: "Monserrat Semibold";
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.fondohorizontal{
+    background: url("../img/pantallas/botes-derecha/renglon.svg");
+    background-repeat: repeat-x;
+  }
+
+.logohorizontal{
+    height:80%;
+}
+
+.nacional-btn-bg{
+    background-image: url("../img/pantallas/botones/nacional.svg");
+    background-repeat: no-repeat;
+    background-size: 98% 100%;
+    background-position: left;
+   }
+
+.nacional-btn-bg:hover{
+    background-image: url("../img/pantallas/botones-hover/nacional.svg");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-size: 98% 100%;
+    background-position: left;
+}
+
+.primitiva-btn-bg{
+    background-image: url("../img/pantallas/botones/primitiva.svg");
+    background-repeat: no-repeat;
+    background-size: 98% 100%;
+    background-position: center;
+}
+
+.primitiva-btn-bg:hover{
+    background-image: url("../img/pantallas/botones-hover/primitiva.svg");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-size: 98% 100%;
+    background-position: center;
+}
+
+.euromillones-btn-bg{
+    background-image: url("../img/pantallas/botones/euromillones.svg");
+    background-repeat: no-repeat;
+    background-size: 98% 100%;
+    background-position: right;
+}
+
+.euromillones-btn-bg:hover{
+    background-image: url("../img/pantallas/botones-hover/euromillones.svg");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-size: 98% 100%;
+    background-position: center;
+}
+
+.quiniela-btn-bg{
+    background-image: url("../img/pantallas/botones/quiniela.svg");
+    background-repeat: no-repeat;
+    background-size: 98% 100%;
+    background-position: left;
+}
+
+.quiniela-btn-bg:hover{
+    background-image: url("../img/pantallas/botones-hover/quiniela.svg");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-size: 98% 100%;
+    background-position: left;
+}
+
+.gordo-btn-bg{
+    background-image: url("../img/pantallas/botones/gordo.svg");
+    background-repeat: no-repeat;
+    background-size: 98% 100%;
+    background-position: center;
+}
+
+.gordo-btn-bg:hover{
+    background-image: url("../img/pantallas/botones-hover/gordo.svg");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-size: 98% 100%;
+    background-position: center;
+}
+
+.lototurf-btn-bg{
+    background-image: url("../img/pantallas/botones/lototurf.svg");
+    background-repeat: no-repeat;
+    background-size: 98% 100%;
+    background-position: center;
+}
+
+.lototurf-btn-bg:hover{
+    background-image: url("../img/pantallas/botones-hover/lototurf.svg");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+.quinigol-btn-bg{
+    background-image: url("../img/pantallas/botones/quinigol.svg");
+    background-repeat: no-repeat;
+    background-size: 98% 100%;
+    background-position: left;
+}
+
+.quinigol-btn-bg:hover{
+    background-image: url("../img/pantallas/botones-hover/quinigol.svg");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-size: 98% 100%;
+    background-position: left;
+}
+
+.bonoloto-btn-bg{
+    background-image: url("../img/pantallas/botones/bonoloto.svg");
+    background-repeat: no-repeat;
+    background-size: 98% 100%;
+    background-position: center;
+}
+
+.bonoloto-btn-bg:hover{
+    background-image: url("../img/pantallas/botones-hover/bonoloto.svg");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-size: 98% 100%;
+    background-position: center;
+}
+
+.quintuple-btn-bg{
+    background-image: url("../img/pantallas/botones/quintuple.svg");
+    background-repeat: no-repeat;
+    background-size: 98% 100%;
+    background-position: center;
+}
+
+.quintuple-btn-bg:hover{
+    background-image: url("../img/pantallas/botones-hover/quintuple.svg");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-size: 98% 100%;
+    background-position: center;
+}
+
+.resultados-btn-bg{
+    background-image: url("../img/pantallas/botones/resultados.svg");
+    background-repeat: no-repeat;
+    background-size: 98% 100%;
+    background-position: left;
+}
+
+.resultados-btn-bg:hover{
+    background-image: url("../img/pantallas/botones-hover/resultados.svg");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-size: 98% 100%;
+    background-position: left;
+}
+
+.botes-btn-bg{
+    background-image: url("../img/pantallas/botones/botes-activos.svg");
+    background-repeat: no-repeat;
+    background-size: 98% 100%;
+    background-position: center;
+}
+
+.img-logo-content{
+    position:absolute;
+    right: 2%;
+    top:4%;
+    z-index: 1000;
+ }
+
+.img-logo-contentinicio{
+    position:absolute;
+    right: 3%;
+    top:1%;
+    z-index: 1000;
+}
+
+.img-logo{
+    width: 150px;
+}
+
+.img-logo-inicio{
+    width: 200px;
+}
+
+
+.botes-btn-bg:hover{
+    background-image: url("../img/pantallas/botones-hover/botes-activos.svg");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-size: 98% 100%;
+    background-position: center;
+}
+
+.clasif-btn-bg{
+    background-image: url("../img/pantallas/botones/clasif-lfp.svg");
+    background-repeat: no-repeat;
+    background-size: 98% 100%;
+    background-position: center;
+}
+
+.clasif-btn-bg:hover{
+    background-image: url("../img/pantallas/botones-hover/clasif-lfp.svg");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-size: 98% 100%;
+    background-position: center;
+}
+
+.numero-btn-bg{
+    background-image: url("../img/pantallas/botones/num-sonado.svg");
+    background-repeat: no-repeat;
+    background-size: 98% 100%;
+    background-position: center;
+}
+
+.numero-btn-bg:hover{
+    background-image: url("../img/pantallas/botones-hover/num-sonado.svg");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-size: 98% 100%;
+    background-position: center;
+}
+
+html{
+    min-height: 100%;
+    position: relative;
+}
+
+body{
+    margin:0;
+    margin-bottom: 45px;
+}
+
+#footer-inicio{
+    background-color: #094478;
+    color: #ffffff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-transform: uppercase;
+    height: 45px;
+    font-size: 24px;
+    z-index: 1001;
+    padding-top:5px;
+    margin: 0;
+   }
+
+#footer-secciones{
+    background-color: #094478;
+    color: #ffffff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-transform: uppercase;
+    height: 45px;
+    font-size: 24px;
+    z-index: 1000;
+    padding:0;
+    margin: 0;
+}
+
+
+
+.video{
+    width: 100%;
+    max-height: 300px;
+    overflow-y: hidden;
+    position:center;
+}
+.tabla{
+    width: 100%;
+    height: 17em;
+    }
+
+.botes{
+    background-color: #fff;
+    box-shadow: -2px 5px 8px 1px rgba(0,0,0,0.2);
+}
+
+.visibilidad-h{
+    display: none;
+}
+
+.visibilidad-w{
+    display: block;
+}
+
+
+/*////////////////Resultados/////////////////*/
+
+.resultados-titulo{
+    font-family: "Monserrat Semibold";
+    color: #fff;
+}
+
+.fondo-div{
+    background-color: #F5FBFD;
+}
+
+.img-resultados{
+    background-image: url("../img/pantallas/resultados/banner.png");
+    background-repeat: no-repeat;
+}
+
+.logo-resultado{
+    height: 16px;
+}
+
+.fondo-euromillones
+{
+    background-image: linear-gradient(to right, #312782 ,#0169E7);
+}
+
+.btn-result-eurom{
+    background-image: linear-gradient(to right, #312782 ,#0169E7);
+    padding: 2px;
+}
+
+.bola-euromillones {
+    background-color: rgb(0, 44, 109);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 16px;
+    font-family: "Monserrat Semibold";
+    background-position: center;
+    width: 35px;
+    height: 35px;
+    padding-top: 6px;
+}
+
+.bg-opacidad-eurom{
+    background-image: url("../img/pantallas/resultados/logo-opaco/eurom.svg");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.estrellas{
+    background-image: url("../img/pantallas/resultados/estrella.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 5px;
+    padding-top: 10px;
+    font-family: "Helvatica Bold Condensed";
+    font-size: 26px;
+}
+
+.millon{
+    background-image: url("../img/pantallas/resultados/millon.svg");
+    background-repeat: no-repeat;
+    background-position: left;
+    font-size:12px ;
+    font-family: "Monserrat Semibold";
+    padding-left: 80px;
+}
+
+.joker{
+    background-image: url("../img/pantallas/resultados/joker.svg");
+    background-repeat: no-repeat;
+    background-position: left;
+    font-size:12px ;
+    font-family: "Monserrat Semibold";
+    padding-left: 80px;
+}
+
+.fondo-primitiva
+{
+    background-image: linear-gradient(to right, #098342 ,#34B322);
+}
+
+.btn-result-primitiva{
+    background-image: linear-gradient(to right, #098342 ,#34B322);
+    padding: 2px;
+}
+
+.bola-primitiva{
+    background-color: rgb(9,131,66);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 16px;
+    font-family: "Monserrat Semibold";
+    background-position: center;
+    width: 35px;
+    height: 35px;
+    padding-top: 6px;
+}
+
+.bola-primitiva-clara{
+    background-color: rgb(150,226,181);
+    color: rgb(9,131,66);
+    font-size: 16px;
+    font-family: "Monserrat Semibold";
+    border-radius: 50%;
+    background-position: center;
+    width: 35px;
+    height: 35px;
+    padding-top: 6px;
+}
+
+.titulo-bolas-primitiva{
+    color: rgb(9,131,66);
+    font-family: "Monserrat Semibold";
+    font-size: 18px;
+}
+
+.bg-opacidad-primitiva{
+    background-image: url("../img/pantallas/resultados/logo-opaco/primitiva.svg");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.fondo-bonoloto
+{
+    background-image: linear-gradient(to right, #748525 ,#8AA525);
+}
+
+.btn-result-bonoloto{
+    background-image: linear-gradient(to right, #748525 ,#8AA525);
+    padding: 2px;
+   }
+
+.text-btn-result{
+    border: 1px solid #fff;
+    font-family: "Monserrat Medium";
+    color:#fff;
+    font-size: 14px;
+  }
+.bola-bonoloto{
+    background-color: rgb(116,133,37);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 16px;
+    font-family: "Monserrat Semibold";
+    background-position: center;
+    width: 35px;
+    height: 35px;
+    padding-top: 6px;
+}
+.bola-bonoloto-clara{
+    background-color: rgb(220,224,179);
+    color: rgb(116,133,37);
+    font-size: 16px;
+    font-family: "Monserrat Semibold";
+    border-radius: 50%;
+    background-position: center;
+    width: 35px;
+    height: 35px;
+    padding-top: 6px;
+}
+
+.titulo-bolas-bonoloto{
+    color: rgb(116,133,37);
+    font-family: "Monserrat Semibold";
+    font-size: 18px;
+}
+
+
+.bg-opacidad-bonoloto{
+    background-image: url("../img/pantallas/resultados/logo-opaco/bonoloto.svg");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.fondo-gordo
+{
+    background-image: linear-gradient(to right, #DC041A ,#F6351D);
+}
+
+.btn-result-gordo{
+    background-image: linear-gradient(to right, #DC041A ,#F6351D);
+    padding: 2px;
+}
+
+.bola-gordo{
+    background-color: rgb(220,63,71);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 16px;
+    font-family: "Monserrat Semibold";
+    background-position: center;
+    width: 35px;
+    height: 35px;
+    padding-top: 6px;
+}
+.titulo-bolas-gordo{
+    color: rgb(220,63,71);
+    font-family: "Monserrat Semibold";
+    font-size: 18px;
+}
+
+.bg-opacidad-gordo{
+    background-image: url("../img/pantallas/resultados/logo-opaco/gordo.svg");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.fondo-nacional
+{
+    background-image: linear-gradient(to right, #3969C9 ,#398DC9);
+}
+
+.bg-opacidad-nacional{
+    background-image: url("../img/pantallas/resultados/logo-opaco/nacional.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.btn-result-nacional{
+    background-image: linear-gradient(to right, #3969C9 ,#398DC9);
+    padding: 2px;
+}
+.bola-nacional{
+    background-color: rgb(57,105,201);
+    color: #fff;
+    font-family: "Monserrat Semibold";
+    font-size: 16px;
+    border-radius: 50%;
+    background-position: center;
+    width: 35px;
+    height: 35px;
+    padding-top: 6px;
+    }
+
+.bola-nacional-fraccion{
+    background-color: rgb(57,105,201);
+    color: #fff;
+    font-family: "Monserrat Semibold";
+    font-size: 16px;
+    border-radius: 50%;
+    background-position: center;
+    width: 35px;
+    height: 35px;
+    padding-top: 6px;
+}
+
+.titulo-premio-nacional {
+    color: #3969C9;
+    font-size: 12px;
+    font-family: "Monserrat Semibold";
+}
+
+.premio-nacional{
+    color: #3969C9;
+    font-size: 22px;
+    font-family: "Monserrat Bold";
+}
+
+.titulo-bolas-nacional{
+    color: #3969C9;
+    font-family: "Monserrat Semibold";
+    font-size: 16px;
+}
+.titulo-bolas-fraccion{
+    color: #3969C9;
+    font-family: "Monserrat Semibold";
+    font-size: 12px;
+}
+
+.fondo-lototurf
+{
+    background-image: linear-gradient(to right, #EB6C20 ,#EBA120);
+}
+
+.btn-result-lototurf{
+    background-image: linear-gradient(to right, #EB6C20 ,#EBA120);
+    padding: 2px;
+}
+.bola-lototurf{
+    background-color: rgb(235,108,32);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 16px;
+    font-family: "Monserrat Semibold";
+    background-position: center;
+    width: 35px;
+    height: 35px;
+    padding-top: 6px;
+}
+.bola-lototurf-clara{
+    background-color: rgb(255,224,212);
+    color: rgb(235,108,32);
+    font-size: 16px;
+    font-family: "Monserrat Semibold";
+    border-radius: 50%;
+    background-position: center;
+    width: 35px;
+    height: 35px;
+    padding-top: 6px;
+}
+
+
+.titulo-bolas-lototurf{
+    color: rgb(235,108,32);
+    font-family: "Monserrat Semibold";
+    font-size: 18px;
+}
+
+.bg-opacidad-lototurf{
+    background-image: url("../img/pantallas/resultados/logo-opaco/lototurf.svg");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+
+.fondo-quintuple
+{
+    background-image: linear-gradient(to right, #CE9509 ,#CEB409);
+}
+.btn-result-quintuple{
+    background-image: linear-gradient(to right, #CE9509 ,#CEB409);
+    padding: 2px;
+}
+.linea-quintuple-amarillo{
+    background-color: rgb(255,241,212);
+    font-size: 14px;
+    font-family: "Monserrat Medium";
+}
+
+.linea-blanca{
+    background-color: #fff;
+    font-size:14px;
+    font-family: "Monserrat Medium";
+}
+
+.resultado-quintuple{
+    border: 1px solid rgb(206,149,9);
+    background-color: rgb(255,250,235);
+    border-radius: 5px;
+    font-size: 12px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 0;
+    width: 40px;
+
+}
+.caballo{
+    height: 18px;
+}
+
+.fondo-quiniela
+{
+    background-image: linear-gradient(to right, #C22021 ,#B05E01);
+}
+
+.btn-result-quiniela{
+    background-image: linear-gradient(to right, #C22021 ,#B05E01);
+    padding: 2px;
+}
+.linea-quiniela-rosa{
+    background-color: rgb(255,222,224);
+    font-size: 14px;
+    font-family: "Monserrat Medium";
+}
+
+.resultado-quiniela{
+
+    background-color: rgb(194,32,33);
+    border-radius: 5px;
+    font-size: 12px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 0;
+    color: #fff;
+    width: 40px;
+
+}
+
+.fondo-quinigol
+{
+    background-image: linear-gradient(to right, #51A8BC ,#8FCBD1);
+}
+.btn-result-quinigol{
+    background-image: linear-gradient(to right, #51A8BC ,#8FCBD1);
+    padding: 2px;
+}
+.linea-quinigol-azul{
+    background-color: rgb(182,242,252);
+    font-size: 14px;
+    font-family: "Monserrat Medium";
+}
+
+.resultado-quinigol{
+
+    background-color: rgb(81,168,188);
+    border-radius: 5px;
+    font-size: 12px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 0;
+    color: #fff;
+    width: 40px;
+
+}
+
+
+#resultados
+{
+    background: url("../img/pantallas/bg-1.png") repeat-y center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    max-height: 100%;
+    min-height: 100%;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 45px;
+    padding: 0;
+    z-index: 450;
+}
+#resultados
+{
+    background: url("../img/pantallas/bg-1.png") repeat-y center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    max-height: 100%;
+    min-height: 100%;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 45px;
+    padding: 0;
+    z-index: 250;
+}
+
+.resultados-fecha{
+    font-family: "Monserrat Semibold";
+    font-size: 14px;
+    color:#fff;
+    padding-top: 5px;
+    }
+
+.margin-reintegro{
+    margin-left:8px;
+}
+.margin-clave{
+    margin-left: 50px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+}
+.margin-serie{
+    margin-left: 0;
+}
+
+.index-fecha{
+  z-index: 251;
+}
+
+.hora-resultado{
+    color: #fff;
+    position:absolute;
+    margin-left: 65px;
+    margin-top: 5px;
+    z-index: 451;
+    font-weight: bold;
+    font-size: 46px;
+    font-family: "Helvatica Bold Condensed";
+    text-shadow: 3px 3px 8px #7a7a7a;
+}
+
+.fecha-hoy-dia{
+    color: #fff;
+    position:absolute;
+    margin-left: 21px;
+    margin-top:10px;
+    z-index: 1000;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: "Monserrat Bold";
+}
+
+.fecha-hoy-semana{
+    color: #fff;
+    position:absolute;
+    margin-left: 15px;
+    z-index: 1000;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top:34px;
+    font-family: "Monserrat Bold";
+}
+
+.hora-content{
+    position:relative;
+}
+
+.cintillo-index{
+    z-index: 1500;
+}
+
+/*Calificaciones de futbol*/
+#futbol
+{
+    background: url("../img/pantallas/bg-1.png") repeat-y center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    max-height: 100%;
+    min-height: 100%;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 45px;
+    padding: 0;
+    z-index: 300;
+}
+
+.titulodiv{
+    font-family: "Monserrat Semibold";
+    font-size: 20px;
+    font-weight: bold;
+    color:#094478;
+}
+
+.tabla-font{
+    font-family:"Monserrat Medium"
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #8FCBD1;
+    color: white;
+}
+
+#ultimos-10{
+
+    background: url("../img/pantallas/bg-1.png") repeat-y center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    max-height: 100%;
+    min-height: 100%;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 45px;
+    padding: 0;
+    z-index: 250;
+
+}
+
+
+/*///////////////////Tamaños de Pantalla Responsive//////////////////////*/
+
+
+@media (min-width: 1360px) {
+    .video{
+        max-height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    #inicio{
+        margin-bottom: 45px;
+        overflow: scroll;
+    }
+
+    #resultados, #futbol{
+        overflow:scroll;
+    }
+    .visibilidad-h{
+        display: block;
+    }
+
+    .visibilidad-w{
+        display: none;
+    }
+
+    .visibilidad-img{
+        display: none;
+    }
+
+    .video{
+        max-height: 180px;
+    }
+
+    footer{
+
+        height: 30px;
+        font-size: 14px;
+        padding-top: 5px;
+
+    }
+
+    .botes-texto{
+        font-size: 14pt;
+    }
+
+    .tag-bote{
+        right: 5%;
+        font-size: 8pt;
+    }
+
+
+    .fecha-bote{
+        font-size: 14pt;
+    }
+    .fecha-bote1{
+        font-size: 12px;
+    }
+    .logohorizontal{
+        height:80%;
+    }
+}
+
+
+@media (max-width: 576px) {
+    .visibilidad-h{
+        display: block;
+    }
+
+    .visibilidad-w{
+        display: none;
+    }
+
+    .visibilidad-img{
+        display: none;
+    }
+
+    .video{
+        max-height: 90px;
+    }
+
+    footer{
+
+        height: 30px;
+        font-size: 14px;
+        padding-top: 5px;
+
+    }
+
+    .botes-texto{
+        font-size: 12pt;
+    }
+
+    .tag-bote{
+        right: 6%;
+        font-size: 8pt;
+    }
+
+
+    .fecha-bote{
+        font-size: 10pt;
+    }
+    .fecha-bote1{
+        font-size: 6px;
+    }
+    .logohorizontal{
+        height:70%;
+    }
+}
+
+@media (max-width: 425px) {
+    .visibilidad-h{
+        display: block;
+    }
+
+    .visibilidad-w{
+        display: none;
+    }
+
+    .visibilidad-img{
+        display: none;
+    }
+
+    .video{
+        max-height: 90px;
+    }
+
+    footer{
+
+        height: 30px;
+        font-size: 14px;
+        padding-top: 5px;
+
+    }
+
+    .botes-texto{
+        font-size: 12pt;
+    }
+
+    .tag-bote{
+        right: 6%;
+        font-size: 5pt;
+    }
+
+
+    .fecha-bote{
+        font-size: 10pt;
+    }
+    .fecha-bote1{
+        font-size: 6px;
+    }
+    .logohorizontal{
+        height:70%;
+    }
+}
+
+@media (max-width: 375px) {
+    .visibilidad-h{
+        display: block;
+    }
+
+    .visibilidad-w{
+        display: none;
+    }
+
+    .visibilidad-img{
+        display: none;
+    }
+
+    .video{
+        max-height: 90px;
+    }
+
+    footer{
+
+        height: 30px;
+        font-size: 14px;
+        padding-top: 5px;
+
+    }
+
+    .botes-texto{
+        font-size: 12pt;
+    }
+
+    .tag-bote{
+        right: 8%;
+        font-size: 5pt;
+    }
+
+
+    .fecha-bote{
+        font-size: 10pt;
+    }
+    .fecha-bote1{
+        font-size: 6px;
+    }
+    .logohorizontal{
+        height:70%;
+    }
+
+    .logo-resultado{
+        height: 11px;
+        padding-top: 0px;
+    }
+    .resultados-fecha{
+        font-size: 8px;
+        padding-top: 1px;
+    }
+    .text-btn-result{
+        font-size: 8px;
+    }
+
+    .bola-euromillones,.bola-primitiva,.bola-bonoloto,.bola-gordo,.bola-nacional,.bola-lototurf,.bola-primitiva-clara,.bola-bonoloto-clara,.bola-nacional-fraccion,.bola-lototurf-clara{
+        font-size: 10px;
+        width: 24px;
+        height: 24px;
+        padding-top: 4px;
+    }
+
+    .estrellas{
+        font-size: 16px;
+    }
+
+    .millon,.joker{
+        font-size:10px ;
+        font-family: "Monserrat Semibold";
+        padding-left: 60px;
+        padding-top: 0px;
+        height: 14px;
+    }
+
+    .titulo-bolas-bonoloto,.titulo-bolas-primitiva,.titulo-bolas-lototurf,.titulo-bolas-gordo{
+
+        font-size: 14px;
+    }
+    .titulo-bolas-nacional{
+        font-size:10px;
+    }
+    .titulo-premio-nacional {
+        font-size: 10px;
+    }
+
+    .premio-nacional{
+        font-size: 14px;
+    }
+
+    .titulo-bolas-fraccion{
+        font-size: 10px;
+    }
+    .padding-row{
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+    .margin-clave{
+        margin-left: 20px;
+        margin-top: 8px;
+        margin-bottom: 20px;
+    }
+    .margin-reintegro{
+        margin-left:5px;
+        margin-top: 1px;
+        margin-bottom: 0px;
+    }
+    .margin-serie{
+        margin-left: 10px;
+        margin-top: 5px;
+    }
+
+    .margin-fraccion{
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+    .margin-nacional{
+        margin-left:5px;
+        margin-top:2px;
+        margin-bottom: 5px;
+    }
+    .margin-premio-nacional{
+        margin-top:4px;
+
+    }
+
+    .linea-blanca,.linea-quintuple-amarillo,.linea-quiniela-rosa,.linea-quinigol-azul{
+        font-size:10px;
+    }
+
+    .resultado-quintuple,.resultado-quiniela,.resultado-quinigol{
+        font-size: 10px;
+    }
+
+    .caballo{
+        height: 12px;
+    }
+
+
+    .hora-resultado{
+
+        margin-left: 30px;
+        margin-top: 3px;
+        font-size: 14px;
+
+    }
+
+    .fecha-hoy-dia{
+        margin-left: 3px;
+        margin-top:2px;
+        font-size: 11px;
+    }
+
+    .fecha-hoy-semana{
+
+        margin-left: 2px;
+        font-size: 11px;
+        margin-top:12px;
+    }
+}
+
+@media (max-width: 360px) {
+    .visibilidad-h{
+        display: block;
+    }
+
+    .visibilidad-w{
+        display: none;
+    }
+
+    .visibilidad-img{
+        display: none;
+    }
+
+    .video{
+        max-height: 90px;
+    }
+
+    footer{
+
+        height: 30px;
+        font-size: 14px;
+        padding-top: 5px;
+
+    }
+
+    .botes-texto{
+        font-size: 12pt;
+    }
+
+    .tag-bote{
+        right: 8%;
+        font-size: 5pt;
+    }
+
+
+    .fecha-bote{
+        font-size: 10pt;
+    }
+    .fecha-bote1{
+        font-size: 6px;
+    }
+    .logohorizontal{
+        height:70%;
+    }
+
+}
+
+@media (max-width: 320px) {
+    .visibilidad-h{
+        display: block;
+    }
+
+    .visibilidad-w{
+        display: none;
+    }
+
+    .visibilidad-img{
+        display: none;
+    }
+
+    .video{
+        max-height: 90px;
+    }
+
+    footer{
+
+        height: 30px;
+        font-size: 14px;
+        padding-top: 5px;
+
+    }
+
+    .botes-texto{
+        font-size: 10pt;
+    }
+
+    .tag-bote{
+        right: 8%;
+        font-size: 5pt;
+    }
+
+
+    .fecha-bote{
+        font-size: 8pt;
+    }
+    .fecha-bote1{
+        font-size: 5px;
+    }
+    .logohorizontal{
+        height:70%;
+    }
+
+    .img-logo{
+        width: 70px;
+    }
+
+
+}
+
+@media (max-width: 280px) {
+
+    .img-logo{
+        width: 60px;
+    }
+
+    .visibilidad-h{
+        display: block;
+    }
+
+    .visibilidad-w{
+        display: none;
+    }
+
+    .visibilidad-img{
+        display: none;
+    }
+
+    .video{
+        max-height: 150px;
+    }
+
+    footer{
+
+        height: 40px;
+        font-size: 20px;
+        padding-top: 5px;
+
+    }
+
+    .botes-texto{
+        font-size: 10pt;
+    }
+
+    .tag-bote{
+        right: 10%;
+        font-size: 3pt;
+    }
+
+
+    .fecha-bote{
+        font-size: 10pt;
+    }
+    .fecha-bote1{
+        font-size: 6px;
+    }
+    .logohorizontal{
+    height:50%;
+    }
+    .logo-resultado{
+        height: 11px;
+        padding-top: 0px;
+    }
+    .resultados-fecha{
+        font-size: 10px;
+        padding-top: 1px;
+    }
+    .text-btn-result{
+        font-size: 8px;
+    }
+
+    .bola-euromillones,.bola-primitiva,.bola-bonoloto,.bola-gordo,.bola-nacional,.bola-lototurf,.bola-primitiva-clara,.bola-bonoloto-clara,.bola-nacional-fraccion,.bola-lototurf-clara{
+        font-size: 10px;
+        width: 24px;
+        height: 24px;
+        padding-top: 4px;
+    }
+
+    .estrellas{
+        font-size: 20px;
+    }
+
+    .millon,.joker{
+        font-size:10px ;
+        font-family: "Monserrat Semibold";
+        padding-left: 60px;
+        padding-top: 0px;
+        height: 14px;
+    }
+
+    .titulo-bolas-bonoloto,.titulo-bolas-primitiva,.titulo-bolas-lototurf,.titulo-bolas-gordo{
+
+        font-size: 14px;
+    }
+    .titulo-bolas-nacional{
+        font-size:10px;
+    }
+    .titulo-premio-nacional {
+        font-size: 10px;
+    }
+
+    .premio-nacional{
+        font-size: 14px;
+    }
+
+    .titulo-bolas-fraccion{
+        font-size: 10px;
+    }
+    .padding-row{
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+    .margin-clave{
+        margin-left: 20px;
+        margin-top: 8px;
+        margin-bottom: 20px;
+    }
+    .margin-reintegro{
+        margin-left:5px;
+        margin-top: 1px;
+        margin-bottom: 0px;
+    }
+    .margin-serie{
+        margin-left: 10px;
+        margin-top: 5px;
+    }
+
+    .margin-fraccion{
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+    .margin-nacional{
+        margin-left:5px;
+        margin-top:2px;
+        margin-bottom: 5px;
+    }
+    .margin-premio-nacional{
+        margin-top:4px;
+
+    }
+
+    .linea-blanca,.linea-quintuple-amarillo,.linea-quiniela-rosa,.linea-quinigol-azul{
+        font-size:12px;
+    }
+
+    .resultado-quintuple,.resultado-quiniela,.resultado-quinigol{
+        font-size: 12px;
+    }
+
+    .caballo{
+        height: 14px;
+    }
+
+
+    .hora-resultado{
+
+        margin-left: 30px;
+        margin-top: 3px;
+        font-size: 14px;
+
+    }
+
+    .fecha-hoy-dia{
+        margin-left: 3px;
+        margin-top:2px;
+        font-size: 11px;
+    }
+
+    .fecha-hoy-semana{
+
+        margin-left: 2px;
+        font-size: 11px;
+        margin-top:12px;
+    }
+
+}
+
+
+@media (min-width: 1024px) {
+    .video{
+        max-height: 210px;
+    }
+
+    footer{
+
+        height: 40px;
+        font-size: 20px;
+        padding-top: 8px;
+
+    }
+    .botes-texto{
+        font-size: 14pt;
+    }
+
+    .tag-bote{
+        right: 5%;
+        font-size: 10pt;
+    }
+
+
+    .fecha-bote{
+        font-size: 12pt;
+    }
+    .fecha-bote1{
+        font-size: 8px;
+    }
+
+    .logo-resultado{
+        height: 14px;
+        padding-top: 0px;
+    }
+    .resultados-fecha{
+        font-size: 12px;
+        padding-top: 4px;
+    }
+    .text-btn-result{
+        font-size: 12px;
+    }
+
+    .bola-euromillones,.bola-primitiva,.bola-bonoloto,.bola-gordo,.bola-nacional,.bola-lototurf,.bola-primitiva-clara,.bola-bonoloto-clara,.bola-nacional-fraccion,.bola-lototurf-clara{
+        font-size: 10px;
+        width: 24px;
+        height: 24px;
+        padding-top: 4px;
+    }
+
+    .estrellas{
+        font-size: 20px;
+    }
+
+    .millon,.joker{
+        font-size:10px ;
+        font-family: "Monserrat Semibold";
+        padding-left: 60px;
+        padding-top: 0px;
+        height: 14px;
+    }
+
+    .titulo-bolas-bonoloto,.titulo-bolas-primitiva,.titulo-bolas-lototurf,.titulo-bolas-gordo{
+
+        font-size: 14px;
+    }
+    .titulo-bolas-nacional{
+        font-size:12px;
+    }
+    .titulo-premio-nacional {
+        font-size: 12px;
+    }
+
+    .premio-nacional{
+        font-size: 18px;
+    }
+
+    .titulo-bolas-fraccion{
+        font-size: 12px;
+    }
+    .padding-row{
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+    .margin-clave{
+        margin-left: 20px;
+        margin-top: 8px;
+        margin-bottom: 20px;
+    }
+    .margin-reintegro{
+        margin-left:5px;
+        margin-top: 1px;
+        margin-bottom: 0px;
+    }
+    .margin-serie{
+        margin-left: 10px;
+        margin-top: 5px;
+    }
+
+    .margin-fraccion{
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+    .margin-nacional{
+        margin-left:5px;
+        margin-top:2px;
+        margin-bottom: 5px;
+    }
+    .margin-premio-nacional{
+        margin-top:4px;
+
+    }
+
+    .linea-blanca,.linea-quintuple-amarillo,.linea-quiniela-rosa,.linea-quinigol-azul{
+        font-size:12px;
+    }
+
+    .resultado-quintuple,.resultado-quiniela,.resultado-quinigol{
+        font-size: 12px;
+    }
+
+    .caballo{
+        height: 14px;
+    }
+
+    .resultado-scroll{
+        overflow-y:scroll;
+        height: 550px;
+    }
+    .resultado1-scroll{
+        overflow-y:scroll;
+        height: 550px;
+    }
+    .hora-resultado{
+
+        margin-left: 50px;
+        margin-top: 4px;
+        font-size: 30px;
+
+    }
+
+    .fecha-hoy-dia{
+        margin-left: 18px;
+        margin-top:5px;
+        font-size: 16px;
+    }
+
+    .fecha-hoy-semana{
+
+        margin-left: 15px;
+        font-size: 16px;
+        margin-top:25px;
+    }
+
+    .img-logo{
+        width: 120px;
+    }
+
+    .img-logo-inicio{
+        width: 150px;
+    }
+
+
+}
+
+@media  (min-width: 1025px) and  (min-height: 1100px){
+
+    .col-lg-6 {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .modify{
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+
+    }
+
+    .visibilidad-h{
+        display: block;
+    }
+
+    .visibilidad-w{
+        display: none;
+    }
+
+    .visibilidad-img{
+        display: none;
+    }
+
+    .video{
+        max-height: 300px;
+    }
+
+    footer{
+
+        height: 60px;
+        font-size: 30px;
+        padding-top: 8px;
+
+    }
+
+    .botes-texto{
+        font-size: 28pt;
+    }
+
+    .tag-bote{
+        right: 3%;
+        font-size: 18pt;
+    }
+
+
+    .fecha-bote{
+        font-size: 22pt;
+    }
+    .fecha-bote1{
+        font-size: 20px;
+    }
+
+    .logo-resultado{
+        height: 20px;
+        padding-top: 2px;
+    }
+    .resultados-fecha{
+        font-size: 18px;
+        padding-top: 2px;
+    }
+    .text-btn-result{
+        font-size: 16px;
+    }
+
+    .bola-euromillones,.bola-primitiva,.bola-bonoloto,.bola-gordo,.bola-nacional,.bola-lototurf,.bola-primitiva-clara,.bola-bonoloto-clara,.bola-nacional-fraccion,.bola-lototurf-clara{
+        font-size: 22px;
+        width: 45px;
+        height: 45px;
+        padding-top: 6px;
+    }
+
+    .estrellas{
+        font-size: 34px;
+    }
+
+    .millon,.joker{
+        font-size:18px ;
+        font-family: "Monserrat Semibold";
+        padding-left: 140px;
+        padding-top: 3px;
+        height: 30px;
+    }
+
+    .titulo-bolas-bonoloto,.titulo-bolas-primitiva,.titulo-bolas-lototurf,.titulo-bolas-gordo{
+
+        font-size: 22px;
+    }
+    .titulo-bolas-nacional{
+        font-size:20px;
+    }
+    .titulo-premio-nacional {
+        font-size: 16px;
+    }
+
+    .premio-nacional{
+        font-size: 26px;
+    }
+
+    .titulo-bolas-fraccion{
+        font-size: 16px;
+    }
+    .padding-row{
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+    .margin-clave{
+        margin-left: 105px;
+        margin-top: 8px;
+        margin-bottom: 20px;
+    }
+    .margin-reintegro{
+        margin-left:35px;
+        margin-top: 8px;
+        margin-bottom: 10px;
+    }
+    .margin-serie{
+        margin-left: 30px;
+        margin-top: 12px;
+    }
+
+    .margin-fraccion{
+        margin-top: 12px;
+        margin-left: 20px;
+    }
+    .margin-nacional{
+        margin-left:14px;
+        margin-top:5px;
+        margin-bottom: 10px;
+    }
+    .margin-premio-nacional{
+        margin-top:8px;
+
+    }
+
+    .linea-blanca,.linea-quintuple-amarillo,.linea-quiniela-rosa,.linea-quinigol-azul{
+        font-size:16px;
+    }
+
+    .resultado-quintuple,.resultado-quiniela,.resultado-quinigol{
+        font-size: 14px;
+    }
+
+    .caballo{
+        height: 18px;
+    }
+    .resultado-scroll{
+        overflow-y:hidden;
+        height: 100%;
+    }
+    .resultado1-scroll{
+        overflow-y:hidden;
+        height: 100%;
+    }
+
+    .hora-resultado{
+
+        margin-left: 110px;
+        margin-top: 15px;
+        font-size: 70px;
+
+    }
+
+    .fecha-hoy-dia{
+        margin-left: 28px;
+        margin-top:25px;
+        font-size: 28px;
+    }
+
+    .fecha-hoy-semana{
+
+        margin-left: 22px;
+        font-size: 28px;
+        margin-top:60px;
+    }
+
+}
+
+@media (min-width: 1280px) {
+
+    .img-logo{
+        width: 150px;
+    }
+
+    .img-logo-inicio{
+        width: 200px;
+    }
+
+    .video{
+        max-height: 250px;
+    }
+
+    footer{
+
+        height: 40px;
+        font-size: 20px;
+        padding-top: 8px;
+
+    }
+    .botes-texto{
+        font-size: 18pt;
+    }
+
+    .tag-bote{
+        right: 5%;
+        font-size: 10pt;
+    }
+
+
+    .fecha-bote{
+        font-size: 16pt;
+    }
+    .fecha-bote1{
+        font-size: 12px;
+    }
+
+    .resultado-scroll{
+        overflow-y:scroll;
+        height: 700px;
+    }
+    .resultado1-scroll{
+        overflow-y:hidden;
+        height: 100%;
+            }
+    .logo-resultado{
+        height: 18px;
+        padding-top: 2px;
+    }
+    .resultados-fecha{
+        font-size: 16px;
+        padding-top: 2px;
+    }
+    .text-btn-result{
+        font-size: 14px;
+    }
+
+    .bola-euromillones,.bola-primitiva,.bola-bonoloto,.bola-gordo,.bola-nacional,.bola-lototurf,.bola-primitiva-clara,.bola-bonoloto-clara,.bola-nacional-fraccion,.bola-lototurf-clara{
+        font-size: 16px;
+        width: 35px;
+        height: 35px;
+        padding-top: 6px;
+    }
+
+    .estrellas{
+        font-size: 26px;
+    }
+
+    .millon,.joker{
+        font-size:14px ;
+        font-family: "Monserrat Semibold";
+        padding-left: 90px;
+        padding-top: 2px;
+        height: 20px;
+    }
+
+    .titulo-bolas-bonoloto,.titulo-bolas-primitiva,.titulo-bolas-lototurf,.titulo-bolas-gordo{
+
+        font-size: 18px;
+    }
+    .titulo-bolas-nacional{
+        font-size:14px;
+    }
+    .titulo-premio-nacional {
+        font-size: 12px;
+    }
+
+    .premio-nacional{
+        font-size: 20px;
+    }
+
+
+    .titulo-bolas-fraccion{
+        font-size: 12px;
+    }
+
+    .resultados-fecha{
+        font-family: "Monserrat Semibold";
+        font-size: 14px;
+        color:#fff;
+        padding-top: 5px;
+    }
+
+    .margin-reintegro{
+        margin-left:8px;
+    }
+    .margin-clave{
+        margin-left: 50px;
+        margin-top: 8px;
+        margin-bottom: 15px;
+    }
+    .margin-serie{
+        margin-left: 0;
+    }
+
+    .margin-fraccion{
+        margin-top: 5px;
+    }
+    .margin-nacional{
+        margin-left:3px;
+        margin-top:5px;
+        margin-bottom: 5px;
+    }
+    .margin-premio-nacional{
+        margin-top:5px;
+
+    }
+
+    .linea-blanca,.linea-quintuple-amarillo,.linea-quiniela-rosa,.linea-quinigol-azul{
+        font-size:14px;
+    }
+
+    .resultado-quintuple,.resultado-quiniela,.resultado-quinigol{
+        font-size: 12px;
+    }
+
+    .caballo{
+        height: 18px;
+    }
+
+    .hora-resultado{
+
+        margin-left: 65px;
+        margin-top: 5px;
+        font-size: 46px;
+     }
+
+    .fecha-hoy-dia{
+
+        margin-left: 21px;
+        margin-top:10px;
+        font-size: 20px;
+
+    }
+
+    .fecha-hoy-semana{
+
+        margin-left: 15px;
+        font-size: 20px;
+        margin-top:34px;
+        }
+}
+
+
+@media (min-width: 1700px) {
+
+    .video{
+        max-height: 320px;
+    }
+    .img-logo{
+        width: 180px;
+    }
+
+    .img-logo-inicio{
+        width: 220px;
+    }
+
+    footer{
+
+        height: 60px;
+        font-size: 30px;
+        padding-top: 8px;
+
+    }
+
+    .botes-texto{
+       font-size: 26pt;
+        }
+
+    .tag-bote{
+        right: 4%;
+        font-size: 16pt;
+    }
+
+
+    .fecha-bote{
+        font-size: 24pt;
+       }
+    .fecha-bote1{
+        font-size: 18px;
+       }
+
+      /*.logohorizontal{*/
+        /*height:55px;*/
+    /*}*/
+    .resultado-scroll{
+        overflow-y:hidden;
+        height: 100%;
+            }
+    .resultado1-scroll{
+        overflow-y:hidden;
+        height: 100%;
+    }
+
+    .logo-resultado{
+        height: 20px;
+        padding-top: 2px;
+    }
+    .resultados-fecha{
+        font-size: 18px;
+        padding-top: 2px;
+       }
+    .text-btn-result{
+        font-size: 16px;
+    }
+
+    .bola-euromillones,.bola-primitiva,.bola-bonoloto,.bola-gordo,.bola-nacional,.bola-lototurf,.bola-primitiva-clara,.bola-bonoloto-clara,.bola-nacional-fraccion,.bola-lototurf-clara{
+        font-size: 22px;
+        width: 45px;
+        height: 45px;
+        padding-top: 6px;
+    }
+
+    .estrellas{
+        font-size: 34px;
+    }
+
+    .millon,.joker{
+        font-size:18px ;
+        font-family: "Monserrat Semibold";
+        padding-left: 140px;
+        padding-top: 3px;
+        height: 30px;
+       }
+
+    .titulo-bolas-bonoloto,.titulo-bolas-primitiva,.titulo-bolas-lototurf,.titulo-bolas-gordo{
+
+        font-size: 22px;
+    }
+    .titulo-bolas-nacional{
+        font-size:20px;
+    }
+    .titulo-premio-nacional {
+        font-size: 16px;
+      }
+
+    .premio-nacional{
+        font-size: 26px;
+      }
+
+    .titulo-bolas-fraccion{
+        font-size: 16px;
+    }
+    .padding-row{
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .margin-clave{
+        margin-left: 95px;
+        margin-top: 8px;
+        margin-bottom: 20px;
+    }
+    .margin-reintegro{
+        margin-left:25px;
+        margin-top: 8px;
+        margin-bottom: 10px;
+    }
+    .margin-serie{
+        margin-left: 18px;
+        margin-top: 12px;
+    }
+
+    .margin-fraccion{
+        margin-top: 12px;
+    }
+    .margin-nacional{
+        margin-left:8px;
+        margin-top:5px;
+        margin-bottom: 10px;
+    }
+    .margin-premio-nacional{
+        margin-top:8px;
+
+    }
+
+    .linea-blanca,.linea-quintuple-amarillo,.linea-quiniela-rosa,.linea-quinigol-azul{
+        font-size:17px;
+       }
+
+    .resultado-quintuple,.resultado-quiniela,.resultado-quinigol{
+        font-size: 15px;
+    }
+
+    .caballo{
+        height: 20px;
+    }
+    .hora-resultado{
+
+        margin-left: 95px;
+        margin-top: 10px;
+        font-size: 60px;
+
+    }
+
+    .fecha-hoy-dia{
+        margin-left: 28px;
+        margin-top:25px;
+        font-size: 24px;
+        }
+
+    .fecha-hoy-semana{
+
+        margin-left: 22px;
+        font-size: 24px;
+        margin-top:55px;
+       }
+
+
+}
+
+@media (min-width: 2300px){
+
+    .video {
+        max-height: 350px;
+    }
+
+    footer {
+
+        height: 60px;
+        font-size: 30px;
+        padding-top: 8px;
+
+    }
+
+    .botes-texto {
+        font-size: 34pt;
+    }
+
+    .tag-bote {
+        right: 3%;
+        font-size: 20pt;
+    }
+
+    .fecha-bote {
+        font-size: 30pt;
+    }
+
+    .fecha-bote1 {
+        font-size: 24px;
+    }
+
+    .modifyk {
+
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+
+    }
+
+    .visibilidad-h{
+        display: none;
+    }
+
+    .visibilidad-w{
+        display: block;
+    }
+    .visibilidad-img{
+        display: block;
+    }
+    .logo-resultado{
+        height: 24px;
+        padding-top: 2px;
+    }
+    .resultados-fecha{
+        font-size: 20px;
+        padding-top: 2px;
+    }
+    .text-btn-result{
+        font-size: 18px;
+    }
+
+    .bola-euromillones,.bola-primitiva,.bola-bonoloto,.bola-gordo,.bola-nacional,.bola-lototurf,.bola-primitiva-clara,.bola-bonoloto-clara,.bola-nacional-fraccion,.bola-lototurf-clara{
+        font-size: 26px;
+        width: 52px;
+        height:52px;
+        padding-top: 6px;
+    }
+
+    .estrellas{
+        font-size: 40px;
+    }
+
+    .millon,.joker{
+        font-size:18px ;
+        font-family: "Monserrat Semibold";
+        padding-left: 140px;
+        padding-top: 3px;
+        height: 30px;
+    }
+
+    .titulo-bolas-bonoloto,.titulo-bolas-primitiva,.titulo-bolas-lototurf,.titulo-bolas-gordo{
+
+        font-size: 26px;
+    }
+    .titulo-bolas-nacional{
+        font-size:22px;
+    }
+    .titulo-premio-nacional {
+        font-size: 20px;
+    }
+
+    .premio-nacional{
+        font-size: 28px;
+    }
+
+    .titulo-bolas-fraccion{
+        font-size: 18px;
+    }
+    .padding-row{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .margin-clave{
+        margin-left: 125px;
+        margin-top: 8px;
+        margin-bottom: 20px;
+    }
+    .margin-reintegro{
+        margin-left:45px;
+        margin-top: 8px;
+        margin-bottom: 10px;
+    }
+    .margin-serie{
+        margin-left: 38px;
+        margin-top: 12px;
+    }
+
+    .margin-fraccion{
+        margin-top: 12px;
+        margin-left: 35px;
+    }
+    .margin-nacional{
+        margin-left:22px;
+        margin-top:5px;
+        margin-bottom: 10px;
+    }
+    .margin-premio-nacional{
+        margin-top:8px;
+
+    }
+
+    .linea-blanca,.linea-quintuple-amarillo,.linea-quiniela-rosa,.linea-quinigol-azul{
+        font-size:20px;
+    }
+
+    .resultado-quintuple,.resultado-quiniela,.resultado-quinigol{
+        font-size: 18px;
+    }
+
+    .caballo{
+        height: 20px;
+    }
+
+    .img-logo{
+        width: 200px;
+    }
+
+    .img-logo-inicio{
+        width: 240px;
+    }
+
+
+
+}
+
+
+
+
+

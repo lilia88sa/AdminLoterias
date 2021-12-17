@@ -1,0 +1,24 @@
+# api/config/api_platform/user_logout.yaml
+App\Entity\Security\UserLogout:
+    collectionOperations:
+        logout:
+            method: post
+            path: '/user/logout'
+            access_control: 'is_granted("IS_AUTHENTICATED_FULLY")'
+            openapi_context:
+                summary: Logout User and invalidate current token
+                description: Logout User and invalidate current token
+                consumes:
+                    - application/json
+                parameters:
+                    - in: body
+                      name: User
+                      description: Logout User and invalidate current token.
+                      schema:
+                        type: object
+                        required:
+                          - user
+                        properties:
+                            user:
+                                type: integer
+    itemOperations: []

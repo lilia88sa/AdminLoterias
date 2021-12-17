@@ -1,0 +1,461 @@
+#hero {
+       background: url(../img/fondo.jpg) top center;
+
+     }
+
+.why-us .video-box {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 300px;
+    position: relative;
+}
+
+.section-title1 {
+    text-align: center;
+    padding-bottom: 0px;
+}
+
+.titleh2{
+margin-bottom: 0px;
+}
+
+#video{
+    background-image: url(../img/why-us.jpg);
+}
+
+
+.team .member .pic {
+    overflow: hidden;
+    width: 80px;
+    border-radius: 0%;
+}
+
+.team .member {
+    position: relative;
+    box-shadow: 0px 2px 15px rgb(0 0 0 / 10%);
+    padding: 15px;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #F1A40A;
+    border-color: #F1A40A;
+}
+
+#video_background {
+
+    position: absolute;
+
+    bottom: 0px;
+
+    right: 0px;
+
+    min-width: 100%;
+
+    min-height: 100%;
+
+    width: auto;
+
+    height: auto;
+
+    z-index: -1000;
+
+    overflow: hidden;
+
+}
+
+#hero:before {
+    content: "";
+    background: rgba(6, 101, 183, 0.5);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.nav-menu a {
+    display: block;
+    position: relative;
+    color: rgba(255, 255, 255, 1);
+    transition: 0.3s;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0 3px;
+    font-family: "Open Sans", sans-serif;
+}
+
+#topbar {
+
+    color: rgba(255, 255, 255, 1);
+}
+
+#hero {
+
+    height: 70vh;
+    margin-bottom: -130px;
+}
+
+#footer .footer-top {
+    background: linear-gradient(rgba(0, 73, 152, 0.9),rgba(6,95,173, 0.9)), url(../img/fondo.jpg) fixed center center;
+    padding: 60px 0 30px 0;
+}
+
+#hero h2 {
+    color: #fff;
+    margin-bottom: 0px;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+#header {
+    background: rgba(0, 0, 0, 0.1);
+    transition: all 0.5s;
+    z-index: 997;
+    padding: 0px 0;
+    top: 60px;
+}
+
+#hero .carousel-container {
+
+    top: 10px;
+
+}
+
+.services .icon-box {
+    margin-bottom: 20px;
+    padding: 10px 10px;
+
+}
+
+.pic-with {
+
+    width: 40px;
+
+}
+
+.team .member .member-info {
+    padding-left: 0px;
+    text-transform: uppercase;
+}
+
+.combinaciones{
+    font-weight: 600;
+    font-size: 18px;
+    color: #ffffff;
+    display: inline-block;
+    padding: 8px 12px 8px 12px;
+    border-radius: 100%;
+}
+
+.combinaciones1{
+    font-weight: 600;
+    font-size: 16px;
+    color: #949494;
+}
+
+.combinaciones-nac{
+    font-weight: 700;
+    font-size: 20px;
+}
+
+
+.combinaciones-quin{
+    font-weight: 700;
+    font-size: 16px;
+    color: #ffffff;
+    display: inline-block;
+    padding: 1px 5px 1px 5px;
+    border-radius: 100%;
+}
+
+.combinaciones-gol{
+
+    font-size: 14px;
+
+}
+
+
+
+.team .member p {
+    margin: 10px 0 0 0;
+    font-size: 16px;
+}
+
+.estrella{
+    background: url(../img/estrella.png);
+    background-size: 35px;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 12px;
+    padding-left: 7px;
+    padding-bottom: 5px;
+    padding-top: 8px;
+
+}
+
+.azul-comb{
+    color: #1D67A7;
+}
+
+
+
+.cta {
+    background: linear-gradient(rgba(5, 74, 133, 0.8), rgba(5, 74, 133, 0.9)), url(../img/fondo.jpg) fixed center center;
+
+}
+
+.pricing h3 {
+    font-weight: 400;
+    margin: -20px -20px 20px -20px;
+    padding: 0px 0px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    background: #f8f8f8;
+}
+
+a {
+    color: #065FAD;
+}
+
+
+.euromillones-bg{
+  background: #001367;
+}
+
+.euromillones-text{
+    color: #001367;
+}
+
+.nacional-bg{
+    background-color: #007AC0;
+}
+
+.nacional-text{
+    color: #007AC0;
+}
+
+.nacional-cr{
+    background-color: #007AC0;
+    color: #fff;
+}
+
+.primitiva-bg{
+    background-color: #008547;
+}
+
+.primitiva-cr{
+    background-color: #B0D9C6;
+    color: #008547;
+}
+
+.primitiva-text{
+    color: #008547;
+}
+
+.bonoloto-bg{
+   background-color: #7A8634;
+}
+
+.bonoloto-text{
+    color: #7A8634;
+}
+
+.bonoloto-cr{
+    background-color: #D4DABC;
+    color: #7A8634;
+}
+.gordo-bg{
+    background-color: #DC3F47;
+}
+
+.gordo-text{
+    color: #DC3F47;
+}
+
+.gordo-cr{
+    background-color: rgba(220, 63, 71, 0.25);
+    color: #DC3F47;
+}
+
+.quiniela-bg{
+   background-color: #CB1517;
+}
+
+.quiniela-text{
+    color: #CB1517;
+}
+
+.lototurf-bg{
+    background-color: #D16929;
+}
+
+.lototurf-text{
+    color: #D16929;
+}
+
+.lototurf-cr{
+    color: #D16929;
+    background-color: #F9D0BA;
+}
+
+.quintuple-bg{
+    background-color: #EAB842;
+}
+
+.quintuple-text{
+    color: #EAB842;
+}
+
+.quinigol-bg{
+    background-color: #79CEDC;
+}
+
+.quinigol-text{
+    color: #79CEDC;
+}
+
+.team .member span {
+    display: inline;
+    font-size: 40px;
+    padding-bottom: 0px;
+    position: relative;
+    font-weight: bold;
+}
+
+.numero-millon{
+    font-size: 40pt;
+    font-weight: bold;
+}
+
+.texto-millon{
+    font-size: 30pt
+}
+
+.team .member span::after {
+    content: '';
+    position: absolute;
+    display: inline;
+    width: 50px;
+    height: 0px;
+    background: #fff;
+    background-color: rgb(255, 255, 255);
+    bottom: 0;
+    left: 0;
+}
+
+.team .member h4 {
+    font-weight: 700;
+    margin-bottom: 0px;
+    font-size: 20px;
+    color: #05579e;
+}
+
+.pricing .btn-wrap {
+    margin: 20px -20px -20px -20px;
+    padding: 10px 5px;
+    background: #f8f8f8;
+    text-align: center;
+}
+
+.pricing .btn-buy {
+    background: #a9a9a9;
+    display: inline-block;
+    padding: 8px 8px 8px 8px;
+    border-radius: 50px;
+    color: #f3f3f3;
+    transition: none;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 425px) {
+
+
+
+}
+
+@media (max-width: 375px) {
+    /*#hero {*/
+        /*width: 100%;*/
+        /*height: 430px;*/
+        /*overflow: hidden;*/
+        /*position: relative;*/
+        /*background: url(../img/banner.jpg) no-repeat center;*/
+        /*background-size: 1650px;*/
+        /*position: relative;*/
+        /*margin-bottom: 0px;*/
+    /*}*/
+}
+
+@media (max-width: 360px) {
+    .team .member p {
+        margin: 10px 0 0 0;
+        font-size: 14px;
+    }
+
+    .combinaciones-quin{
+
+        font-size: 14px;
+    }
+
+}
+
+@media (max-width: 320px) {
+    .team .member p {
+        margin: 10px 0 0 0;
+        font-size: 14px;
+    }
+
+    .combinaciones-quin{
+
+        font-size: 14px;
+
+    }
+}
+
+@media (max-width: 280px) {
+    .combinaciones-quin{
+
+        font-size: 12px;
+
+    }
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 1024px) {
+
+}
+
+@media (min-width: 1280px) {
+
+}
+
+@media (min-width: 1360px) {
+
+}
+
+@media (min-width: 1440px) {
+
+}
+
+
+

@@ -1,0 +1,14 @@
+user.password.complex: The password value should be complex.
+user.repeatPassword.mo_match: Passwords does not match.
+user.newPassword.complex: Password must be seven characters long and contain at least one digit, one upper case letter and one lower case letter.
+user.recoverPassword.success: Password successfully reset.
+user.email.unique: This email is already in use with another user.
+user.username.unique: This username is already in use with another user.
+Expired JWT Token: Expired JWT Token
+user.error.tokenconfirmation: User by confirmation token not found.
+user.login.confirmation: Please confirm your account!.
+user.login.recoverconfirmation: Access to recover your password!.
+user.login.validation: The profile was validated.
+user.login.invalidation: The profile was invalidated.
+notification.email: You have a new notification.
+

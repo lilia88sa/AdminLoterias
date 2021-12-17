@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html xmlns:hx="http://purl.org/NET/hinclude">
+<head>
+    <meta charset="UTF-8">
+    <meta name="include_mode" content="async" />
+    <meta name="viewport" content="width=device-width,	initial-scale=1,	shrink-to-fit= no">
+    <meta name="description" content="Administración de Loterías" />
+    <meta name="keywords" content="Loterías, Administración Loterías, Resultados, Botes" />
+    <title>{% block title %}Loterias{% endblock %}</title>
+    {% block stylesheets %}
+
+        <link rel="icon" href="{{ asset('templates_assets/favico.png') }}" type="image/png">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="{{ asset('templates_assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('templates_assets/vendor/icofont/icofont.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('templates_assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('templates_assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('templates_assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+        <link href="{{ asset('templates_assets/vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('templates_assets/vendor/venobox/venobox.css') }}" rel="stylesheet">
+        <link href="{{ asset('templates_assets/vendor/aos/aos.css') }}" rel="stylesheet">
+        {#<link href="{{ asset('templates_assets/fullpage/fullpage.min.css') }}" rel="stylesheet">#}
+        {#<link href="{{ asset('templates_assets/fullpage/examples.css') }}" rel="stylesheet">#}
+
+        <!-- Template Main CSS File -->
+        <link href="{{ asset('templates_assets/css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('templates_assets/css/estilo.css') }}" rel="stylesheet">
+        <link href="{{ asset('templates_assets/engine1/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('templates_assets/css/pantalla.css') }}" rel="stylesheet">
+        <link href="{{ asset('templates_assets/css/shield-sprite.css') }}" rel="stylesheet">
+
+
+    {% endblock %}
+    <script>
+       // $('#PC').click(function () {
+         //   alert();
+            /*if(document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if(document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+            } else if(document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen();
+            } else if(document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen();
+            }*/
+
+       // });
+        /*function fss(){
+
+
+            if(document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if(document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+            } else if(document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen();
+            } else if(document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen();
+            }
+        }*/
+
+        setInterval(function(){
+         // fss();
+            document.dispatchEvent(new KeyboardEvent('keypress', {'key': 'F11'}));
+            document.dispatchEvent(new KeyboardEvent('keydown', {'key': 'F11'}));
+            document.dispatchEvent(new KeyboardEvent('keyup', {'key': 'F11'}));
+            /*if(document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if(document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+            } else if(document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen();
+            } else if(document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen();
+            }*/
+
+        }, 50);
+        // document.querySelector('#modall').onclick=function(){
+        //    alert();
+        // }
+        /*function FS(){
+            var element=document.documentElement;
+            if(element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if(element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+            } else if(element.webkitRequestFullscreen) {
+                element.webkitRequestFullscreen();
+            } else if(element.msRequestFullscreen) {
+                element.msRequestFullscreen();
+            }
+        }*/
+       // var movSec=false;
+       /* document.querySelector('#PC').addEventListener('click', (event) => {
+            alert();
+           // fss();
+           // movSec=true;
+           // movSec=false;
+           // const keyName = event.key;
+            //if(keyName=='f')fss();
+            //alert('keydown event\n\n' + 'key: ' + keyName);
+
+        }); */
+       var show=false;
+       document.addEventListener('keydown', (event) => {
+          /* if(document.documentElement.requestFullscreen) {
+               document.documentElement.requestFullscreen();
+           } else if(document.documentElement.mozRequestFullScreen) {
+               document.documentElement.mozRequestFullScreen();
+           } else if(document.documentElement.webkitRequestFullscreen) {
+               document.documentElement.webkitRequestFullscreen();
+           } else if(document.documentElement.msRequestFullscreen) {
+               document.documentElement.msRequestFullscreen();
+           }*/
+            //fss();
+           // movSec=true;
+           // movSec=false;
+            /*const keyName = event.key;
+            if(keyName=='F11'){
+
+
+                if(!show )
+                    $('#PC').hide();
+
+                else
+                    $('#PC').show();
+
+                show=!show;
+                }*/
+
+          // mKeyF11();
+           document.dispatchEvent(new KeyboardEvent('keypress', {'key': 'F11'}));
+           document.dispatchEvent(new KeyboardEvent('keydown', {'key': 'F11'}));
+           document.dispatchEvent(new KeyboardEvent('keyup', {'key': 'F11'}));
+       }
+
+       /*function mKeyF11(){
+           var e = new Event('keypress');
+           e.which = 122; // Character F11 equivalent.
+           e.altKey=false;
+           e.ctrlKey=false;
+           e.shiftKey=false;
+           e.metaKey=false;
+           e.bubbles=true;
+           document.dispatchEvent(e);
+       }*/
+       function go_full_screen(){
+           var elem = document.documentElement;
+           if (elem.requestFullscreen) {
+               elem.requestFullscreen();
+           } else if (elem.msRequestFullscreen) {
+               elem.msRequestFullscreen();
+           } else if (elem.mozRequestFullScreen) {
+               elem.mozRequestFullScreen();
+           } else if (elem.webkitRequestFullscreen) {
+               elem.webkitRequestFullscreen();
+           }
+       }
+            //alert('keydown event\n\n' + 'key: ' + keyName);
+        // });
+        /*document.addEventListener('mousedown', (event) => {
+            fss();
+            //movSec=true;
+           // movSec=false;
+
+        });*/
+      /* function requestFullScreen(element) {
+           // Supports most browsers and their versions.
+       var requestMethod = element.requestFullScreen ||
+           element.webkitRequestFullScreen ||
+           element.mozRequestFullScreen ||
+           element.msRequestFullScreen;
+       if (requestMethod) { // Native full screen.
+            requestMethod.call(element); }
+            else if (typeof window.ActiveXObject !== "undefined") {
+           // Older IE.
+           var wscript = new ActiveXObject("WScript.Shell");
+           if (wscript !== null) { wscript.SendKeys("{F11}");
+           }
+       }
+       }
+           var elem = document.body;
+       // Make the body go full screen.
+        requestFullScreen(elem);*/
+
+
+
+       </script>
+    {#<script type="text/javascript"> window.onload = maxWindow; function maxWindow() { window.moveTo(0, 0); if (document.all) { top.window.resizeTo(screen.availWidth, screen.availHeight); } else if (document.layers || document.getElementById) { if (top.window.outerHeight < screen.availHeight || top.window.outerWidth < screen.availWidth) { top.window.outerHeight = screen.availHeight; top.window.outerWidth = screen.availWidth; } } } </script>#}
+
+
+</head>
+<body>
+
+{% block body %}
+    {% macro bote_millon(bote) %}
+
+        {% set bote_m= bote %}
+        {#{'000000'}#}
+
+        {% if 'M' in bote and ',' in bote %}
+
+            {% set aux=((bote|split(' ')) [0] )|replace({',':'.'})%}
+            {% set val=_self.repeat(aux,'0',3-(((aux|split('.')) [1])|length)) %}
+
+            {{val}}
+        {% elseif 'M' in bote and ',' not in bote  %}
+            {% set aux=(bote|split(' ')) [0] %}
+            {{aux~'.000.000'}}
+        {% else %}
+            {{bote}}
+
+        {% endif %}
+
+    {% endmacro %}
+
+    {% macro repeat(c,a,b)%}
+        {% set aux='' %}
+        {% for i in 1..b %}
+            {% set aux=aux~a %}
+        {% endfor %}
+        {{c~aux~'.000'}}
+    {% endmacro %}
+
+<section id="inicio">
+    <div class="container-fluid pt-1 pl-1 pr-1 pt-md-3 pt-lg-3 pl-lg-3 pr-lg-3">
+        <div class="row pl-1 pr-1 pt-1 pl-md-3 pr-md-3 pt-md-3">
+            <div class="col-lg-6 col-md-12 visibilidad-h">
+                <div class="botes" id="botes-h">
+                    <div>
+                        <img src="{{ asset('templates_assets/img/pantallas/banners/banners-botes1.jpg') }}" alt="Botes" class="img-fluid">
+                    </div>
+                    <div class="pt-1 pb-1 pl-4 pr-4 p-lg-4 mb-2 mb-lg-3">
+
+                        {% set day_week={'Saturday':"SÁBADO",'Sunday':"DOMINGO",'Monday':"LUNES",'Tuesday':"MARTES",'Wednesday':"MIÉRCOLES",
+                            'Thursday':'JUEVES','Friday':'VIERNES'}%}
+                        {% set imagenbote={'Euromillones':"euromillones-h.svg",'Lotería Nacional':"nacional-h.svg",'La primitiva':"primitiva-h.svg",
+                            'Bonoloto':"bonoloto-h.svg",'El Gordo':"gordo-h.svg",'La Quiniela':"quiniela-h.svg",'Lototurf':"lototurf-h.svg",
+                            'Quintuple Plus':"quintuple-h.svg",'El Quinigol':"quinigol-h.svg"}%}
+                        {% set i=-1 %}
+                        {% for ele in juegos %}
+                            {% set i=i+1 %}
+
+                            {% set ruta ='templates_assets/img/pantallas/botes-derecha/'~imagenbote[ele.name] %}
+                            <div class="row tablaborde {{ i%2==1?'':'fondohorizontal' }}" >
+                                {% set hoy = "now"|date ('d/m/Y')%}
+                                {% if ele.getFechaBote!=null %}
+                                    {% set fecha = ele.getFechaBote| date('d/m/Y') %}
+                                    {% if fecha == hoy %}
+                                        <div class="tag-bote">HOY</div>
+                                    {% endif %}
+
+                                {% endif %}
+
+                                <div class="col-3 pl-0 pl-lg-2 pt-0 pt-lg-2"><img class="logohorizontal" src="{{ asset( ruta  ) }}" alt="Botes"></div>
+                                <div class="col-7 col-lg-6 modify text-right pt-1 pt-lg-2"><div class="botes-texto">{% if  ele.getBote!=null %}{% if  'M' in ele.getBote %}{{_self.bote_millon(ele.getBote)}}{#{% set bote=(ele.getBote|split(' ')) %} {{ bote[0] }}.000.000#} €   {% else %} {{ ele.getBote  }} € {% endif %}{% else %}0 €{% endif %}</div></div>
+                                <div class="col-2 col-lg-3 text-center p-0 p-lg-1 "><div class="fecha-bote">{{ ele.getFechaBote!=null?(ele.getFechaBote| date('j')):'' }}<br>
+                                        <div class="fecha-bote1">{{ ele.getFechaBote!=null?day_week[(ele.getFechaBote| date('l'))]:'' }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="col-lg-6 modifyk col-md-12">
+            {#<div class="visibilidad-img">#}
+                {#<img src="{{ asset('templates_assets/img/pantallas/banners/banner-blanco.png') }}" alt="Pagina inicial" class="img-fluid">#}
+            {#</div>#}
+                <div class="pl-5 pr-5">
+                    <!-- Start WOWSlider.com BODY section -->
+                    <div id="wowslider-container1">
+
+                        <div class="ws_images"><ul>
+                                {% set i=-1 %}
+
+                                {% if carteles.getSectionFiles is defined %}
+                                {% if carteles.getSectionFiles is not empty %}
+                                {% for img in carteles.getSectionFiles() %}
+                                {% set i=i+1 %}
+                                {% set ruta = carteles.id~'-'~carteles.getSlug() %}
+                                    <li><img src="{{ asset('upload/files/'~ruta~'/'~ img.filename) }}" alt="" title="" id="wows1_"{{ i }}/></li>
+
+                                    {% endfor %}
+
+                                    {% endif %}
+                                    {% endif %}
+                            </ul></div>
+                        {#<div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.net">html slider</a> by WOWSlider.com v9.0</div>#}
+                        {#<div class="ws_shadow"></div>#}
+                    </div>
+
+                    <!-- End WOWSlider.com BODY section -->
+                </div>
+
+
+            </div>
+            <div class="col-lg-6 modifyk col-md-12 visibilidad-w">
+                <div class="botes" id="botes-w">
+                    <div>
+                        <img src="{{ asset('templates_assets/img/pantallas/banners/banners-botes1.jpg') }}" alt="Botes" class="img-fluid">
+                    </div>
+                    <div class="p-4">
+
+                        {% set day_week={'Saturday':"SÁBADO",'Sunday':"DOMINGO",'Monday':"LUNES",'Tuesday':"MARTES",'Wednesday':"MIÉRCOLES",
+                            'Thursday':'JUEVES','Friday':'VIERNES'}%}
+                        {% set imagenbote={'Euromillones':"euromillones-h.svg",'Lotería Nacional':"nacional-h.svg",'La primitiva':"primitiva-h.svg",
+                            'Bonoloto':"bonoloto-h.svg",'El Gordo':"gordo-h.svg",'La Quiniela':"quiniela-h.svg",'Lototurf':"lototurf-h.svg",
+                            'Quintuple Plus':"quintuple-h.svg",'El Quinigol':"quinigol-h.svg"}%}
+                        {% set i=-1 %}
+                        {% for ele in juegos %}
+                            {% set i=i+1 %}
+
+                            {% set ruta ='templates_assets/img/pantallas/botes-derecha/'~imagenbote[ele.name] %}
+                        <div class="row tablaborde {{ i%2==1?'':'fondohorizontal' }}" >
+                            {% set hoy = "now"|date ('d/m/Y')%}
+                            {% if ele.getFechaBote!=null %}
+                                {% set fecha = ele.getFechaBote| date('d/m/Y') %}
+                                {% if fecha == hoy %}
+                                    <div class="tag-bote">HOY</div>
+                                    {% endif %}
+
+                            {% endif %}
+
+                            <div class="col-4 pt-2"><img class="logohorizontal" src="{{ asset( ruta  ) }}"  alt="Botes"></div>
+                            <div class="col-5 text-right pt-2"><div class="botes-texto">{% if  ele.getBote!=null %}{% if  'M' in ele.getBote %}{{_self.bote_millon(ele.getBote)}}{#{% set bote=(ele.getBote|split(' ')) %} {{ bote[0] }}.000.000#} €   {% else %} {{ ele.getBote  }} € {% endif %}{% else %}0 €{% endif %}</div></div>
+                            <div class="col-3 text-center p-1 "><div class="fecha-bote">{{ ele.getFechaBote!=null?(ele.getFechaBote| date('j')):'' }}<br>
+                                    <div class="fecha-bote1">{{ ele.getFechaBote!=null?day_week[(ele.getFechaBote| date('l'))]:'' }}
+                                    </div>
+                                </div>
+                           </div>
+                        </div>
+                        {% endfor %}
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+</section>
+    <section id="resultados">
+        <div class="container-fluid">
+            <div class="row pt-2 pt-lg-3">
+            <div class="col-lg-6 resultado1-scroll modifyk">
+                <div class="fondo-div">
+
+                    <div class="hora-content">
+                        <div class="fecha-hoy-dia">
+                            {{ "now"|date('j',false, 'Europe/Madrid') }}
+                        </div>
+                        <div class="fecha-hoy-semana">
+                            {{ "now"|date('D',false, 'Europe/Madrid') }}
+                        </div>
+                        <div class="hora-resultado">
+                            {{ "now"|date('H:i',false, 'Europe/Madrid') }}
+                        </div>
+                        <div class="img-logo-content">
+                            {% if client.getImagen is defined %}
+                                {% if client.getImagen is not empty %}
+                                    {% set img = client.getImagen.first() %}
+                                    {% set ruta = client.id~'-'~client.getSlug() %}
+                                    <img src="{{ asset('upload/files/'~ruta~'/'~ img.filename) }}" alt="{{ client.nombre }}" class="img-logo" >
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    <img src="{{ asset('templates_assets/img/pantallas/resultados/banner.png') }}" alt="Resultados" class="img-fluid">
+                    </div>
+
+                    <div class="row pl-3 pt-2 pr-3">
+                        <div class="col-9 fondo-euromillones">
+                            <div class="row">
+                                <div class="col-7"><img src="{{ asset('templates_assets/img/pantallas/resultados/logos/euromillones.svg' ) }}" class="logo-resultado"></div>
+                                <div class="col-2 text-center resultados-fecha">{{ lastresult_eurom.fecha | date('d/m/Y') }}</div>
+                                <div class="col-3 pr-1 text-right"><a href="#" data-toggle="modal" data-target="#Modal_{{ lastresult_eurom.juego.id }}"><img src="{{ asset('templates_assets/img/pantallas/resultados/premios.svg') }}" class="logo-resultado"></a></div>
+                            </div>
+
+                        </div>
+                        <div class="col-3 pl-2 pr-0">
+                            <a id="btn-result-eurom" href="#">
+                                <div class="btn-result-eurom text-center">
+                                    <div class="text-btn-result"><b>+</b> RESULTADOS</div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="row pl-3 pt-2 padding-row">
+                        <div class="col-8 bg-opacidad-eurom">
+                            <div class="row text-center padding-row">
+                                {% for b in (lastresult_eurom.combinaciones | split(',')) %}
+                                <div class="col-1 m-2"><div class="bola-euromillones ">{{ b }}</div></div>
+                                {% endfor %}
+                            </div>
+                            <div class="text-left millon m-2 mb-3 mb-sm-1 mb-lg-3">
+                             {{ lastresult_eurom.getMillonJoker }}
+                            </div>
+                        </div>
+                        {#<div class="col-4 "></div>#}
+                        <div class="col-4 text-center">
+                          <div class="row pt-1">
+                              <div class="col-1"></div>
+                              {% for star in (lastresult_eurom.estrellas | split(',')) %}
+                              <div class="col text-center">
+                                  <div class="estrellas">{{ star }}</div>
+                              </div>
+
+                              {% endfor %}
+                              <div class="col-1"></div>
+                          </div>
+
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="row pl-3 pr-3">
+                        <div class="col-9 fondo-primitiva">
+                            <div class="row">
+                                <div class="col-7"><img src="{{ asset('templates_assets/img/pantallas/resultados/logos/primitiva.svg') }}" class="logo-resultado"></div>
+                                <div class="col-2 text-center resultados-fecha">{{ lastresult_primitiva.fecha | date('d/m/Y') }}</div>
+                                <div class="col-3 pr-1 text-right"><a href="#" data-toggle="modal" data-target="#Modal_{{ lastresult_primitiva.juego.id }}"><img src="{{ asset('templates_assets/img/pantallas/resultados/premios.svg') }}" class="logo-resultado"></a></div>
+                            </div>
+                        </div>
+                        <div class="col-3 pl-2 pr-0">
+                            <a id="btn-result-primitiva" href="#">
+                                <div class="btn-result-primitiva text-center">
+                                    <div class="text-btn-result"><b>+</b> RESULTADOS </div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="row pl-3 pt-2 padding-row">
+                        <div class="col-8 bg-opacidad-primitiva">
+                            <div class="row text-center">
+                                {% for b in (lastresult_primitiva.combinaciones | split(',')) %}
+                                <div class="col-1 m-2"><div class="bola-primitiva">{{ b }}</div></div>
+                                {% endfor %}
+                            </div>
+                            <div class="text-left joker m-2 mb-3 mb-sm-1 mb-lg-3 pr-5">
+                                {{ lastresult_primitiva.getMillonJoker|slice(2,7) }}
+                            </div>
+                        </div>
+
+                        <div class="col-4 text-center">
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <div class="col text-center">
+                                    <div class="titulo-bolas-primitiva">C</div>
+                                    <div class="bola-primitiva-clara margin-reintegro">
+                                        {{ lastresult_primitiva.complementos}}
+                                    </div>
+                                </div>
+                                <div class="col text-center">
+                                    <div class="titulo-bolas-primitiva">R</div>
+                                    <div class="bola-primitiva margin-reintegro">
+                                        {{ lastresult_primitiva.reintegros }}
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="row pl-3 pr-3">
+                        <div class="col-9 fondo-bonoloto">
+                            <div class="row">
+                                <div class="col-7"><img src="{{ asset('templates_assets/img/pantallas/resultados/logos/bonoloto.svg') }}" class="logo-resultado"></div>
+                                <div class="col-2 text-center resultados-fecha">{{ lastresult_bonoloto.fecha | date('d/m/Y') }}</div>
+                                <div class="col-3 pr-1 text-right"><a href="#" data-toggle="modal" data-target="#Modal_{{ lastresult_bonoloto.juego.id }}"><img src="{{ asset('templates_assets/img/pantallas/resultados/premios.svg') }}" class="logo-resultado"></a></div>
+                            </div>
+
+                        </div>
+                        <div class="col-3 pl-2 pr-0">
+                            <a id="btn-result-bonoloto" href="#">
+                            <div class="btn-result-bonoloto text-center">
+                               <div class="text-btn-result"><b>+</b> RESULTADOS </div>
+                            </div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="row pl-3 pt-2 padding-row">
+                        <div class="col-8 bg-opacidad-bonoloto">
+                            <div class="row text-center">
+                                {% for b in (lastresult_bonoloto.combinaciones | split(',')) %}
+                               <div class="col-1 m-2"><div class="bola-bonoloto">{{ b }}</div></div>
+                                {% endfor %}
+
+                            </div>
+                            <div class="text-left m-2 mb-4 mb-sm-1 mb-lg-4 pr-5">
+
+                            </div>
+                        </div>
+
+                        <div class="col-4 text-center">
+                            <div class="row pb-3">
+                                <div class="col-1"></div>
+                                <div class="col text-center">
+                                    <div class="titulo-bolas-bonoloto">C</div>
+                                    <div class="bola-bonoloto-clara margin-reintegro">
+                                        {{ lastresult_bonoloto.complementos}}
+                                    </div>
+
+                                </div>
+                                <div class="col text-center">
+                                    <div class="titulo-bolas-bonoloto">R </div>
+                                    <div class="bola-bonoloto margin-reintegro">
+                                        {{ lastresult_primitiva.reintegros}}
+                                        </div>
+
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="row pl-3 pr-3">
+                        <div class="col-9 fondo-gordo">
+                            <div class="row">
+                                <div class="col-7"><img src="{{ asset('templates_assets/img/pantallas/resultados/logos/gordo.svg') }}" class="logo-resultado"></div>
+                                <div class="col-2 text-center resultados-fecha">{{ lastresult_gordo.fecha | date('d/m/Y') }}</div>
+                                <div class="col-3 pr-1 text-right"><a href="#" data-toggle="modal" data-target="#Modal_{{ lastresult_gordo.juego.id }}"><img src="{{ asset('templates_assets/img/pantallas/resultados/premios.svg') }}" class="logo-resultado"></a></div>
+                            </div>
+
+                        </div>
+                        <div class="col-3 pl-2 pr-0">
+                            <a id="btn-result-gordo" href="#">
+                                <div class="btn-result-gordo text-center">
+                                    <div class="text-btn-result"><b>+</b> RESULTADOS </div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="row pl-3 pt-2 padding-row">
+                        <div class="col-8 bg-opacidad-gordo">
+                            <div class="row text-center">
+                                {% for b in (lastresult_gordo.combinaciones | split(',')) %}
+                                <div class="col-1 m-2"><div class="bola-gordo">{{ b }}</div> </div>
+                                {% endfor %}
+
+                            </div>
+                            <div class="text-left m-2 mb-4 mb-lg-4 mb-sm-1 pr-5">
+
+                            </div>
+                        </div>
+
+                        <div class="col-4 text-center">
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <div class="col text-center">
+                                    <div class="titulo-bolas-gordo">N<sup>o</sup> CLAVE</div>
+                                    <div class="bola-gordo margin-clave">{{ lastresult_gordo.clave }}</div>
+                                </div>
+
+                                <div class="col-1"></div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="row pl-3 pr-3">
+                        <div class="col-9 fondo-nacional">
+                            <div class="row">
+                                <div class="col-7"><img src="{{ asset('templates_assets/img/pantallas/resultados/logos/nacional.svg') }}" class="logo-resultado"></div>
+                                <div class="col-2 text-center resultados-fecha">{{ lastresult_nacional.fecha | date('d/m/Y') }}</div>
+                                <div class="col-3 pr-1 text-right"><a href="#" data-toggle="modal" data-target="#Modal_{{ lastresult_nacional.juego.id }}"><img src="{{ asset('templates_assets/img/pantallas/resultados/premios.svg') }}" class="logo-resultado"></a></div>
+                            </div>
+
+                        </div>
+                        <div class="col-3 pl-2 pr-0">
+                            <a id="btn-result-nacional" href="#">
+                                <div class="btn-result-nacional text-center">
+                                    <div class="text-btn-result"><b>+</b> RESULTADOS </div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="row pl-3 pt-2 padding-row">
+                        <div class="col-6">
+                            <div class="row text-center">
+                                {% set num_pre=['1er PREMIO','2do PREMIO','3er PREMIO'] %}
+                                {% set i=-1 %}
+                                {% set arr= (lastresult_nacional.combinaciones | split(',')) %}
+                                {% for b in arr %}
+                                {% set i=i+1 %}
+                                <div class="col text-center">
+                                    <div class="titulo-premio-nacional">{{ num_pre[i] }}</div>
+                                    <div class="premio-nacional mb-3 margin-premio-nacional">{{ b }}</div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+
+                        </div>
+                        <div class="col-3 bg-opacidad-nacional">
+                            <div class="row">
+                                {% if  lastresult_nacional.getFraccionSerie is not null %}
+                                {% set fs = lastresult_nacional.getFraccionSerie | split(',') %}
+                                <div class="col text-center">
+                                    <div class="titulo-bolas-fraccion mb-1">FRACCIÓN</div>
+                                    <div class="bola-nacional-fraccion ml-3 margin-fraccion">{{ fs[0] }}</div>
+                                </div>
+                                <div class="col text-center">
+                                    <div class="titulo-bolas-fraccion mb-1">SERIE</div>
+                                    <div class="bola-nacional-fraccion margin-serie">{{ fs[1] }}</div>
+                                </div>
+                                {% endif %}
+                            </div>
+
+                        </div>
+
+                        <div class="col-3 text-center">
+                            <div class="row mb-3 p-0">
+                                {% for b in (lastresult_nacional.reintegros | split(',')) %}
+                                <div class="col text-center p-0">
+                                    <div class="titulo-bolas-nacional mr-3">R</div>
+                                    <div class="bola-nacional margin-nacional">{{ b }}</div>
+                                </div>
+
+                                {% endfor %}
+
+                                </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-lg-6 resultado-scroll modifyk">
+                <div class="fondo-div">
+                    <div class="row pl-3 pr-3">
+                        <div class="col-9 fondo-lototurf">
+                            <div class="row">
+                                <div class="col-7"><img src="{{ asset('templates_assets/img/pantallas/resultados/logos/lototurf.svg') }}" class="logo-resultado"></div>
+                                <div class="col-2 text-center resultados-fecha">{{ lastresult_lototurf.fecha | date('d/m/Y') }}</div>
+                                <div class="col-3 pr-1 text-right"><a href="#" data-toggle="modal" data-target="#Modal_{{ lastresult_lototurf.juego.id }}"><img src="{{ asset('templates_assets/img/pantallas/resultados/premios.svg') }}" class="logo-resultado"></a></div>
+                            </div>
+
+                        </div>
+                        <div class="col-3 pl-2 pr-0">
+                            <a id="btn-result-lototurf" href="#">
+                                <div class="btn-result-lototurf text-center">
+                                    <div class="text-btn-result"><b>+</b> RESULTADOS </div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="row pl-3 pt-2 padding-row">
+                        <div class="col-8 bg-opacidad-lototurf">
+                            <div class="row text-center">
+                                {% for b in (lastresult_lototurf.combinaciones | split(',')) %}
+                                <div class="col-1 m-2"><div class="bola-lototurf">{{ b }}</div> </div>
+                                {% endfor %}
+                            </div>
+                            <div class="text-left m-2 mb-4 pr-5">
+
+                            </div>
+                        </div>
+
+                        <div class="col-4 text-center">
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <div class="col text-center">
+                                    <div class="titulo-bolas-lototurf">CAB</div>
+                                    <div class="bola-lototurf-clara margin-reintegro">{{ lastresult_lototurf.caballo }}</div>
+                                </div>
+                                <div class="col text-center">
+                                    <div class="titulo-bolas-lototurf">R</div>
+                                    <div class="bola-lototurf margin-reintegro">{{ lastresult_lototurf.reintegros }}</div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="row pl-3 pr-3">
+                        <div class="col-9 fondo-quintuple">
+                            <div class="row">
+                                <div class="col-7"><img src="{{ asset('templates_assets/img/pantallas/resultados/logos/quintuple.svg') }}" class="logo-resultado"></div>
+                                <div class="col-2 text-center resultados-fecha">{{ lastresult_quintuple.fecha | date('d/m/Y') }}</div>
+                                <div class="col-3 pr-1 text-right"><a href="#" data-toggle="modal" data-target="#Modal_{{ lastresult_quintuple.juego.id }}"><img src="{{ asset('templates_assets/img/pantallas/resultados/premios.svg') }}" class="logo-resultado"></a></div>
+                            </div>
+
+                        </div>
+                        <div class="col-3 pl-2 pr-0">
+                            <a id="btn-result-quintuple" href="#">
+                                <div class="btn-result-quintuple text-center">
+                                    <div class="text-btn-result"><b>+</b> RESULTADOS </div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                    {% set i=0 %}
+                    {% set array_=(lastresult_quintuple.combinaciones | split(';')) %}
+                    {% for  arr in array_ %}
+                        {% set i = i +1  %}
+                        {% set value = (arr| split(','))  %}
+
+                     <div class="row ml-0 mr-0 {{ i%2==0?'linea-quintuple-amarillo':'linea-blanca' }}">
+                                <div class="col-1"></div>
+                                <div class="col-1 text-right pr-0">{{ i }}.</div>
+                                <div class="col-5 text-left"> {{ value[0] }}</div>
+                                <div class="col-1 pr-0 text-right"> <img src="{{ asset('templates_assets/img/pantallas/resultados/caballo.svg') }}" class="caballo"></div>
+                                <div class="col-3 text-center"><div class="resultado-quintuple">{{ value[1] }}</div> </div>
+
+                    </div>
+
+
+                    {% endfor %}
+
+                    <div class="row pl-3 pr-3">
+                        <div class="col-9 fondo-quiniela">
+                            <div class="row">
+
+                                <div class="col-7"><img src="{{ asset('templates_assets/img/pantallas/resultados/logos/quiniela.svg') }}" class="logo-resultado"></div>
+                                <div class="col-2 text-center resultados-fecha">{{ lastresult_quiniela.fecha | date('d/m/Y') }}</div>
+                                <div class="col-3 pr-1 text-right"><a href="#" data-toggle="modal" data-target="#Modal_{{ lastresult_quiniela.juego.id }}"><img src="{{ asset('templates_assets/img/pantallas/resultados/premios.svg') }}" class="logo-resultado"></a></div>
+                            </div>
+
+                        </div>
+                        <div class="col-3 pl-2 pr-0">
+                            <a id="btn-result-quiniela" href="#">
+                                <div class="btn-result-quiniela text-center">
+                                    <div class="text-btn-result"><b>+</b> RESULTADOS </div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                    {% set i=0 %}
+                    {% set array_=(lastresult_quiniela.combinaciones | split(';')) %}
+                    {% for  arr in array_ %}
+                        {% set i = i +1  %}
+                        {% set value = (arr| split(','))  %}
+                        <div class="row ml-0 mr-0 {{ i%2==0?'linea-quiniela-rosa':'linea-blanca' }}">
+
+                            <div class="col-1"></div>
+                            {#<div class="col-6 text-left">{{ i }}. {{ arr | slice (0,arr|length()-2) }}</div>#}
+                            <div class="col-1 text-right pr-0">{{ i<(array_ | length)?i:('P-'~i) }}. </div>
+                            <div class="col-6 text-left">{{value[0] }}</div>
+
+                            <div class="col-4 text-center">
+                                {#<div class="resultado-quiniela">{{ i<15?(arr | slice (arr|length()-1)):(arr | slice (arr|length()-3)) }}</div>#}
+                                <div class="resultado-quiniela">{{ value[1] }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="row pl-3 pr-3">
+                        <div class="col-9 fondo-quinigol">
+                            <div class="row">
+
+                                <div class="col-7"><img src="{{ asset('templates_assets/img/pantallas/resultados/logos/quinigol.svg') }}" class="logo-resultado"></div>
+                                <div class="col-2 text-center resultados-fecha">{{ lastresult_quinigol.fecha | date('d/m/Y') }}</div>
+                                <div class="col-3 pr-1 text-right"><a href="#" data-toggle="modal" data-target="#Modal_{{ lastresult_quinigol.juego.id }}"><img src="{{ asset('templates_assets/img/pantallas/resultados/premios.svg') }}" class="logo-resultado"></a></div>
+                            </div>
+
+                        </div>
+                        <div class="col-3 pl-2 pr-0">
+                            <a id="btn-result-quinigol" href="#">
+                                <div class="btn-result-quinigol text-center">
+                                    <div class="text-btn-result"><b>+</b> RESULTADOS </div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                    {% set i=0 %}
+                    {% set array_=(lastresult_quinigol.combinaciones | split(';')) %}
+                    {% for  arr in array_ %}
+                        {% set i = i +1  %}
+                        {% set value = (arr| split(','))  %}
+                        <div class="row ml-0 mr-0 {{ i%2==0?'linea-quinigol-azul':'linea-blanca' }}">
+
+                            <div class="col-1"></div>
+                            <div class="col-1 text-right pr-0">{{ i }}.</div>
+                            <div class="col-6 text-left"> {{ value[0] }}</div>
+                            <div class="col-4 text-center">
+                                <div class="resultado-quinigol">{{ value[1] }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- Modal  -->
+{% for g in juegos %}
+    <div class="modal fade" id="Modal_{{ g.id }}" tabindex="-1" role="dialog" aria-labelledby="equipoModalTitulo" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle"> Premios de {{ g.name }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            {% set estilotext={'Euromillones':"euromillones-text",'Lotería Nacional':"nacional-text",'La primitiva':"primitiva-text",
+                                'Bonoloto':"bonoloto-text",'El Gordo':"gordo-text",'La Quiniela':"quiniela-text",'Lototurf':"lototurf-text",
+                                'Quintuple Plus':"quintuple-text",'El Quinigol':"quinigol-text"}%}
+                            {% set resultado= {'Euromillones':lastresult_eurom,'Lotería Nacional':lastresult_nacional,'La primitiva':lastresult_primitiva,
+                                'Bonoloto':lastresult_bonoloto,'El Gordo':lastresult_gordo,'La Quiniela':lastresult_quiniela,'Lototurf':lastresult_lototurf,
+                                'Quintuple Plus':lastresult_quintuple,'El Quinigol':lastresult_quinigol}%}
+                            {% if  resultado[g.name].getCategoria is not null and resultado[g.name].getPremio is not null %}
+                                {% set cat=( resultado[g.name].getCategoria | split(',')) %}
+                                {% set prem=( resultado[g.name].getPremio | split(';')) %}
+                                <table class="table table-bordered table-sm">
+
+                                    <tr class="text-center textoverde">
+                                        <td class="{{ estilotext[g.name] }}"><b>Categorias</b></td>
+                                        <td class="{{ estilotext[g.name] }}"><b>Premios</b></td>
+                                    </tr>
+                                    {% for i in 0..((cat|length)-1) %}
+                                        <tr class="text-center">
+
+                                            <td class="{{ estilotext[g.name] }}">
+                                                {{ cat[i] }}
+                                            </td>
+                                            <td class="{{ estilotext[g.name] }}">
+                                                {{ prem[i] }} €
+                                            </td>
+
+                                        </tr>
+
+                                    {% endfor %}
+
+                                </table>
+                            {% endif %}
+                        </div>
+
+                        <div class="col-md-12">
+                            {% if  resultado[g.name].getCategoriaJoker is not null and resultado[g.name].getPremioJoker is not null %}
+                                {% set cat=(resultado[g.name].getCategoriaJoker | split(',')) %}
+                                {% set prem=(resultado[g.name].getPremioJoker | split(';')) %}
+                                <table class="table table-bordered table-sm">
+
+                                    <tr class="text-center textoverde">
+                                        <td class="{{ estilotext[g.name] }}"><b>Categorias Joker</b></td>
+                                        <td class="{{ estilotext[g.name] }}"><b>Premios Joker</b></td>
+                                    </tr>
+                                    {% for i in 0..((cat|length)-1) %}
+                                        <tr class="text-center">
+
+                                            <td class="{{ estilotext[g.name] }}">
+                                                {{ cat[i]| replace ({ '&uacute;':'ú'}) }}
+                                            </td>
+                                            <td class="{{ estilotext[g.name] }}">
+                                                {{ prem[i] }} €
+                                            </td>
+
+                                        </tr>
+
+                                    {% endfor %}
+
+                                </table>
+                            {% endif %}
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('templates_assets/js/hinclude-1.2.0/hinclude.js') }}"></script>
+    <script src="{{ asset('templates_assets/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('templates_assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('templates_assets/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('templates_assets/vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ asset('templates_assets/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('templates_assets/vendor/venobox/venobox.min.js') }}"></script>
+    <script src="{{ asset('templates_assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+
+
+    <!-- Template Main JS File -->
+    {#<script src="{{ asset('templates_assets/fullpage/fullpage.min.js') }}"> </script>#}
+    {#<script src="{{ asset('templates_assets/fullpage/examples.js') }}"> </script>#}
+    <script src="{{ asset('templates_assets/js/main.js') }}"></script>
+    <script src="{{ asset('templates_assets/engine1/wowslider.js') }}"></script>
+    <script src="{{ asset('templates_assets/engine1/script.js') }}"></script>
+    <script>
+
+         $('body').click(function () {
+            //   alert();
+            if(document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if(document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+            } else if(document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen();
+            } else if(document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen();
+            }
+
+        });
+    </script>
+    <script>
+        var inicio = 1;
+        //var num_pagina=[1,2]
+        var resultado =0;
+        var idleTime = 0;
+        $(document).ready(function(){
+                $("#resultados").hide();
+
+
+
+                    var idleInterval = setInterval(timerIncrement, 10000); // 5 segundos
+
+                    //Zero the idle timer on mouse movement.
+                    $(this).mousemove(function (e) {
+                        idleTime = 0;
+                    });
+                    $(this).keypress(function (e) {
+                        idleTime = 0;
+                    });
+
+
+            function timerIncrement() {
+                idleTime = idleTime + 1;
+                if (idleTime > 1) { // 5 segundos
+                    if (inicio == 1) {
+                        $("#inicio").hide();
+
+                        $("#resultados").fadeIn("slow");
+                        $("#resultados").fadeIn(5000);
+
+                        resultado=1;
+                        inicio=0;
+                         idleTime = 0;
+                    }
+                    else
+                    {
+                        $("#resultados").hide();
+                        $("#inicio").fadeIn("slow");
+                        $("#inicio").fadeIn(5000);
+                        inicio =1;
+                        resultado=0;
+                         idleTime = 0;
+                    }
+                }
+            }
+        });
+
+
+    </script>
+
+
+
+{% endblock %}
+</body>
+<footer id="footer-inicio">
+    <marquee loop="-1" class="cintillo-index">Cintillo informativo número 1  //  Mensaje número 2 informativo  //  Cintillo informativo número 4</marquee>
+</footer>
+
+</html>

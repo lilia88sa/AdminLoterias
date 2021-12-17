@@ -1,0 +1,45 @@
+# api/config/api_platform/user_confirmation.yaml
+App\Entity\Security\UserConfirmation:
+    collectionOperations:
+        post:
+            path: 'users/account-confirm'
+        validate_token:
+            method: post
+            path: '/users/validate-token'
+            #access_control: 'is_granted("ROLE_USER") or is_granted("ROLE_SUPER_ADMIN")'
+            openapi_context:
+                summary: Validate Token,
+                description: Validate Token,
+                consumes:
+                    - application/json
+                parameters:
+                    - in: body
+                      name: Token Validation
+                      description: Token Validation.
+                      schema:
+                        type: object
+                        required:
+                          - confirmationToken
+                        properties:
+                            confirmationToken:
+                                type: string
+        get_user_by_token:
+            method: post
+            path: '/user/get-user-by-token'
+            openapi_context:
+                summary: Get User By Token,
+                description: Get User By Token,
+                consumes:
+                    - application/json
+                parameters:
+                    - in: body
+                      name: Token
+                      description: Token.
+                      schema:
+                        type: object
+                        required:
+                          - confirmationToken
+                        properties:
+                            confirmationToken:
+                                type: string
+    itemOperations: []

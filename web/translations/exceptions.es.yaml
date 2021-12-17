@@ -1,0 +1,3 @@
+service.entity_not_found: La entidad no se encuentra.
+service.status_not_found: El Estado no es el correcto.
+service.account_is_disabled: La cuenta esta desabilitada.

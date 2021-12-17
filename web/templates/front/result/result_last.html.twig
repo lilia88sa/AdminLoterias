@@ -1,0 +1,664 @@
+
+<!-- ======= Frequently Asked Questions Section ======= -->
+<section id="faq" class="faq section-bg">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Últimos resultados</h2>
+        </div>
+
+        <div class="faq-list">
+            {% set p='templates_assets/img/logos/' %}
+            {% set logos={1:p~'gordo.png',2:p~'nacional.png',3:p~'quinigol.png',4:p~'quiniela.png',
+                5:p~'euromillones.png',6:p~'bonoloto.png',7:p~'lototurf.png',8:p~'quintuple.png',9:p~'primitiva.png'} %}
+
+
+            <ul>
+                 {% set c=0 %}
+                {% for a in results %}
+                    {% set c=c+1 %}
+                <li data-aos="fade-up" data-aos="fade-up" data-aos-delay="{{ 100*c }}">
+                    <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" class="collapse" href="#faq-list-{{ c }}">Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                    <div id="faq-list-{{ c }}" class="collapse" data-parent=".faq-list">
+                        <p>
+                        <ul>
+                            <li>{{ a.juego.id}}</li>
+                            <li><div class="icon"><img src="{{ asset(logos[a.juego.id]) }}"/></div></li>
+
+                            {#<li>{{ a.juego.name}}</li>#}
+                            <li><a href="{{ path('juego_detalles', {'id':a.juego.id, 'slug':a.juego.slug}) }}">{{ a.juego.name }}</a></li>
+                            <li>{{ a.fecha|date }}</li>
+                            {% if  a.combinaciones is not null %}
+                                <li>{{ 'números de premios :' }}</li>
+                                <ul>
+                                    {%  for b in (a.combinaciones | split(',')) %}
+                                        <li>{{  b }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                            {#<li>{{ a.categoria }}</li>#}
+                            {#<li>{{ a.premio }}</li>#}
+
+                            {% if  a.estrellas is not null %}
+                                <li>{{ 'estrellas :' }}</li>
+                                <ul>
+                                    {%  for b in (a.estrellas | split(',')) %}
+                                        <li>{{  b }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+
+                            {% if  a.reintegros is not null %}
+                                <li>{{ 'reintegros :' }}</li>
+                                <ul>
+                                    {%  for b in (a.reintegros | split(',')) %}
+                                        <li>{{  b }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+
+                            {% if  a.complementos is not null %}
+                                <li>{{ 'complementos :' }}</li>
+                                <ul>
+                                    {%  for b in (a.complementos | split(',')) %}
+                                        <li>{{  b }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+
+                            {% if  a.clave is not null %}
+                                <li>{{ 'clave :' }}</li>
+                                <ul>
+                                    {%  for b in (a.clave | split(',')) %}
+                                        <li>{{  b }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+
+                            {% if  a.getFraccionSerie is not null %}
+                                <li>{{ 'fraccion_serie :' }}</li>
+                                <ul>
+                                    {%  for b in (a.getFraccionSerie | split(',')) %}
+                                        <li>{{  b }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+
+
+
+                            {% if a.getMillonJoker is not null %}
+                                <li>{{ 'joker_millon :'~a.getMillonJoker }}</li>
+                            {% endif %}
+
+                            {% if a.bote is not null %}
+                                <li>{{ 'bote :'~a.bote }}</li>
+                            {% endif %}
+
+                            {% if a.caballo is not null %}
+                                <li>{{ 'caballo :'~a.caballo }}</li>
+                            {% endif %}
+
+                            {% if  a.getCategoria is not null and a.getPremio is not null %}
+                                {% set cat=(a.getCategoria | split(',')) %}
+                                {% set prem=(a.getPremio | split(';')) %}
+
+                                <li>{{ 'categorias y premios :' }}</li>
+                                <ul>
+                                    {%  for i in 0..((cat|length)-1) %}
+                                        <li>{{ 'categoria: '~cat[i]~', premio: '~prem[i] }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+
+                            {% if  a.getCategoriaJoker is not null and a.getPremioJoker is not null %}
+                                {% set cat=(a.getCategoriaJoker | split(',')) %}
+                                {% set prem=(a.getPremioJoker | split(';')) %}
+
+                                <li>{{ 'categorias joker  y premios joker:' }}</li>
+                                <ul>
+                                    {%  for i in 0..((cat|length)-1) %}
+                                        <li>{{ 'categoria joker: '~cat[i]~', premio joker: '~prem[i] }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </ul>
+
+                        </p>
+                    </div>
+                </li>
+                {% endfor %}
+  {#<li data-aos="fade-up" data-aos="fade-up" data-aos-delay="100">#}
+                    {#<i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" class="collapse" href="#faq-list-1">Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>#}
+                    {#<div id="faq-list-1" class="collapse show" data-parent=".faq-list">#}
+                        {#<p>#}
+                            {#Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.#}
+                        {#</p>#}
+                    {#</div>#}
+                {#</li>#}
+
+                {#<li data-aos="fade-up" data-aos-delay="200">#}
+                    {#<i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-2" class="collapsed">Feugiat scelerisque varius morbi enim nunc? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>#}
+                    {#<div id="faq-list-2" class="collapse" data-parent=".faq-list">#}
+                        {#<p>#}
+                            {#Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.#}
+                        {#</p>#}
+                    {#</div>#}
+                {#</li>#}
+
+                {#<li data-aos="fade-up" data-aos-delay="300">#}
+                    {#<i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-3" class="collapsed">Dolor sit amet consectetur adipiscing elit? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>#}
+                    {#<div id="faq-list-3" class="collapse" data-parent=".faq-list">#}
+                        {#<p>#}
+                            {#Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis#}
+                        {#</p>#}
+                    {#</div>#}
+                {#</li>#}
+
+                {#<li data-aos="fade-up" data-aos-delay="400">#}
+                    {#<i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-4" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>#}
+                    {#<div id="faq-list-4" class="collapse" data-parent=".faq-list">#}
+                        {#<p>#}
+                            {#Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in.#}
+                        {#</p>#}
+                    {#</div>#}
+                {#</li>#}
+
+                {#<li data-aos="fade-up" data-aos-delay="500">#}
+                    {#<i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-5" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>#}
+                    {#<div id="faq-list-5" class="collapse" data-parent=".faq-list">#}
+                        {#<p>#}
+                            {#Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.#}
+                        {#</p>#}
+                    {#</div>#}
+                {#</li>#}
+
+            </ul>
+
+        </div>
+
+    </div>
+</section><!-- End Frequently Asked Questions Section -->
+
+
+
+
+ {#{% set p='templates_assets/img/logos/' %}#}
+{#{% set logos={1:p~'gordo.png',2:p~'nacional.png',3:p~'quinigol.png',4:p~'quiniela.png',#}
+    {#5:p~'euromillones.png',6:p~'bonoloto.png',7:p~'lototurf.png',8:p~'quintuple.png',9:p~'primitiva.png'} %}#}
+
+ {#{% for a in results %}#}
+
+
+     {#<ul>#}
+         {#<li>{{ a.juego.id}}</li>#}
+         {#<li><div class="icon"><img src="{{ asset(logos[a.juego.id]) }}"/></div></li>#}
+
+         {#<li>{{ a.juego.name}}</li>#}
+         {#<li><a href="{{ path('juego_detalles', {'id':a.juego.id, 'slug':a.juego.slug}) }}">{{ a.juego.name }}</a></li>#}
+         {#<li>{{ a.fecha|date }}</li>#}
+         {#{% if  a.combinaciones is not null %}#}
+             {#<li>{{ 'números de premios :' }}</li>#}
+             {#<ul>#}
+                 {#{%  for b in (a.combinaciones | split(',')) %}#}
+                     {#<li>{{  b }}</li>#}
+                 {#{% endfor %}#}
+             {#</ul>#}
+         {#{% endif %}#}
+         {#<li>{{ a.categoria }}</li>#}
+         {#<li>{{ a.premio }}</li>#}
+
+         {#{% if  a.estrellas is not null %}#}
+         {#<li>{{ 'estrellas :' }}</li>#}
+         {#<ul>#}
+             {#{%  for b in (a.estrellas | split(',')) %}#}
+                 {#<li>{{  b }}</li>#}
+             {#{% endfor %}#}
+         {#</ul>#}
+         {#{% endif %}#}
+
+         {#{% if  a.reintegros is not null %}#}
+         {#<li>{{ 'reintegros :' }}</li>#}
+         {#<ul>#}
+             {#{%  for b in (a.reintegros | split(',')) %}#}
+                 {#<li>{{  b }}</li>#}
+             {#{% endfor %}#}
+         {#</ul>#}
+         {#{% endif %}#}
+
+         {#{% if  a.complementos is not null %}#}
+         {#<li>{{ 'complementos :' }}</li>#}
+         {#<ul>#}
+             {#{%  for b in (a.complementos | split(',')) %}#}
+                 {#<li>{{  b }}</li>#}
+             {#{% endfor %}#}
+         {#</ul>#}
+         {#{% endif %}#}
+
+         {#{% if  a.clave is not null %}#}
+         {#<li>{{ 'clave :' }}</li>#}
+         {#<ul>#}
+             {#{%  for b in (a.clave | split(',')) %}#}
+                 {#<li>{{  b }}</li>#}
+             {#{% endfor %}#}
+         {#</ul>#}
+         {#{% endif %}#}
+
+         {#{% if  a.getFraccionSerie is not null %}#}
+         {#<li>{{ 'fraccion_serie :' }}</li>#}
+         {#<ul>#}
+             {#{%  for b in (a.getFraccionSerie | split(',')) %}#}
+                 {#<li>{{  b }}</li>#}
+             {#{% endfor %}#}
+         {#</ul>#}
+         {#{% endif %}#}
+
+
+
+         {#{% if a.getMillonJoker is not null %}#}
+         {#<li>{{ 'joker_millon :'~a.getMillonJoker }}</li>#}
+         {#{% endif %}#}
+
+         {#{% if a.bote is not null %}#}
+         {#<li>{{ 'bote :'~a.bote }}</li>#}
+         {#{% endif %}#}
+
+         {#{% if a.caballo is not null %}#}
+         {#<li>{{ 'caballo :'~a.caballo }}</li>#}
+         {#{% endif %}#}
+
+         {#{% if  a.getCategoria is not null and a.getPremio is not null %}#}
+             {#{% set cat=(a.getCategoria | split(',')) %}#}
+             {#{% set prem=(a.getPremio | split(';')) %}#}
+
+             {#<li>{{ 'categorias y premios :' }}</li>#}
+             {#<ul>#}
+                 {#{%  for i in 0..((cat|length)-1) %}#}
+                     {#<li>{{ 'categoria: '~cat[i]~', premio: '~prem[i] }}</li>#}
+                 {#{% endfor %}#}
+             {#</ul>#}
+         {#{% endif %}#}
+
+         {#{% if  a.getCategoriaJoker is not null and a.getPremioJoker is not null %}#}
+             {#{% set cat=(a.getCategoriaJoker | split(',')) %}#}
+             {#{% set prem=(a.getPremioJoker | split(';')) %}#}
+
+             {#<li>{{ 'categorias joker  y premios joker:' }}</li>#}
+             {#<ul>#}
+                 {#{%  for i in 0..((cat|length)-1) %}#}
+                     {#<li>{{ 'categoria joker: '~cat[i]~', premio joker: '~prem[i] }}</li>#}
+                 {#{% endfor %}#}
+             {#</ul>#}
+         {#{% endif %}#}
+     {#</ul>#}
+ {#{% endfor %}#}
+{#{% macro comb(c) %}#}
+
+             {#{{  c | split(',') }}#}
+
+ {#{% endmacro %}#}
+{#{{ _self.traductor(post.getCategory.title,post.getCategory.titleEs) }}#}
+ {#{% macro traductor(spanish,english) %}#}
+     {#{% if app.request.locale == "es" %}#}
+         {#{{ spanish}}#}
+     {#{% else %}#}
+         {#{{ english }}#}
+         {#{% if english is null %}#}
+             {#{{ spanish }}#}
+         {#{% endif %}#}
+     {#{% endif %}#}
+ {#{% endmacro %}#}
+   {#{% block idiomas %}#}
+       {#<a class="selectorIdioma__link {{app.request.locale == "es"? 'selectorIdioma__link--actual':''}}" href="{{ path( app.request.attributes.get('_route'), {'_locale':'es', 'id':post.id, 'slug':post.slug}) }}">ESP</a>#}
+       {#<a class="selectorIdioma__link {{app.request.locale == "es"? '':'selectorIdioma__link--actual'}}" href="{{ path( app.request.attributes.get('_route'), {'_locale':'en', 'id':post.id, 'slug':post.slug}) }}">ENG</a>#}
+   {#{% endblock %}#}
+{#{% block content %}#}
+
+    {#<section class="comun-body noticia-body">#}
+        {#<div class="container">#}
+            {#<div class="row">#}
+                {#<div class="tituloTop">#}
+                    {#{% if post.getCategory.section.getSectionFiles is defined %}#}
+                    {#{% if post.getCategory.section.getSectionFiles is not empty %}#}
+                    {#{% set img = post.getCategory.section.getSectionFiles.first() %}#}
+                    {#{% set ruta = post.getCategory.section.id~'-'~post.getCategory.section.getSlug() %}#}
+                    {#<img src="{{ asset('upload/files/'~ruta~'/'~ img.filename) }}" alt="{{ post.getCategory.title }}" class="tituloTop__img">#}
+                    {#{% endif %}#}
+                    {#{% endif %}#}
+                    {#<h1 class="tituloTop__header">#}
+
+                         {#{{ _self.traductor(post.getCategory.title,post.getCategory.titleEs) }}#}
+
+                    {#</h1>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+        {#<div class="container bg-white px-sm-4">#}
+            {#<div class="camino pt-3 pb-3 d-flex d-md-block ">#}
+                {#<a href="{{ path('homepage') }}"><i class="fa fa-home d-md-none"></i><span class="d-none d-md-inline">Inicio</span></a><span class="separador mx-3"></span><a href="{{ path('category_detalles', {'id':post.getCategory.id, 'slug':post.getCategory.slug}) }}"><span class="d-md-none">N</span><span class="d-none d-md-inline"> {{ _self.traductor(post.getCategory.title,post.getCategory.titleEs) }} </span></a><span class="separador mx-3"></span><a href="#" class="actual">{{ _self.traductor(post.title,post.titleEs) }}</a>#}
+            {#</div>#}
+            {#<div class="row">#}
+                {#<div class="col-md-8">#}
+                    {#{% if sopa_palabras %}#}
+                        {#SOPA DE PALABRAS#}
+                    {#<div id="puzzle-container"></div>#}
+                    {#<div id="puzzle-words"></div>#}
+                    {#<p class="text-center">#}
+                        {#<a id="solveBTN" class="btn btn-lg btn-primary" href="#">{{ _self.traductor('Resolver','Sort out') }}</a>#}
+                    {#</p>#}
+                    {#{% elseif puzzle %}#}
+                        {#PUZZLE#}
+
+                        {#<p class="mt-3 ">#}
+                            {#{% if  app.request.locale == "es" %}#}
+                                {#{{ post.description | raw }}#}
+                            {#{% else %}#}
+                                {#{{ post.descriptionEs | raw  }}#}
+                                {#{% if post.descriptionEs is null %}#}
+                                    {#{{ post.description | raw }}#}
+                                {#{% endif %}#}
+                            {#{% endif %}#}
+
+                                {#</p>#}
+                        {#<div id="root" class="root"></div>#}
+
+
+
+                        {#<div id="lists" class="lists">#}
+                            {#<br>#}
+                            {#<table>#}
+                                {#<tr>#}
+                                    {#<td width="50%" id="left-list" valign="top" class="list-text">#}
+                                        {#<center>#}
+                                            {#<h3>Horizontal</h3>#}
+                                        {#</center>#}
+                                    {#</td>#}
+                                    {#<td width="50%" id="right-list" valign="top" class="list-text">#}
+                                        {#<center>#}
+                                            {#<h3>Vertical</h3>#}
+                                        {#</center>#}
+                                    {#</td>#}
+                                {#</tr>#}
+                            {#</table>#}
+                        {#</div>#}
+                        {#<div id="answer-form">#}
+                            {#<div class="short-margin">#}
+                                {#<p id="position-and-clue"></p>#}
+                                {#<p>{{ _self.traductor('Respuesta: ','Answer: ') }} <input id="solution-answer" type="text" size="40"></p>#}
+                                {#<p id="answer-results" class="hidden"></p>#}
+                                {#<p><input type="button" id="cancel-button" value="Cancelar"> <input type="button" id="answer-button" value="Respuesta"> <input type="button" id="reveal-answer-button" value="Revelar Respuesta"></p>#}
+                            {#</div>#}
+                        {#</div>#}
+                        {#END PUZZLE#}
+                    {#{% else %}#}
+                    {#<article class="p-1 border noticiaBody">#}
+                        {#{% if post.getPostFiles is defined %}#}
+                        {#{% if post.getPostFiles is not empty %}#}
+                        {#{% set img = post.getPostFiles().first() %}#}
+                        {#{% set ruta = post.id~'-'~post.getSlug() %}#}
+                        {#<img class="noticiaBody__img" src="{{ asset('upload/files/'~ruta~'/'~ img.filename) }}"/>#}
+                        {#{% endif %}#}
+                        {#{% endif %}#}
+
+                        {#<div class="noticiaBody__redes-credito d-flex ">#}
+                            {#<div class="noticiaBody__redes">#}
+                                {#SHARE TELEGRAM#}
+                                {#<script async src="https://telegram.org/js/telegram-widget.js?14" data-telegram-share-url="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}" data-comment="Compartir" data-text="notext">#}
+                                {#</script>#}
+                                {#<a class="twitter-share-button"#}
+                                   {#data-hashtags="cap,habana"#}
+                                   {#data-via="presidenciacuba"#}
+                                   {#data-related="presidenciacuba"#}
+                                   {#data-size="small"#}
+                                   {#data-text="Compartir"#}
+                                   {#href="https://twitter.com/intent/tweet">#}
+                                    {#<i class="fa fa-twitter"></i></a>#}
+                                {#SHARE FACEBOOK#}
+                               {#<br> <div class="fb-share-button" data-href="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}" data-layout="button_count" data-size="small"><a target="_blank"  class="fb-xfbml-parse-ignore"> <i class="fa fa-facebook"></i></a></div>#}
+
+                             {#</div>#}
+                            {#<div class="noticiaBody__rate">#}
+                                {#<div class="alert alert-success" style="display: none;">Rating recibido: <span id="rate"></span></div>#}
+                                {#<div class="star_content">#}
+                                    {#{% if rating %}#}
+                                        {#<input name="rate" value="1" type="radio" class="star" {% if rating.average == 1 %}checked="checked" {% endif %}/>#}
+                                        {#<input name="rate" value="2" type="radio" class="star" {% if rating.average == 2 %}checked="checked" {% endif %}/>#}
+                                        {#<input name="rate" value="3" type="radio" class="star" {% if rating.average == 3 %}checked="checked" {% endif %}/>#}
+                                        {#<input name="rate" value="4" type="radio" class="star" {% if rating.average == 4 %}checked="checked" {% endif %}/>#}
+                                        {#<input name="rate" value="5" type="radio" class="star" {% if rating.average == 5 %}checked="checked" {% endif %}/>#}
+                                    {#{% else %}#}
+                                        {#<input name="rate" value="1" type="radio" class="star"/>#}
+                                        {#<input name="rate" value="2" type="radio" class="star"/>#}
+                                        {#<input name="rate" value="3" type="radio" class="star"/>#}
+                                        {#<input name="rate" value="4" type="radio" class="star" checked="checked"/>#}
+                                        {#<input name="rate" value="5" type="radio" class="star"/>#}
+
+                                    {#{% endif %}#}
+                                {#</div>#}
+                                {#{% if rating %}#}
+                                    {#<p>#}
+                                        {#Rating {{ rating.average }} - Votos ({{ rating.votes }})#}
+                                    {#</p>#}
+                                {#{% endif %}#}
+                            {#</div>#}
+
+
+                            {#<div class="noticiaBody__credito d-flex flex-column flex-lg-row"><span class="mr-0 mr-lg-2"><p>{{ post.views }}</span> <span> visitas</span></p> <p>{% if post.optionalDate is not null %}Fecha: {{ post.optionalDate | date('d/m/Y') }}{% else %}publicado el {{ post.createdAt | date('d/m/Y') }}{% endif %}</p></div>#}
+                        {#</div>#}
+                        {#<h1 class="noticiaBody__titulo">{{ _self.traductor(post.title,post.titleEs) }}</h1>#}
+                        {#<div class="noticiaBody__body mt-3 mb-4 text-justify">#}
+
+                            {#<p>#}
+                                {#{% if  app.request.locale == "es" %}#}
+                                {#{{ post.description | raw }}#}
+                                {#{% else %}#}
+                                   {#{{ post.descriptionEs | raw  }}#}
+                                    {#{% if post.descriptionEs is null %}#}
+                                        {#{{ post.description | raw }}#}
+                                        {#{% endif %}#}
+                                {#{% endif %}#}
+
+                            {#</p>#}
+
+                            {#{% if post.getPdf is defined %}#}
+                            {#{% if post.getPdf is not empty %}#}
+                                {#{% set ruta = post.getSlug() %}#}
+                               {#<h1 class="noticiaBody__titulo">{{ app.request.locale == "es"?'Documentos asociados':'Asociated Documents'}}</h1>#}
+                                {#{% for d in post.getPdf %}#}
+                                   {#<p>#}
+                                      {#{{ d.title }}#}
+
+                                       {#<a class="btn btn-sm btn-blue"#}
+                                          {#download="{{ d.title }}"#}
+                                          {#href="{{ asset('upload/pdf/'~d.pdfUrl) }}">{{app.request.locale == "es"? 'Descargar':'Download'}}#}
+                                       {#</a></p>#}
+                                {#{% endfor %}#}
+                            {#{% endif %}#}
+                            {#{% endif %}#}
+
+                        {#</div>#}
+                    {#</article>#}
+
+                    {#<div class="noticiaComentarios row">#}
+                        {#<div class="container py-5 px-4 px-sm-5">#}
+                            {#<div class="row">#}
+                                {#<div class="col-lg-7">#}
+                                    {#<div>#}
+                                        {#<div class="noticiaComentarios__comentarioHead d-flex mb-4">#}
+                                            {#<div class="text">#}
+                                                {#<div class="head1">#}
+                                                    {#{{app.request.locale == "es"? 'Su opinión importa':'Your opinion matters' }}#}
+                                                {#</div>#}
+                                                {#<div>#}
+                                                    {#{{app.request.locale == "es"? 'Déjenos sus comentarios':'Leave your comments' }}#}
+                                                {#</div>#}
+                                            {#</div>#}
+                                            {#<div class="ico">#}
+                                                {#<i class="fa fa-comments fa-4x"></i>#}
+                                            {#</div>#}
+
+                                        {#</div>#}
+                                        {#{{ form_start(form) }}#}
+
+                                               {#{{ form_widget(form.name) }}<br>#}
+
+
+                                                {#{{ form_widget(form.email) }}<br>#}
+
+
+                                                {#{{ form_widget(form.description) }}<br>#}
+
+                                        {#<div class="enviar d-flex justify-content-between">#}
+                                            {#<div class="captcha">#}
+                                                {#{{ form_widget(form.captcha) }}#}
+                                                {#{{ form_errors(form.captcha) }}#}
+                                                {#</br>#}
+
+                                            {#</div>#}
+                                            {#</div>#}
+                                        {#<div class="send">#}
+                                            {#<button type="submit" class="btn btn-primary btn-habana btn-sm text-uppercase">{{app.request.locale == "es"? 'Enviar':'Send'}} </button>#}
+                                        {#</div>#}
+
+                                        {#{{ form_end(form) }}#}
+
+                                {#</div>#}
+                                {#</div>#}
+                                {#<div class="col-lg-5 noticiaComentarios__politicas my-5">#}
+                                    {#<div class="border p-4">#}
+                                    {#<p class="head">#}
+                                        {#{{app.request.locale == "es"? 'Cuando haga su comentario tenga en cuenta que:':'When you  make your comment, note that' }}#}
+                                    {#</p>#}
+                                    {#<ul>#}
+                                        {#<li>#}
+                                            {#{{app.request.locale == "es"? 'No debe usar palabras obscenas u ofensivas.':'You must not use offensive words'}}#}
+                                        {#</li>#}
+                                        {#<li>#}
+                                            {#{{app.request.locale == "es"? 'Deben estar relacionados con el tema..':'It must be in relation to the topic'}}#}
+                                        {#</li>#}
+                                        {#<li>#}
+                                            {#{{app.request.locale == "es"? 'No se publicaran los que incumplan las políticas anteriores.':'It must published comply with the above policies to be published'}}#}
+                                        {#</li>#}
+                                    {#</ul>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
+                            {#<div class="row">#}
+                                {#<div class="col-md-12">#}
+                                    {#<div class="noticiaComentarios__politicas my-5">#}
+                                        {#<p class="head">#}
+                                            {#{{ post.comments | length }} {{app.request.locale == "es"? 'comentarios insertados':'comments inserted'}}#}
+                                        {#</p>#}
+
+                                        {#{% for comment in post.comments  %}#}
+                                            {#<div class="border mb-3">#}
+                                                {#{% if comment.publish %}#}
+                                                    {#<p><strong>{{ comment.name }}</strong>, <small>{{ comment.createdAt | date('d/m/Y h:s') }} </small></p>#}
+
+                                                    {#<p>{{ comment.description }}</p>#}
+
+
+                                                {#{% endif %}#}
+                                            {#</div>#}
+
+                                        {#{% endfor %}#}
+
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
+
+                        {#</div>#}
+
+                    {#</div>#}
+                    {#{% endif %}#}
+                {#</div>#}
+                {#{{ render_ssi(controller('App\\Controller\\Front\\FrontController::sidebar', {})) }}#}
+
+            {#</div>#}
+        {#</div>#}
+    {#</section>#}
+
+
+{#{% endblock %}#}
+{#{% block javascripts %}#}
+  {#{{ parent() }}#}
+    {#<script src="{{ asset('templates_assets/js/jquery-2.2.4.min.js') }}"></script>#}
+    {#{% if puzzle %}#}
+        {#<script src="{{ asset('templates_assets/js/puzzle/puzzle.js') }}"></script>#}
+        {#<script  type="text/javascript">#}
+            {#$(document).ready(function(event) {#}
+                {#var puzzlewords = [#}
+                    {#{{ puzzle | raw }}#}
+
+                {#];#}
+                {#crosswordPuzzle(puzzlewords);#}
+            {#});#}
+        {#</script>#}
+    {#{% endif %}#}
+    {#{% if sopa_palabras %}#}
+    {#<script src="{{ asset('templates_assets/js/wordssoap/wordfind.js') }}"></script>#}
+    {#<script src="{{ asset('templates_assets/js/wordssoap/wordfindgame.js') }}"></script>#}
+    {#<script>#}
+        {#// An array with the words to show#}
+        {#var words = [#}
+            {#{{ sopa_palabras | raw }}#}
+        {#];#}
+
+        {#// Start a basic word game without customization !#}
+        {#var gamePuzzle = wordfindgame.create(words, '#puzzle-container', '#puzzle-words');#}
+
+        {#$("#solveBTN").click(function(){#}
+            {#// Solve the puzzle !#}
+            {#var result = wordfindgame.solve(gamePuzzle, words);#}
+            {#console.log(result);#}
+        {#});#}
+    {#</script>#}
+    {#{% endif %}#}
+    {#<script>#}
+        {#window.twttr = (function(d, s, id) {#}
+            {#var js, fjs = d.getElementsByTagName(s)[0],#}
+                {#t = window.twttr || {};#}
+            {#if (d.getElementById(id)) return t;#}
+            {#js = d.createElement(s);#}
+            {#js.id = id;#}
+            {#js.src = "https://platform.twitter.com/widgets.js";#}
+            {#fjs.parentNode.insertBefore(js, fjs);#}
+
+            {#t._e = [];#}
+            {#t.ready = function(f) {#}
+                {#t._e.push(f);#}
+            {#};#}
+
+            {#return t;#}
+        {#}(document, "script", "twitter-wjs"));#}
+    {#</script>#}
+    {#<script src="{{ asset('templates_assets/js/jquery.rating.pack.js') }}"></script>#}
+{#<script>#}
+    {#$(document).ready(function(){#}
+        {#$('input.star').rating();#}
+        {#$('.star').on('click', function () {#}
+            {#$.ajax({#}
+                {#type: "POST",#}
+                {#async: true,#}
+                {#url: '{{ path('rating_post',{'post' : post.id}) }}',#}
+                {#dataType: 'JSON',#}
+                {#data: {rate: $('input[name="rate"]').val()},#}
+                {#success: function(response) {#}
+                    {#$('.alert-success').fadeIn(2000);#}
+                    {#$('#rate').text(response.rate);#}
+                {#}#}
+            {#});#}
+            {#return false;#}
+        {#})#}
+    {#});#}
+{#</script>#}
+    {#{% for mensaje in app.session.flashbag().get('info') %}#}
+        {#<script>#}
+            {#swal(" ", '{{ mensaje }}', "success");#}
+        {#</script>#}
+    {#{% endfor %}#}
+    {#{% for mensaje in app.session.flashbag().get('danger') %}#}
+        {#<script>#}
+            {#swal(" ", '{{ mensaje }}', "warning");#}
+        {#</script>#}
+    {#{% endfor %}#}
+{#{% endblock %}#}

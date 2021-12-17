@@ -1,0 +1,162 @@
+{% extends 'front/paginas_internas.html.twig' %}
+ {% block idiomas %}
+     <a class="selectorIdioma__link {{app.request.locale == "es"? 'selectorIdioma__link--actual':''}}" href="{{ path( app.request.attributes.get('_route'), {'_locale':'es'}) }}">ESP</a>
+     <a class="selectorIdioma__link {{app.request.locale == "es"? '':'selectorIdioma__link--actual'}}" href="{{ path( app.request.attributes.get('_route'), {'_locale':'en'}) }}">ENG</a>
+ {% endblock %}
+{% block content %}
+
+    <section class="comun-body mi-habana-body">
+        <div class="container">
+            <div class="row">
+                <div class="deTop">
+                    <img src="{{ asset('templates_assets/frontend/img/pagina-mi-habana/top.jpg') }}" alt="">
+                    <h1>{{app.request.locale == "es"? 'Buscar':'Search'}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container bg-white px-4">
+            <div class="camino pt-3 pb-3">
+                <a href="{{ path('homepage') }}">{{app.request.locale == "es"? 'Inicio':'Home'}}</a><span class="separador mx-3"></span><a href="#" class="actual">{{app.request.locale == "es"? 'Buscar':'Search'}}</a>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                   {#<div class="formBuscar">
+                        <form action="#" method="POST" class="formBuscar__form">
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control-lg w-50" placeholder="Buscar..." aria-label="Buscar..." value="palabra buscada">
+                                <select class="custom-select form-control-lg w-25" id="inputGroupSelect01">
+                                    <option selected="">Todo el sitio</option>
+                                    <option value="1">Noticias</option>
+                                    <option value="2">Efemérides</option>
+                                    <option value="3">Atención a la población</option>
+                                </select>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">Buscar</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>#}
+                    <div class="listaResultado">
+                        <div class="count">
+                            {{app.request.locale == "es"? 'Cantidad de elementos encontrados:':'Number of items found:'}} {{ pagination.getTotalItemCount }}
+                        </div>
+                        {% for article in pagination %}
+
+                        <div class="itemResultado">
+                            <div class="itemResultado__titulo">
+
+                                    <a href="{{ path('post_detalles', {'id': article.id, 'slug': article.getSlug}) }}">{{ article.title }}</a>
+
+                            </div>
+                            <div class="itemResultado__fechaCategoria">
+                                <a href="#">
+                                   {% if article.getOptionalDate is not null %}{{ article.getOptionalDate | date('d/m/Y') }}{% endif %}
+                                </a>
+                                {{ article.category.section.title }},
+                                <a href="#">
+                                    {{ article.category.title }}
+                                </a>
+                            </div>
+                            {#<div class="itemResultado__intro">
+                                El próximo 24 de febrero se cumplirán 7 años de la reapertura del Teatro Martí. A propósito de este festejo, esa institución cultural de la Oficina del Historiador de la Ciudad de La Habana (OHCH) convoca a sus seguidores en Facebook.
+                            </div>#}
+                        </div>
+
+                       {% endfor %}
+
+                        <div class="navigation">
+                            {{ knp_pagination_render(pagination) }}
+                        </div>
+                    </div>
+                </div>
+
+                {{ render_ssi(controller('App\\Controller\\Front\\FrontController::sidebar', {})) }}
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+ {#   <section class="comun-body noticia-body">
+        <div class="container">
+            <div class="row">
+                <div class="tituloTop">
+                    <img src="{{ asset('templates_assets/frontend/img/pagina-mi-habana/top.jpg') }}" alt="buscar" class="tituloTop__img">
+                    <h1 class="tituloTop__header">Buscar</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container bg-white px-sm-4">
+            <div class="camino pt-3 pb-3 d-flex d-md-block ">
+                <a href="{{ path('homepage') }}"><i class="fa fa-home d-md-none"></i><span class="d-none d-md-inline">Inicio</span></a><span class="separador mx-3"></span><a href="#"><span class="d-md-none">N</span></a><span class="separador mx-3"></span><a href="#" class="actual">Buscar</a>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+
+                    <div class="noticiaComentarios row">
+                        <div class="container py-5 px-4 px-sm-5">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="">
+                                        {# total items count #}
+                                        {#<div class="count">
+                                            Cantidad de elementos encontrados: {{ pagination.getTotalItemCount }}
+                                        </div>
+                                        <table>
+                                            <tr>
+                                                {# sorting of properties based on query components #}
+                                                {#<th>{{ knp_pagination_sortable(pagination, 'Title', 'p.title') }}</th>#}
+                                                {#<th{% if pagination.isSorted('p.title') %} class="sorted"{% endif %}>#}
+                                                    {#{{ knp_pagination_sortable(pagination, 'Title', 'p.title') }}#}
+                                                {#</th>#}
+                                                {#<th{% if pagination.isSorted(['a.date', 'a.time']) %} class="sorted"{% endif %}>#}
+                                                    {#{{ knp_pagination_sortable(pagination, 'Release', ['a.date', 'a.time']) }}#}
+                                                {#</th>#}
+                                           {# </tr>
+
+                                            {# table body #}
+                                           {# {% for article in pagination %}
+                                                <tr {% if loop.index is odd %}class="color"{% endif %}>
+                                                    <td><a href="{{ path('post_detalles', {'id': article.id, 'slug': article.getSlug}) }}">{{ article.title }}</a></td>
+                                                    <td>{{ article.category.title }}</td>
+                                                    {#<td>{{ article.getCreatedAt | date('d-m-Y') }}, {{ article.getCreatedAt | date('H:i:s') }}</td>#}
+                                       {#        </tr>
+                                            {% endfor %}
+                                        </table>
+                                        {# display navigation #}
+                                       {# <div class="navigation">
+                                            {{ knp_pagination_render(pagination) }}
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            {{ include('front/sidebar.html.twig') }}
+
+            </div>
+        </div>
+    </section>#}
+
+
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+    {% for mensaje in app.session.flashbag().get('info') %}
+        <script>
+            swal(" ", '{{ mensaje }}', "success");
+        </script>
+    {% endfor %}
+    {% for mensaje in app.session.flashbag().get('danger') %}
+        <script>
+            swal(" ", '{{ mensaje }}', "warning");
+        </script>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,151 @@
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<script src="{{ asset('templates_assets/js/jquery-file-upload/js/vendor/jquery.ui.widget.js') }}"></script>
+<!-- The Templates plugin is included to render the upload/download listings -->
+<script src="{{ asset('templates_assets/js/jquery-file-upload/js/tmpl.min.js') }}"></script>
+<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+<script src="{{ asset('templates_assets/js/jquery-file-upload/js/load-image.all.min.js') }}"></script>
+<!-- The Canvas to Blob plugin is included for image resizing functionality -->
+<script src="{{ asset('templates_assets/js/jquery-file-upload/js/canvas-to-blob.min.js') }}"></script>
+{#<script>#}
+    {#[#}
+        {#{#}
+            {#supported: 'Promise' in window,#}
+            {#fill:#}
+                {#'https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js'#}
+        {#},#}
+        {#{#}
+            {#supported: 'fetch' in window,#}
+            {#fill: 'https://cdn.jsdelivr.net/npm/fetch-polyfill@0.8.2/fetch.min.js'#}
+        {#},#}
+        {#{#}
+            {#supported:#}
+            {#'CustomEvent' in window &&#}
+            {#'log10' in Math &&#}
+            {#'sign' in Math &&#}
+            {#'assign' in Object &&#}
+            {#'from' in Array &&#}
+            {#['find', 'findIndex', 'includes'].reduce(function(previous, prop) {#}
+                {#return prop in Array.prototype ? previous : false;#}
+            {#}, true),#}
+            {#fill: 'js/vendor/doka.polyfill.min.js'#}
+        {#}#}
+    {#].forEach(function(p) {#}
+        {#if (p.supported) return;#}
+        {#document.write('<script src="' + p.fill + '"><\/script>');#}
+    {#});#}
+{#</script>#}
+<script src="{{ asset('templates_assets/js/jquery-file-upload/js/vendor/doka.min.js') }}"></script>
+<!-- blueimp Gallery script -->
+<script src="{{ asset('templates_assets/js/jquery-file-upload/js/jquery.blueimp-gallery.min.js') }}"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="{{ asset('templates_assets/js/jquery-file-upload/js/jquery.iframe-transport.js') }}"></script>
+<!-- The basic FUploadServiceload plugin -->
+<script src="{{ asset('templates_assets/js/jquery-file-upload/js/jquery.fileupload.js') }}"></script>
+<!-- The FUploadServiceload processing plugin -->
+<script src="{{ asset('templates_assets/js/jquery-file-upload/js/jquery.fileupload-process.js') }}"></script>
+<!-- The FUploadServiceload validation plugin -->
+<script src="{{ asset('templates_assets/js/jquery-file-upload/js/jquery.fileupload-validate.js') }}"></script>
+<!-- The FUploadServiceload image preview & resize plugin -->
+<script src="{{ asset('templates_assets/js/jquery-file-upload/js/jquery.fileupload-image.js') }}"></script>
+<!-- The FUploadServiceload audio preview plugin -->
+<script src="{{ asset('templates_assets/js/jquery-file-upload/js/jquery.fileupload-audio.js') }}"></script>
+<!-- The FUploadServiceload video preview plugin -->
+<script src="{{ asset('templates_assets/js/jquery-file-upload/js/jquery.fileupload-video.js') }}"></script>
+<!-- The FUploadServiceload user interface plugin -->
+<script src="{{ asset('templates_assets/js/jquery-file-upload/js/jquery.fileupload-ui.js') }}"></script>
+<!-- The main application script -->
+<script src="{{ asset('templates_assets/js/jquery-file-upload/js/app.js') }}"></script>
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+{% verbatim %}
+
+      {% for (var i=0, file; file=o.files[i]; i++) { %}
+          <tr class="template-upload fade">
+              <td>
+                  <span class="preview"></span>
+              </td>
+              <td class="title"><input name="description[]" required></td> <!-- <textarea class="form-control" name="description[]" rows="3" id="comment"></textarea> <label>Title: <input name="description[]" required></label>-->
+              <td>
+                  {% if (window.innerWidth > 480 || !o.options.loadImageFileTypes.test(file.type)) { %}
+                      <p class="name">{%=file.name%}</p>
+                  {% } %}
+                  <strong class="error text-danger"></strong>
+              </td>
+              <td>
+                  <p class="size">Procesando...</p>
+                  <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+              </td>
+              <td>
+                   {% if (!o.options.autoUpload && o.options.edit && o.options.loadImageFileTypes.test(file.type)) { %}
+                    <button class="btn btn-success edit" data-index="{%=i%}" disabled>
+                        <i class="glyphicon glyphicon-edit"></i>
+                        <span>Editar</span>
+                    </button>
+                  {% } %}
+                  {% if (!i && !o.options.autoUpload) { %}
+                      <button class="btn btn-primary start" disabled>
+                          <i class="glyphicon glyphicon-upload"></i>
+                          <span>Subir</span>
+                      </button>
+                  {% } %}
+                  {% if (!i) { %}
+                      <button class="btn btn-warning cancel">
+                          <i class="glyphicon glyphicon-ban-circle"></i>
+                          <span>Cancelar</span>
+                      </button>
+                  {% } %}
+              </td>
+          </tr>
+      {% } %}
+      {% endverbatim %}
+    </script>
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+{% verbatim %}
+      {% for (var i=0, file; file=o.files[i]; i++) { %}
+          <tr class="template-download fade">
+              <td>
+                  <span class="preview">
+                      {% if (file.thumbnailUrl) { %}
+                          <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
+                      {% } %}
+                  </span>
+              </td>
+              <td class="title">
+                 <p>{%=file.description%}</p>
+             </td>
+              <td>
+                  {% if (window.innerWidth > 480 || !file.thumbnailUrl) { %}
+                      <p class="name">
+                          {% if (file.url) { %}
+                              <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+                          {% } else { %}
+                              <span>{%=file.name%}</span>
+                          {% } %}
+                      </p>
+                  {% } %}
+                  {% if (file.error) { %}
+                      <div><span class="label label-danger">Error</span> {%=file.error%}</div>
+                  {% } %}
+              </td>
+              <td>
+                  <span class="size">{%=o.formatFileSize(file.size)%}</span>
+              </td>
+              <td>
+                  {% if (file.deleteUrl) { %}
+                      <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                          <i class="glyphicon glyphicon-trash"></i>
+                          <span>Eliminar</span>
+                      </button>
+                      <!--<input type="checkbox" name="delete" value="1" class="toggle">-->
+                  {% } else { %}
+                      <button class="btn btn-warning cancel">
+                          <i class="glyphicon glyphicon-ban-circle"></i>
+                          <span>Cancelar</span>
+                      </button>
+                  {% } %}
+              </td>
+          </tr>
+      {% } %}
+      {% endverbatim %}
+</script>

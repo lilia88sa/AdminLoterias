@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jquery UI Datepicker Disable Specific Dates Example</title>
+    <link href="jquery-ui.css" rel="stylesheet" />
+    <script src="jquery-1.8.3.min.js"></script>
+    <script src="jquery-ui.js"></script>
+    <style type="text/css">
+        .container{
+            border-radius: 5px;
+            padding:50px 20px;
+            margin:30px auto;
+            width:25%;
+            border:2px solid #000;
+            text-align: center;
+        }
+        input{
+            padding:5px;
+        }
+        h2{
+            text-align: center;
+        }
+        body{
+            background-color: #81eace;
+        }
+    </style>
+</head>
+<body>
+    <h2>Jquery UI Datepicker Disable Specific Dates Example - Nicesnippets.com</h2>
+    <div class="container">
+        <label>Date :</label>
+        
+		
+		<input type="text" id="date" >
+		 
+        <!--<input type='date' class='date'><input type='text' class='date'>-->
+    </div>
+</body>
+<script type="text/javascript">
+
+var text='';
+
+setInterval(function(){
+if(text!=$('#date').val()){
+alert($('#date').val());
+text=$('#date').val();
+}
+
+},50);
+/*var availableDates = ["9-10-2021","14-10-2021","15-10-2021"];
+
+function available(date) {
+  dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+  //console.log(dmy+' : '+($.inArray(dmy, availableDates)));
+  if ($.inArray(dmy, availableDates) != -1) {
+    return [true, "","Available"];
+  } else {
+    return [false,"","unAvailable"];
+  }
+}
+$('#date').datepicker({ beforeShowDay: available });*/
+    var array = ["01-10-2021","02-10-2021","03-10-2021","15-10-2021","25-10-2021"]
+    $('#date').datepicker({
+        
+		beforeShowDay: function(date){
+            var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
+            return [ array.indexOf(string) != -1 ]
+        }
+    });
+	/*$(document).ready(function() {
+  $(function() {
+    $("#newOrderDates").datepicker({
+      todayHighlight: true,
+      dateFormat: 'yy-mm-dd',
+      multidate: true,
+      startDate: new Date(),
+      beforeShowDay: enableAllTheseDays
+    });
+  });
+
+  function enableAllTheseDays(date) {
+    var sdate = moment(date).format('YYYY-MM-DD');
+
+    if ($.inArray(sdate, enabledDates) !== -1) {
+      return [true];
+    }
+
+    return [false];
+  }
+});*/
+</script>
+</html>

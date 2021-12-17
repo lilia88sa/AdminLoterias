@@ -1,0 +1,3 @@
+service.entity_not_found: The entity is not found.
+service.status_not_found: The Status is not the correct.
+service.account_is_disabled: Account is disabled.

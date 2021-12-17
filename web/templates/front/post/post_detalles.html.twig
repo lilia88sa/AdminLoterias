@@ -1,0 +1,447 @@
+{% extends 'front/paginas_internas.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {#<link rel="stylesheet" type="text/css" href="{{ asset('templates_assets/js/ckeditor_4.15.0_standard/contents.css') }}">#}
+    {#<link rel="stylesheet" type="text/css" href="{{ asset('templates_assets/js/ckeditor_4.15.0_standard/widgetstyles.css') }}">#}
+    {% if sopa_palabras %}
+    <style>
+    #puzzle-container {
+        border: 1px solid black;
+        padding: 20px;
+        float: left;
+        margin: 30px 20px;
+    }
+
+    #puzzle-container div {
+        width: 100%;
+        margin: 0 auto;
+    }
+    /* estilo para cada cuadrado del rompecabezas */
+
+    #puzzle-container .puzzleSquare {
+        height: 30px;
+        width: 30px;
+        text-transform: uppercase;
+        background-color: white;
+        border: 0;
+        font: 1em sans-serif;
+    }
+
+    #puzzle-container button::-moz-focus-inner {
+        border: 0;
+    }
+    /* indica cuando se ha seleccionado un cuadrado */
+
+    #puzzle-container .selected {
+        background-color: orange;
+    }
+    /* indica que el cuadrado es parte de una palabra que se ha encontrado */
+
+    #puzzle-container .found {
+        background-color: blue;
+        color: white;
+    }
+
+    #puzzle-container .solved {
+        background-color: purple;
+        color: white;
+    }
+    /* indica que se han encontrado todas las palabras */
+
+    #puzzle-container .complete {
+        background-color: green;
+    }
+    /**
+    * Estilos para la lista de palabras
+    */
+
+    #puzzle-words {
+        padding-top: 20px;
+        -moz-column-count: 2;
+        -moz-column-gap: 20px;
+        -webkit-column-count: 2;
+        -webkit-column-gap: 20px;
+        column-count: 2;
+        column-gap: 20px;
+        width: 300px;
+    }
+
+    #puzzle-words ul {
+        list-style-type: none;
+    }
+
+    #puzzle-words li {
+        padding: 3px 0;
+        font: 1em sans-serif;
+    }
+    /*indica que la palabra ha sido encontrada */
+
+    #puzzle-words .wordFound {
+        text-decoration: line-through;
+        color: gray;
+    }
+    /**
+    *  Estilos para el botón
+    */
+
+    #solve {
+        margin: 0 30px;
+    }
+</style>
+  {% endif %}
+{% endblock %}
+   {% block idiomas %}
+       <a class="selectorIdioma__link {{app.request.locale == "es"? 'selectorIdioma__link--actual':''}}" href="{{ path( app.request.attributes.get('_route'), {'_locale':'es', 'id':post.id, 'slug':post.slug}) }}">ESP</a>
+       <a class="selectorIdioma__link {{app.request.locale == "es"? '':'selectorIdioma__link--actual'}}" href="{{ path( app.request.attributes.get('_route'), {'_locale':'en', 'id':post.id, 'slug':post.slug}) }}">ENG</a>
+   {% endblock %}
+{% block content %}
+
+    <section class="comun-body noticia-body">
+        <div class="container">
+            <div class="row">
+                <div class="tituloTop">
+                    {% if post.getCategory.section.getSectionFiles is defined %}
+                    {% if post.getCategory.section.getSectionFiles is not empty %}
+                    {% set img = post.getCategory.section.getSectionFiles.first() %}
+                    {% set ruta = post.getCategory.section.id~'-'~post.getCategory.section.getSlug() %}
+                    <img src="{{ asset('upload/files/'~ruta~'/'~ img.filename) }}" alt="{{ post.getCategory.title }}" class="tituloTop__img">
+                    {% endif %}
+                    {% endif %}
+                    <h1 class="tituloTop__header">
+
+                         {{ _self.traductor(post.getCategory.title,post.getCategory.titleEs) }}
+
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="container bg-white px-sm-4">
+            <div class="camino pt-3 pb-3 d-flex d-md-block ">
+                <a href="{{ path('homepage') }}"><i class="fa fa-home d-md-none"></i><span class="d-none d-md-inline">Inicio</span></a><span class="separador mx-3"></span><a href="{{ path('category_detalles', {'id':post.getCategory.id, 'slug':post.getCategory.slug}) }}"><span class="d-md-none">N</span><span class="d-none d-md-inline"> {{ _self.traductor(post.getCategory.title,post.getCategory.titleEs) }} </span></a><span class="separador mx-3"></span><a href="#" class="actual">{{ _self.traductor(post.title,post.titleEs) }}</a>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    {% if sopa_palabras %}
+                        {#SOPA DE PALABRAS#}
+                    <div id="puzzle-container"></div>
+                    <div id="puzzle-words"></div>
+                    <p class="text-center">
+                        <a id="solveBTN" class="btn btn-lg btn-primary" href="#">{{ _self.traductor('Resolver','Sort out') }}</a>
+                    </p>
+                    {% elseif puzzle %}
+                        {#PUZZLE#}
+
+                        <p class="mt-3 ">
+                            {% if  app.request.locale == "es" %}
+                                {{ post.description | raw }}
+                            {% else %}
+                                {{ post.descriptionEs | raw  }}
+                                {% if post.descriptionEs is null %}
+                                    {{ post.description | raw }}
+                                {% endif %}
+                            {% endif %}
+
+                                </p>
+                        <div id="root" class="root"></div>
+
+
+
+                        <div id="lists" class="lists">
+                            <br>
+                            <table>
+                                <tr>
+                                    <td width="50%" id="left-list" valign="top" class="list-text">
+                                        <center>
+                                            <h3>Horizontal</h3>
+                                        </center>
+                                    </td>
+                                    <td width="50%" id="right-list" valign="top" class="list-text">
+                                        <center>
+                                            <h3>Vertical</h3>
+                                        </center>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="answer-form">
+                            <div class="short-margin">
+                                <p id="position-and-clue"></p>
+                                <p>{{ _self.traductor('Respuesta: ','Answer: ') }} <input id="solution-answer" type="text" size="40"></p>
+                                <p id="answer-results" class="hidden"></p>
+                                <p><input type="button" id="cancel-button" value="Cancelar"> <input type="button" id="answer-button" value="Respuesta"> <input type="button" id="reveal-answer-button" value="Revelar Respuesta"></p>
+                            </div>
+                        </div>
+                        {#END PUZZLE#}
+                    {% else %}
+                    <article class="p-1 border noticiaBody">
+                        {% if post.getPostFiles is defined %}
+                        {% if post.getPostFiles is not empty %}
+                        {% set img = post.getPostFiles().first() %}
+                        {% set ruta = post.id~'-'~post.getSlug() %}
+                        <img class="noticiaBody__img" src="{{ asset('upload/files/'~ruta~'/'~ img.filename) }}"/>
+                        {% endif %}
+                        {% endif %}
+
+                        <div class="noticiaBody__redes-credito d-flex ">
+                            <div class="noticiaBody__redes">
+                                {#SHARE TELEGRAM#}
+                                <script async src="https://telegram.org/js/telegram-widget.js?14" data-telegram-share-url="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}" data-comment="Compartir" data-text="notext">
+                                </script>
+                                <a class="twitter-share-button"
+                                   data-hashtags="cap,habana"
+                                   data-via="presidenciacuba"
+                                   data-related="presidenciacuba"
+                                   data-size="small"
+                                   data-text="Compartir"
+                                   href="https://twitter.com/intent/tweet">
+                                    <i class="fa fa-twitter"></i></a>
+                                {#SHARE FACEBOOK#}
+                               <br> <div class="fb-share-button" data-href="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}" data-layout="button_count" data-size="small"><a target="_blank"  class="fb-xfbml-parse-ignore"> <i class="fa fa-facebook"></i></a></div>
+
+                             </div>
+                            <div class="noticiaBody__rate">
+                                <div class="alert alert-success" style="display: none;">Rating recibido: <span id="rate"></span></div>
+                                <div class="star_content">
+                                    {% if rating %}
+                                        <input name="rate" value="1" type="radio" class="star" {% if rating.average == 1 %}checked="checked" {% endif %}/>
+                                        <input name="rate" value="2" type="radio" class="star" {% if rating.average == 2 %}checked="checked" {% endif %}/>
+                                        <input name="rate" value="3" type="radio" class="star" {% if rating.average == 3 %}checked="checked" {% endif %}/>
+                                        <input name="rate" value="4" type="radio" class="star" {% if rating.average == 4 %}checked="checked" {% endif %}/>
+                                        <input name="rate" value="5" type="radio" class="star" {% if rating.average == 5 %}checked="checked" {% endif %}/>
+                                    {% else %}
+                                        <input name="rate" value="1" type="radio" class="star"/>
+                                        <input name="rate" value="2" type="radio" class="star"/>
+                                        <input name="rate" value="3" type="radio" class="star"/>
+                                        <input name="rate" value="4" type="radio" class="star" checked="checked"/>
+                                        <input name="rate" value="5" type="radio" class="star"/>
+
+                                    {% endif %}
+                                </div>
+                                {% if rating %}
+                                    <p>
+                                        Rating {{ rating.average }} - Votos ({{ rating.votes }})
+                                    </p>
+                                {% endif %}
+                            </div>
+
+
+                            <div class="noticiaBody__credito d-flex flex-column flex-lg-row"><span class="mr-0 mr-lg-2"><p>{{ post.views }}</span> <span> visitas</span></p> <p>{% if post.optionalDate is not null %}Fecha: {{ post.optionalDate | date('d/m/Y') }}{% else %}publicado el {{ post.createdAt | date('d/m/Y') }}{% endif %}</p></div>
+                        </div>
+                        <h1 class="noticiaBody__titulo">{{ _self.traductor(post.title,post.titleEs) }}</h1>
+                        <div class="noticiaBody__body mt-3 mb-4 text-justify">
+
+                            <p>
+                                {% if  app.request.locale == "es" %}
+                                {{ post.description | raw }}
+                                {% else %}
+                                   {{ post.descriptionEs | raw  }}
+                                    {% if post.descriptionEs is null %}
+                                        {{ post.description | raw }}
+                                        {% endif %}
+                                {% endif %}
+
+                            </p>
+
+                            {% if post.getPdf is defined %}
+                            {% if post.getPdf is not empty %}
+                                {% set ruta = post.getSlug() %}
+                               <h1 class="noticiaBody__titulo">{{ app.request.locale == "es"?'Documentos asociados':'Asociated Documents'}}</h1>
+                                {% for d in post.getPdf %}
+                                   <p>
+                                      {{ d.title }}
+
+                                       <a class="btn btn-sm btn-blue"
+                                          download="{{ d.title }}"
+                                          href="{{ asset('upload/pdf/'~d.pdfUrl) }}">{{app.request.locale == "es"? 'Descargar':'Download'}}
+                                       </a></p>
+                                {% endfor %}
+                            {% endif %}
+                            {% endif %}
+
+                        </div>
+                    </article>
+
+                    <div class="noticiaComentarios row">
+                        <div class="container py-5 px-4 px-sm-5">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <div>
+                                        <div class="noticiaComentarios__comentarioHead d-flex mb-4">
+                                            <div class="text">
+                                                <div class="head1">
+                                                    {{app.request.locale == "es"? 'Su opinión importa':'Your opinion matters' }}
+                                                </div>
+                                                <div>
+                                                    {{app.request.locale == "es"? 'Déjenos sus comentarios':'Leave your comments' }}
+                                                </div>
+                                            </div>
+                                            <div class="ico">
+                                                <i class="fa fa-comments fa-4x"></i>
+                                            </div>
+
+                                        </div>
+                                        {{ form_start(form) }}
+
+                                               {{ form_widget(form.name) }}<br>
+
+
+                                                {{ form_widget(form.email) }}<br>
+
+
+                                                {{ form_widget(form.description) }}<br>
+
+                                        <div class="enviar d-flex justify-content-between">
+                                            <div class="captcha">
+                                                {{ form_widget(form.captcha) }}
+                                                {{ form_errors(form.captcha) }}
+                                                </br>
+
+                                            </div>
+                                            </div>
+                                        <div class="send">
+                                            <button type="submit" class="btn btn-primary btn-habana btn-sm text-uppercase">{{app.request.locale == "es"? 'Enviar':'Send'}} </button>
+                                        </div>
+
+                                        {{ form_end(form) }}
+
+                                </div>
+                                </div>
+                                <div class="col-lg-5 noticiaComentarios__politicas my-5">
+                                    <div class="border p-4">
+                                    <p class="head">
+                                        {{app.request.locale == "es"? 'Cuando haga su comentario tenga en cuenta que:':'When you  make your comment, note that' }}
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            {{app.request.locale == "es"? 'No debe usar palabras obscenas u ofensivas.':'You must not use offensive words'}}
+                                        </li>
+                                        <li>
+                                            {{app.request.locale == "es"? 'Deben estar relacionados con el tema..':'It must be in relation to the topic'}}
+                                        </li>
+                                        <li>
+                                            {{app.request.locale == "es"? 'No se publicaran los que incumplan las políticas anteriores.':'It must published comply with the above policies to be published'}}
+                                        </li>
+                                    </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="noticiaComentarios__politicas my-5">
+                                        <p class="head">
+                                            {{ post.comments | length }} {{app.request.locale == "es"? 'comentarios insertados':'comments inserted'}}
+                                        </p>
+
+                                        {% for comment in post.comments  %}
+                                            <div class="border mb-3">
+                                                {% if comment.publish %}
+                                                    <p><strong>{{ comment.name }}</strong>, <small>{{ comment.createdAt | date('d/m/Y h:s') }} </small></p>
+
+                                                    <p>{{ comment.description }}</p>
+
+
+                                                {% endif %}
+                                            </div>
+
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    {% endif %}
+                </div>
+                {{ render_ssi(controller('App\\Controller\\Front\\FrontController::sidebar', {})) }}
+
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+    <script src="{{ asset('templates_assets/js/jquery-2.2.4.min.js') }}"></script>
+    {% if puzzle %}
+        <script src="{{ asset('templates_assets/js/puzzle/puzzle.js') }}"></script>
+        <script  type="text/javascript">
+            $(document).ready(function(event) {
+                var puzzlewords = [
+                    {{ puzzle | raw }}
+
+                ];
+                crosswordPuzzle(puzzlewords);
+            });
+        </script>
+    {% endif %}
+    {% if sopa_palabras %}
+    <script src="{{ asset('templates_assets/js/wordssoap/wordfind.js') }}"></script>
+    <script src="{{ asset('templates_assets/js/wordssoap/wordfindgame.js') }}"></script>
+    <script>
+        // An array with the words to show
+        var words = [
+            {{ sopa_palabras | raw }}
+        ];
+
+        // Start a basic word game without customization !
+        var gamePuzzle = wordfindgame.create(words, '#puzzle-container', '#puzzle-words');
+
+        $("#solveBTN").click(function(){
+            // Solve the puzzle !
+            var result = wordfindgame.solve(gamePuzzle, words);
+            console.log(result);
+        });
+    </script>
+    {% endif %}
+    <script>
+        window.twttr = (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function(f) {
+                t._e.push(f);
+            };
+
+            return t;
+        }(document, "script", "twitter-wjs"));
+    </script>
+    <script src="{{ asset('templates_assets/js/jquery.rating.pack.js') }}"></script>
+<script>
+    $(document).ready(function(){
+        $('input.star').rating();
+        $('.star').on('click', function () {
+            $.ajax({
+                type: "POST",
+                async: true,
+                url: '{{ path('rating_post',{'post' : post.id}) }}',
+                dataType: 'JSON',
+                data: {rate: $('input[name="rate"]').val()},
+                success: function(response) {
+                    $('.alert-success').fadeIn(2000);
+                    $('#rate').text(response.rate);
+                }
+            });
+            return false;
+        })
+    });
+</script>
+    {% for mensaje in app.session.flashbag().get('info') %}
+        <script>
+            swal(" ", '{{ mensaje }}', "success");
+        </script>
+    {% endfor %}
+    {% for mensaje in app.session.flashbag().get('danger') %}
+        <script>
+            swal(" ", '{{ mensaje }}', "warning");
+        </script>
+    {% endfor %}
+{% endblock %}

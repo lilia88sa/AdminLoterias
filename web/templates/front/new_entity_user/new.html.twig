@@ -1,0 +1,137 @@
+{% extends 'front/paginas_internas.html.twig' %}
+ {% block idiomas %}
+     <a class="selectorIdioma__link {{app.request.locale == "es"? 'selectorIdioma__link--actual':''}}" href="{{ path( app.request.attributes.get('_route'), {'_locale':'es'}) }}">ESP</a>
+     <a class="selectorIdioma__link {{app.request.locale == "es"? '':'selectorIdioma__link--actual'}}" href="{{ path( app.request.attributes.get('_route'), {'_locale':'en'}) }}">ENG</a>
+ {% endblock %}
+{% block content %}
+
+    <section class="comun-body noticia-body">
+        <div class="container">
+            <div class="row">
+                <div class="tituloTop">
+                    <img src="{{ asset('templates_assets/frontend/img/pagina-mi-habana/top.jpg') }}" alt="nueva entidad/negocio" class="tituloTop__img">
+                    <h1 class="tituloTop__header">{{ app.request.locale=='es'?'Nueva Entidad/Negocio':'New Entity/Bussiness'}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container bg-white px-sm-4">
+            <div class="camino pt-3 pb-3 d-flex d-md-block ">
+                <a href="{{ path('homepage') }}">{{ app.request.locale=='es'?'Inicio':'Home'}}</a><span class="separador mx-3"></span><a href="{{ path('listado_entidades') }}">{{ app.request.locale=='es'?'Entidades':'Entities'}}</a><span class="separador mx-3"></span><a href="#" class="actual">{{ app.request.locale=='es'?'Nueva Entidad/Negocio':'New Entity/Bussiness'}}</a>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+
+                    <div class="noticiaComentarios row">
+                        <div class="container py-5 px-4 px-sm-5">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="">
+                                        <div class="noticiaComentarios__comentarioHead d-flex mb-4">
+                                            <div class="text">
+                                                <div class="head1">
+                                                    {{ app.request.locale=='es'?'Comparte tu negocio o entidad con todos':'Share your entity or bussiness with alls'}}
+                                                </div>
+                                                <div>
+                                                     {{ app.request.locale=='es'?'Al llenar los siguientes datos sera informado mediante su email del proceso y aceptación de la misma':'When you fill next data you will be emailed of aceptancy\'s process'}}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {{ form_start(form) }}
+                                        {{ form_label(form.comercialName) }}
+                                        {{ form_widget(form.comercialName) }}<br>
+
+                                        {{ form_label(form.name) }}
+                                        {{ form_widget(form.name) }}<br>
+
+                                        {{ form_label(form.code) }}
+                                        {{ form_widget(form.code) }}<br>
+
+                                        {{ form_label(form.socialReason) }}
+                                        {{ form_widget(form.socialReason) }}<br>
+
+                                        {{ form_label(form.schedule) }}
+                                        {{ form_widget(form.schedule) }}<br>
+
+                                        {{ form_label(form.schedulePublic) }}
+                                        {{ form_widget(form.schedulePublic) }}<br>
+
+                                        {{ form_label(form.postalCode) }}
+                                        {{ form_widget(form.postalCode) }}<br>
+
+                                        {{ form_label(form.phone) }}
+                                        {{ form_widget(form.phone) }}<br>
+
+                                        {{ form_label(form.email) }}
+                                        {{ form_widget(form.email) }}<br>
+
+                                        {{ form_label(form.website) }}
+                                        {{ form_widget(form.website) }}<br>
+
+                                        {{ form_label(form.description) }}
+                                        {{ form_widget(form.description) }}<br>
+
+                                        {{ form_label(form.serviceDescription) }}
+                                        {{ form_widget(form.serviceDescription) }}<br>
+
+                                        {{ form_label(form.entityType) }}
+                                        {{ form_widget(form.entityType) }}<br>
+
+
+                                        {{ form_widget(form.captcha) }}<br>
+
+                                        {{ form_rest(form) }}
+                                            {#<input type="text" placeholder="Nombre" class="form-control mb-3">#}
+                                            {#<input type="text" placeholder="E-mail" class="form-control mb-3">#}
+                                            {#<textarea name="comentario" id="comentario" width="100%" rows="7" class="form-control mb-3" placeholder="Comentario"></textarea>#}
+                                            <div class="enviar d-flex justify-content-between">
+                                                {#<div class="captcha">234xf</div>#}
+                                                <div class="send">
+                                                    <input type="submit" value="{{ app.request.locale=='es'?'Enviar':'Send'}}" class="btn btn-primary btn-habana btn-sm text-uppercase">
+                                                </div>
+                                            </div>
+                                        {{ form_end(form) }}
+
+                                        <div class="noticiaComentarios__politicas my-5">
+                                            <p class="head">
+                                               {{ app.request.locale=='es'?'Cuando comparta su entidad o negocio con nosotros tener en cuenta que:':'When you share your entity or bussiness with us,note that:'}}
+                                            </p>
+                                            <ul>
+                                                <li>
+                                                    {{ app.request.locale=='es'?'No debe usar palabras obscenas u ofensivas.':'Not must wear bad words'}}
+                                                </li>
+                                                <li>
+                                                    {{ app.request.locale=='es'?'No se publican las entidades que incumplan las políticas anteriores.':'Not show entities which don\'t be agree with before politics.'}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                {{ render_ssi(controller('App\\Controller\\Front\\FrontController::sidebar', {})) }}
+
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+    {% for mensaje in app.session.flashbag().get('info') %}
+        <script>
+            swal(" ", '{{ mensaje }}', "success");
+        </script>
+    {% endfor %}
+    {% for mensaje in app.session.flashbag().get('danger') %}
+        <script>
+            swal(" ", '{{ mensaje }}', "warning");
+        </script>
+    {% endfor %}
+    <script src="{{ asset('templates_assets/js/ckeditor_4.15.0_standard/ckeditor/ckeditor.js') }}"></script>
+{% endblock %}

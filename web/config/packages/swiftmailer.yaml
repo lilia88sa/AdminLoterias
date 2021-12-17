@@ -1,0 +1,30 @@
+swiftmailer:
+#    url: '%env(MAILER_URL)%'
+#    spool: { type: 'memory' }
+
+#    default_mailer: mailer_7808
+#    mailers:
+#        mailer_7808:
+#            transport: smtp
+#            username: franklemuspaz@yandex.com
+#            password: dfgd
+#            host: smtp.yandex.ru
+#            port: 465
+#            encryption: ssl
+#            auth_mode: login
+#            sender_address:
+#            delivery_addresses: ['']
+#            disable_delivery: false
+  transport: smtp
+  host: smtp.infocap.cu
+  port: 587
+  encryption: tls
+  auth_mode: login
+  username: no-reply@infocap.cu
+  password: '7APgBWJk'  #'Gobierno123*'
+  spool:
+    type: memory
+  stream_options:
+    ssl:
+        verify_peer: false
+        verify_peer_name: false
