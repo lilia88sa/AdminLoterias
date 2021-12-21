@@ -7,9 +7,6 @@
 /public/bundles/
 /public/images/
 /public/rider/
-/public/upload/
-/var/
-/vendor/
 /public/templates_assets_old/
 ###< symfony/framework-bundle ###
 
