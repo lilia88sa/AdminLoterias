@@ -79,7 +79,7 @@ PUBLIC FUNCTION READ_API_XML(array $game,$res,$em){
               //dump($clas);
             switch ($clas){
                 case 'gordo':return parsers::arregloGordoJuego($clas,$game);
-                case 'nacional':return parsers::getResultNac($game,$res);
+                
                /* case 'nacional':
 				$a=parsers::getResultNac($game,$res);
 				dump($a);
@@ -91,6 +91,7 @@ PUBLIC FUNCTION READ_API_XML(array $game,$res,$em){
                 case 'bonoloto':return parsers::arregloBonolotoJuego($clas,$game);
                 case 'quiniela':return parsers::arregloQuinielalJuego($clas,$game);
                 case 'quinigol':return parsers::arregloQuinigolJuego($clas,$game);
+				case 'nacional':return parsers::getResultNac($game,$res);
                 default:return null;
             }
             return null;
